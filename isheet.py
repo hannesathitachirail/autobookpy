@@ -35,7 +35,7 @@ def updateDict(data: pd.DataFrame):
                 "BORDER_STATION_L2": f"({row['Sta']} {row['Room']})"
                 if row["Room"] != ""
                 else f"({row['Sta']})",
-                "BORDER_SHEET": row["Sheet"],
+                "BORDER_SHEET": f"{row['Sheet'][1]}000",
                 "BORDER_CSE": row["CSE"],
                 "BORDER_STATION_CODE": row["Code"],
                 "BORDER_DATE": row["Date"],
@@ -43,7 +43,7 @@ def updateDict(data: pd.DataFrame):
                 "BORDER_REV": row["Rev"],
             }
         )
-        return sheetsDict
+    return sheetsDict
 
 
 def get_blocks(sheet, df: pd.DataFrame):

@@ -5,39 +5,9 @@ import copy
 import time
 import numpy as np
 
-df = pd.read_excel("./autobook.xlsx", "D")
-# Checks if scm is a duplicate of previous scm
-# Used to determine if signal is top or bottom
+excelsheet = "./autobook.xlsx"
 
 output = "./out/"
-blocks: list[str] = [
-    "1ASPECT_0DIR_1SCM",
-    "1ASPECT_0DIR_APPCASE",
-    "2ASPECT_0DIR_1SCM",
-    "2ASPECT_2DIR_1SCM",
-    "2ASPECT_3DIR_1SCM",
-    "2ASPECT_3DIR_APPCASE",
-    "2ASPECT_0DIR_APPCASE",
-    "3ASPECT_1DIR_1SCM",
-    "3ASPECT_2DIR_1SCM",
-    "3ASPECT_2DIR_APPCASE",
-    "3ASPECT_3DIR_1SCM",
-    "3ASPECT_3DIR_APPCASE",
-    "3ASPECT_0DIR_APPCASE",
-    "4ASPECT_0DIR_APPCASE",
-    "BASE_TEXT",
-    "BORDER_BLOCK",
-    "POWER_1A_1SIG",
-    "POWER_2A_1SIG",
-    "POWER_2A_2SIG",
-    "SIGNALCABLE_LONG",
-    "SIGNALCABLE_SHORT",
-    "SIGREF_1",
-    "SIGREF_2",
-    "SIGREF_3",
-    "SIGREF_4",
-    "TEMPLATE_NOT_FOUND",
-]
 
 
 def updateDict(data: pd.DataFrame):
@@ -64,7 +34,6 @@ def updateDict(data: pd.DataFrame):
         OtherAsp.str.strip().str.len().fillna(0)
         + OtherDir.str.strip().str.len().fillna(0)
     ).astype(int)
-
     sheetsDict = []
     for row in data.to_dict(orient="records"):
         sheetsDict.append(
@@ -88,9 +57,13 @@ def updateDict(data: pd.DataFrame):
                 "LOC": f"RSS LOC-{row['LOC']} CABINET",
                 "POWER_INPUT": row["SCM"],
                 # Border block values
-                "BORDER_STATION": row["Station"] + " " + row["Room"],
-                "BORDER_STATION_UNDERTEXT": "(" + row["Sta"] + " " + row["Room"] + ")",
-                "BORDER_SIGNAL": f"{row['SignalName']}",
+                "BORDER_STATION_L1": f"{row['Station']} {row['Room']}"
+                if row["Room"] != ""
+                else f"{row['Station']}",
+                "BORDER_STATION_L2": f"({row['Sta']} {row['Room']})"
+                if row["Room"] != ""
+                else f"({row['Sta']})",
+                "BORDER_NAME": f"{row['SignalName']}",
                 "BORDER_SHEET": row["Sheet"],
                 "BORDER_CSE": row["CSE"],
                 "BORDER_STATION_CODE": row["Code"],
@@ -115,18 +88,6 @@ def updateDict(data: pd.DataFrame):
                 # Main OP
                 "OP": f"OP {row['OPRack']} - {row['OPRow']}",
                 **{f"OP{i + 1}": f"{row['OPnr'] + i}" for i in range(12)},
-                # Outputs
-                "OUT1": "",
-                "OUT2": "",
-                "OUT3": "",
-                "OUT4": "",
-                "OUT5": "",
-                "OUT6": "",
-                "OUT7": "",
-                "OUT8": "",
-                "OUT9": "",
-                "OUT10": "",
-                "OUT11": "",
                 # Cable Boxes
                 "CABLEBOX_L1": f"{row['CableBox']}",
                 "CABLEBOX_L2": f"{row['CableBoxQ']}",
@@ -233,28 +194,11 @@ def get_blocks(sheet, df: pd.DataFrame):
     # Add border blocks
     required_blocks.append(("PSP_BORDER_BLOCK", (0, 0)))
     # Power block
-    if (
-        sheet["PowerSheet"] == sheet["OtherPowerSheet"]
-        or sheet["OtherPowerSheet"] == ""
-    ):
-        if sheet["OtherSheet"] == "":
-            required_blocks.append(("POWER_TERMINAL_TOP", (0, 0)))
-            if dir_count == 0:
-                required_blocks.append(("POWER_REF_1", (53.6311, 216.6655)))
-            elif aspect_count + dir_count <= 4:
-                required_blocks.append(("POWER_TERMINAL_BOTTOM", (0, 0)))
-                required_blocks.append(("POWER_REF_2", (53.6311, 216.6655)))
-            else:
-                required_blocks.append(("POWER_TERMINAL_BOTTOM", (0, -55.5799)))
-                required_blocks.append(("POWER_REF_3", (53.6311, 216.6655)))
-        elif sheet["ISFIRSTSCM"]:
-            required_blocks.append(("POWER_TERMINAL_TOP", (0, 0)))
-            required_blocks.append(("POWER_TERMINAL_BOTTOM_DASHED", (0, -55.5799)))
-            required_blocks.append(("POWER_REF_3", (53.6311, 216.6655)))
+    if sheet["OtherSheet"] == "":
+        if len(sheet["DIR"]) == 0:
+            required_blocks.append(("POWER_1A_1SIG", (0, 0)))
         else:
-            required_blocks.append(("POWER_TERMINAL_TOP_DASHED", (0, 0)))
-            required_blocks.append(("POWER_TERMINAL_BOTTOM", (0, -55.5799)))
-            required_blocks.append(("POWER_REF_3", (53.6311, 216.6655)))
+            required_blocks.append(("POWER_2A_1SIG", (0, 0)))
     else:
         if sheet["ISFIRSTSCM"]:
             required_blocks.append(("POWER_TERMINAL_TOP", (0, 0)))
@@ -310,32 +254,36 @@ def get_blocks(sheet, df: pd.DataFrame):
             )
     # SIGNALMODEL
     required_blocks.append(("PSP_SIGNALBASE_NORMAL", (413.1609, 23.6633)))
-    required_blocks.append(
-        (
-            f"PSP_SIGNALHEAD1_{sheet['ASPECTFLASHING']}",
-            (413.1609, 23.6633),
-        )
-    )
-    required_blocks.append(
-        (
-            f"PSP_SIGNALHEAD2_{sheet['ASPECT'].strip()}",
-            (413.1609, 23.6633),
-        )
-    )
-    if sheet["DIR"].strip() != "":
+    if sheet["ASPECTFLASHING"] == "":
+        required_blocks.append(("PSP_SIGNALHEAD2_R", (413.1609, 18.6633)))
+    else:
         required_blocks.append(
             (
-                f"PSP_SIGNALDIR_{sheet['DIR'].strip()}",
+                f"PSP_SIGNALHEAD1_{sheet['ASPECTFLASHING']}",
                 (413.1609, 23.6633),
             )
         )
+        required_blocks.append(
+            (
+                f"PSP_SIGNALHEAD2_{sheet['ASPECT'].strip()}",
+                (413.1609, 23.6633),
+            )
+        )
+        if sheet["DIR"].strip() != "":
+            required_blocks.append(
+                (
+                    f"PSP_SIGNALDIR_{sheet['DIR'].strip()}",
+                    (413.1609, 23.6633),
+                )
+            )
     return required_blocks
 
 
 def generatesheets(
     templatefile: str,
-    dataframe,
+    excelsheet,
 ):
+    dataframe = pd.read_excel(excelsheet, "D")
     sheetsDict = updateDict(dataframe)
     template = ez.readfile(templatefile)
 
@@ -369,6 +317,6 @@ def generatesheets(
 
 if __name__ == "__main__":
     start = time.perf_counter()
-    generatesheets("./templates/Dtemplate.dxf", df)
+    generatesheets("./templates/Dtemplate.dxf", excelsheet)
     end = time.perf_counter()
     print(f"Elapse time: {end - start:.0f}")

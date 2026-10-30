@@ -27,8 +27,12 @@ def updateDict(data: pd.DataFrame):
                 "BORDER_NAME": f"{row['PointName']}",
                 "BORDER_REV": f"{row['Rev']}",
                 "BORDER_SHEET": f"{row['Sheet']}",
-                "BORDER_STATION_L1": f"{row['Station']} {row['Room']}",
-                "BORDER_STATION_L2": f"({row['Sta']} {row['Room']})",
+                "BORDER_STATION_L1": f"{row['Station']} {row['Room']}"
+                if row["Room"] != ""
+                else f"{row['Station']}",
+                "BORDER_STATION_L2": f"({row['Sta']} {row['Room']})"
+                if row["Room"] != ""
+                else f"({row['Sta']})",
                 "BORDER_STATION_CODE": f"{row['Code']}",
                 # Power
                 "PCM": f"{row['PCM']}",

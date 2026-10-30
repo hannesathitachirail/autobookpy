@@ -4,8 +4,9 @@ import pandas as pd
 import copy
 import time
 
-df = pd.read_excel("./autobook.xlsx", "F")
+excelsheet = "./autobook.xlsx"
 output = "./out/"
+df = pd.read_excel(excelsheet, "F")
 
 
 def updateDict(data: pd.DataFrame):
@@ -32,7 +33,7 @@ def updateDict(data: pd.DataFrame):
                 + row["Track1"]
                 + " / "
                 + row["Track2"],
-                "L": f"L + {int(row['Sheet'][1:])}",
+                "L": f"L{int(row['Sheet'][1:])}",
                 "MNR1": 1601 + 4 * (int(row["Sheet"][1:]) - 1),
                 "MNR2": 1602 + 4 * (int(row["Sheet"][1:]) - 1),
                 "MNR3": 1603 + 4 * (int(row["Sheet"][1:]) - 1),
@@ -46,8 +47,12 @@ def updateDict(data: pd.DataFrame):
                 "T_AZ1": row["AZgr"] + "/" + row["AZnr"] + "AZ",
                 "T_AZ2": row["AZgr"] + "/" + row["AZnr"] + "AZ",
                 # Dictionary section mainly used for layout_block
-                "BORDER_STATION": row["Station"] + " " + row["Room"],
-                "BORDER_STATION_UNDERTEXT": "(" + row["Sta"] + " " + row["Room"] + ")",
+                "BORDER_STATION_L1": f"{row['Station']} {row['Room']}"
+                if row["Room"] != ""
+                else f"{row['Station']}",
+                "BORDER_STATION_L2": f"({row['Sta']} {row['Room']})"
+                if row["Room"] != ""
+                else f"({row['Sta']})",
                 "BORDER_AZ": row["AZgr"]
                 + "/"
                 + row["AZnr"]
@@ -93,52 +98,52 @@ def updateDict(data: pd.DataFrame):
     return sheetsDict
 
 
+def get_blocks(sheet, df: pd.DataFrame):
+    required_blocks = []
+    # General
+    required_blocks.append(("BASE_TEXT", (0, 0)))
+    required_blocks.append(("PSP_BORDER_BLOCK", (0, 0)))
+    if not sheet["isAppcase"]:
+        required_blocks.append(("APPCASE_BLOCK", (0, 0)))
+    return required_blocks
+
+
 def generatesheets(
     templatefile: str,
-    model_block_name: str,
-    model_block_app_name: str,
-    layout_block_name: str,
-    dataframe,
+    excelsheet,
 ):
+    dataframe = pd.read_excel(excelsheet, "F")
     sheetsDict = updateDict(dataframe)
     template = ez.readfile(templatefile)
-
-    for dictionary in sheetsDict:
+    for sheet in sheetsDict:
         newdrawing = copy.deepcopy(template)
         msp = newdrawing.modelspace()
         psp = newdrawing.paperspace()
-        if not dictionary["isAppcase"]:
-            appcase = msp.add_auto_blockref("APPCASE_BLOCK", (0, 0), dictionary)
-            appcase.explode()
-        BASE_TEXT = msp.query(f'INSERT[name=="{model_block_name}"]')
-        BORDER_BLOCK = psp.query(f'INSERT[name=="{layout_block_name}"]')
-        for tag, value in dictionary.items():
-            if BASE_TEXT[0].has_attrib(tag):
-                BASE_TEXT[0].get_attrib(tag).dxf.text = value
-            if BORDER_BLOCK[0].has_attrib(tag):
-                BORDER_BLOCK[0].get_attrib(tag).dxf.text = value
+        blocks = get_blocks(sheet, dataframe)
+        for block, insert in blocks:
+            if "PSP" in block:
+                psp.add_auto_blockref(block, insert, sheet)
+            else:
+                msp.add_auto_blockref(block, insert, sheet)
         # Convert every block ref to seperate objects
         while insert := len(msp.query("INSERT")):
             for insert in list(msp.query("INSERT")):
                 insert.explode()
-
         while insert := len(psp.query("INSERT")):
             for insert in list(psp.query("INSERT")):
                 insert.explode()
         newdrawing.saveas(
-            f"{output}{dictionary['DocDate']}-{dictionary['BORDER_DOC_NAME']}-{dictionary['Sheet']}-REV-{dictionary['BORDER_REV']}.dxf"
+            f"{output}{sheet['DocDate']}-{sheet['BORDER_DOC_NAME']}-{sheet['Sheet']}-REV-{sheet['BORDER_REV']}.dxf"
         )
         # odafc.export_dwg(
         #    newdrawing,
-        #    f"./out/{dictionary['DocDate']}-{dictionary['BORDER_DOC_NAME']}-{dictionary['Sheet']}-REV-{dictionary['BORDER_REV']}.dxf",
-        #    version="R12",
+        #    f"./out/{sheet['DocDate']}-{sheet['BORDER_DOC_NAME']}-{sheet['Sheet']}-REV-{sheet['BORDER_REV']}.dwg",
+        #    version="R2018",
         # )
 
 
 if __name__ == "__main__":
     start = time.perf_counter()
-    generatesheets(
-        "./templates/Ftemplate.dxf", "BASE_TEXT", "APPCASE_BLOCK", "BORDER_BLOCK", df
-    )
+    generatesheets("./templates/Ftemplate.dxf", "./autobook.xlsx")
     end = time.perf_counter()
-    print(end - start)
+    print(f"Elapse time: {end - start:.0f}")
