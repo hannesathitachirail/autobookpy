@@ -12,15 +12,14 @@ import copy
 # dataframes. This is used to create the Rsheet objects for every sheet(dataframes)
 #############################################################################
 class RSection:
-    def __init__(self, dataframe: pd.DataFrame):
+    def __init__(self, excel_file):
         self.MAX_ROWS = 40
-        self.dataframe = dataframe
-        self.opdf = self.build_op_df()
-        self.opdf_split: list[pd.DataFrame] = self.split_df()
+        self.dataframe = pd.read_excel(excel_file, sheet_name=["Border", "D", "E", "F"])
+        self.op_signal = OPSignalsSheet(self.dataframe["D"], self.bordervalues)
 
     @property
     def bordervalues(self):
-        rows = self.dataframe.to_dict("records")
+        rows = self.dataframe["Border"].to_dict("records")
         row = rows[0]
         columns = {
             "BORDER_STATION_L1": f"{row['Station']} {row['Room']}"
@@ -29,7 +28,7 @@ class RSection:
             "BORDER_STATION_L2": f"({row['Sta']} {row['Room']})"
             if row["Room"] != ""
             else f"({row['Sta']})",
-            "BORDER_NAME": f"{row['SignalName']}",
+            "BORDER_NAME": "**PLACEHOLDER**",
             "BORDER_SHEET": "R00",
             "BORDER_CSE": row["CSE"],
             "BORDER_STATION_CODE": row["Code"],
@@ -39,7 +38,94 @@ class RSection:
         }
         return columns
 
-    def build_op_df(self):
+
+######################################
+# First sheet/sheets of Rsection, showing front of rack containing all the columns
+######################################
+class MountingSheet:
+    def __init__(self):
+        pass
+
+
+###################
+# Signals IDF sheets.
+# Max 5 per sheet, max 10 per column (2 sheets).
+# Reseved Column A and B
+###################
+class IDFSignalsSheet:
+    def __init__(self, dataframe, bordervalues):
+        self.MAX_ROWS = 40
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+
+    def build_df(self):
+        functiondict = {
+            "G": ("DG", "DGCX"),
+            "H": ("HG", "HGCX"),
+            "R": ("RG", "RGCX"),
+            "l": ("(L)UG", "(L)UGCX"),
+            "s": ("(↑)UG", "(↑)UGCX"),
+            "r": ("(R)UG", "(R)UGCX"),
+        }
+        tables: list[pd.DataFrame] = []
+        for _, row in self.dataframe.iterrows():
+            table = pd.DataFrame(
+                index=range(7),
+                data={
+                    "ROW": "A",
+                    "POS": range(1, 9),
+                    "INPUT TERMINAL": f"{range(1, 9)}-",
+                    "FUNCTION": "SPARE",
+                    "TYPE": "110 COPA 8 SURGE PROTECTION",
+                    "OUTPUT TERMINAL": range(1, 9),
+                    "SHEET": "-",
+                },
+            )
+            if row["Aspect"].strip + row["Dir"].strip <= 8:
+                pass
+            else:
+                table1 = table
+                table2 = table
+
+                for character in characters:
+                    function.extend(
+                        [
+                            f"{row['SignalName'][:-1]}{functiondict[character][0]}",
+                            f"{row['SignalName'][:-1]}{functiondict[character][1]}",
+                        ]
+                    )
+
+
+#######################
+# Points IDF sheets
+# Max 10 per sheet, max
+# Reserved Column C
+#######################
+class IDFPointsSheet:
+    def __init__(self):
+        pass
+
+
+#########################
+# Signals OP sheets
+# Max 40 terminals per sheet
+########################
+class OPSignalsSheet:
+    def __init__(self, dataframe, bordervalues):
+        self.MAX_ROWS = 40
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.df = self.build_df()
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+
+    # Split the self.opdf into serperate dataframes consisting of the data
+    # for every R sheet
+    # Groups by CableAppCase and CableBox to form list of split dataframes
+    # Because 1 cable(appcasecable usually) can be big enough to occupy
+    # different sheets
+    # To fix this we split the cable again into 40 lines max
+    def build_df(self):
         # Start by reordering the dataframe.
         # Create list of dataframes grouped by "CableAppCase" and sorted by "AppCaseOrder"
         # for appcases group and "CableBox" for straight fed
@@ -149,20 +235,14 @@ class RSection:
                     table.loc[indexes, "SHEET"] = row["Sheet"]
                     last_row += row_count
                     tables.append(table)
-        op_df = pd.concat(tables, ignore_index=True)
-        op_df["POS"] = range(1, len(op_df) + 1)
-        return op_df
+        df = pd.concat(tables, ignore_index=True)
+        df["POS"] = range(1, len(df) + 1)
+        return df
 
-    # Split the self.opdf into serperate dataframes consisting of the data
-    # for every R sheet
-    # Groups by CableAppCase and CableBox to form list of split dataframes
-    # Because 1 cable(appcasecable usually) can be big enough to occupy
-    # different sheets
-    # To fix this we split the cable again into 40 lines max
     def split_df(self):
         dfs: list[pd.DataFrame] = [
             group
-            for _, group in self.opdf.groupby(["CABLE NAME"], sort=False, dropna=False)
+            for _, group in self.df.groupby(["CABLE NAME"], sort=False, dropna=False)
         ]
         split_dfs: list[pd.DataFrame] = []
         for df in dfs:
@@ -180,28 +260,26 @@ class RSection:
                 index += 1
         return split_dfs
 
-
-#############################################################################
-# From the Rsection class we make the different Rsheet ojects that takes the
-#   - Dataframe containing the data for every rows
-# Determines what blocks will be needed aswell as the values(attributes) for
-# #############################################################################
-class RSheet:
-    def __init__(self, dataframes: list[pd.DataFrame], bordervalues):
-        self.dataframes = dataframes
-        self.bordervalues = bordervalues
-        self.block_list = self.make_blocks()
-
-    def make_blocks(self):
+    def build_blocks(self):
         # Iterate through list to isolate dataframe to a sheet
         blocks = []
 
-        for sheetindex, dataframe in enumerate(self.dataframes, start=1):
+        for sheetindex, dataframe in enumerate(self.df_split, start=1):
             # Seperate it per line of dataframe
             rows = dataframe.to_dict("records")
             blockdatalist = []
             # Borderblock values
             blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues])
+            blockdatalist.append(
+                [
+                    "OPSIG_BASE_TEXT",
+                    (0, 0),
+                    {
+                        "OP_BASE_TEXT": "OP 11 - D",
+                        "BORDER_INDEX_NAME": f"OP 11 - D STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})",
+                    },
+                ]
+            )
             cablestart_index = 0
             for i, row in enumerate(rows):
                 block = []
@@ -219,12 +297,14 @@ class RSheet:
                 }
 
                 if row["CABLE NAME"] == row2["CABLE NAME"]:
-                    block.append(["TABLE_6_1_START", (96, 236 - 5 * i), blockdict])
+                    block.append(
+                        ["OPSIG_TABLE_6_1_START", (96, 236 - 5 * i), blockdict]
+                    )
                 else:
-                    block.append(["TABLE_6_1_END", (96, 236 - 5 * i), blockdict])
+                    block.append(["OPSIG_TABLE_6_1_END", (96, 236 - 5 * i), blockdict])
                     block.append(
                         [
-                            "CABLENAME",
+                            "OPSIG_CABLENAME",
                             (228, 236 - 5 * (cablestart_index + i + 2) / 2),
                             blockdict,
                         ]
@@ -233,6 +313,24 @@ class RSheet:
                 blockdatalist.extend(block)
             blocks.append(blockdatalist)
         return blocks
+
+
+#########################
+# Points OP sheets
+# Max 40 terminals per sheet
+########################
+class OPPointsSheet:
+    def __init__(self):
+        pass
+
+
+#########################
+# Counters OP sheets
+# Max 40 terminals per sheet
+########################
+class OPCounterSheet:
+    def __init__(self):
+        pass
 
 
 #############################################################################
@@ -265,11 +363,8 @@ class DrawingRenderer:
 
 
 if __name__ == "__main__":
-    df = pd.read_excel("./autobook.xlsx", "D")
-    rsection = RSection(df)
-    # for index, df in enumerate(rsection.opdf_split, start=1):
-    #     df.to_csv(f"{index}out.csv", sep=";")
-    rsheet = RSheet(rsection.opdf_split, rsection.bordervalues)
-    rsheetblock = rsheet.make_blocks()
-    Renderer = DrawingRenderer(rsheetblock, "./templates/Roptemplate.dxf")
+    r_section = RSection("./autobook.xlsx")
+    Renderer = DrawingRenderer(
+        r_section.op_signal.blocks, "./templates/Roptemplate.dxf"
+    )
     Renderer.render_sheets()

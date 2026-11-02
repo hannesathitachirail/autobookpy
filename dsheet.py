@@ -283,7 +283,15 @@ def generatesheets(
     templatefile: str,
     excelsheet,
 ):
-    dataframe = pd.read_excel(excelsheet, "D")
+    dataframes = pd.read_excel(
+        excelsheet,
+        sheet_name=["D", "Border"],
+    )
+
+    dataframe = dataframes["D"].merge(
+        dataframes["Border"],
+        how="cross",
+    )
     sheetsDict = updateDict(dataframe)
     template = ez.readfile(templatefile)
 

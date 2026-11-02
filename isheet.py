@@ -35,7 +35,7 @@ def updateDict(data: pd.DataFrame):
                 "BORDER_STATION_L2": f"({row['Sta']} {row['Room']})"
                 if row["Room"] != ""
                 else f"({row['Sta']})",
-                "BORDER_SHEET": f"{row['Sheet'][1]}000",
+                "BORDER_SHEET": f"{row['Sheet'][0]}000",
                 "BORDER_CSE": row["CSE"],
                 "BORDER_STATION_CODE": row["Code"],
                 "BORDER_DATE": row["Date"],
@@ -67,6 +67,18 @@ def get_blocks(sheet, df: pd.DataFrame):
 
 def generatesheets(templatefile: str, excelsheet, section: str):
     dataframe = pd.read_excel(excelsheet, section)
+    dataframe["SheetName"] = dataframe[bordernames[section][2]]
+    dataframes = pd.read_excel(
+        excelsheet,
+        sheet_name=[section, "Border"],
+    )
+
+    dataframe = dataframes[section]
+    border_df = dataframes["Border"]
+    dataframe = dataframes[section].merge(
+        border_df,
+        how="cross",
+    )
     dataframe["SheetName"] = dataframe[bordernames[section][2]]
     sheetsDict = updateDict(dataframe)
     template = ez.readfile(templatefile)
