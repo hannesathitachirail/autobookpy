@@ -115,6 +115,22 @@ def updateDict(data: pd.DataFrame):
                     f"CABLEAPPCASE{i + 1}": f"{(int(row['AppCaseNr'] or 0) + i) // 2}b"
                     for i in range(1, 32, 2)
                 },
+                # App case2
+                "CABLEAPPCASE_L12": f"{row['CableAppCase2']}",
+                "CABLEAPPCASE_L22": f"{row['CableAppCaseQ2']}",
+                "APPCASE_NAME2": f"{row['CableAppCase2'][-7:-2]}",
+                **{
+                    f"APPCASE{i}2": f"{int(row['AppCaseNr2'] or 0) + i - 1}"
+                    for i in range(1, 13)
+                },
+                **{
+                    f"CABLEAPPCASE{i}2": f"{(int(row['AppCaseNr2'] or 0) + i) // 2}a"
+                    for i in range(1, 32, 2)
+                },
+                **{
+                    f"CABLEAPPCASE{i + 1}2": f"{(int(row['AppCaseNr2'] or 0) + i) // 2}b"
+                    for i in range(1, 32, 2)
+                },
                 # Direction Definitions
                 "ASPECTD1_1": f"({'↑' if row['Dir'][0] == 'S' else row['Dir'][0]})UG",
                 "ASPECTD1_2": f"({'↑' if row['Dir'][0] == 'S' else row['Dir'][0]})UGCX",
@@ -237,7 +253,9 @@ def get_blocks(sheet, df: pd.DataFrame):
         if aspect_count + dir_count == 4:
             required_blocks.append(
                 (
-                    "4ASPECT_0DIR_APPCASE",
+                    "4ASPECT_0DIR_APPCASE"
+                    if sheet["CABLEAPPCASE_L12"] == ""
+                    else "4ASPECT_0DIR_APPCASE2",
                     (218.9083, 216.6655)
                     if sheet["ISFIRSTSCM"]
                     else (218.9083, 121.0856),
@@ -246,7 +264,9 @@ def get_blocks(sheet, df: pd.DataFrame):
         else:
             required_blocks.append(
                 (
-                    f"{aspect_count}ASPECT_{dir_count}DIR_APPCASE",
+                    f"{aspect_count}ASPECT_{dir_count}DIR_APPCASE"
+                    if sheet["CABLEAPPCASE_L12"] == ""
+                    else f"{aspect_count}ASPECT_{dir_count}DIR_APPCASE2",
                     (218.9083, 216.6655)
                     if sheet["ISFIRSTSCM"]
                     else (218.9083, 121.0856),

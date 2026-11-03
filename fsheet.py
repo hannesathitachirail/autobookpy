@@ -18,6 +18,7 @@ def updateDict(data: pd.DataFrame):
                 # General Dictionary
                 "Sheet": row["Sheet"],
                 "isAppcase": pd.isna(row["Q"]),
+                "isAppcase2": pd.isna(row["Q2"]),
                 "DocDate": row["DocDate"],
                 # Dictionary section mainly used for model block
                 "ROOM_TYPE": row["RoomType"].upper(),
@@ -93,6 +94,35 @@ def updateDict(data: pd.DataFrame):
                 if not pd.isna(row["Q"])
                 else "nan",
                 "CABLEAPPCASE": row["CableAppCase"] if not pd.isna(row["Q"]) else "nan",
+                # Dictionary section mainly used for 2APPCASE_BLOCK
+                "CABLEAPPCASEQ2": str(int(float(row["Q2"]))) + "Q22"
+                if not pd.isna(row["Q2"])
+                else "nan",
+                "APNR12": int(float(row["Qn2"])) * 4 - 3
+                if not pd.isna(row["Q2"])
+                else "nan",
+                "APNR22": int(float(row["Qn2"])) * 4 - 3 + 1
+                if not pd.isna(row["Q2"])
+                else "nan",
+                "APNR32": int(float(row["Qn2"])) * 4 - 3 + 2
+                if not pd.isna(row["Q2"])
+                else "nan",
+                "APNR42": int(float(row["Qn2"])) * 4 - 3 + 3
+                if not pd.isna(row["Q2"])
+                else "nan",
+                "APPCASENAME2": row["CableAppCase2"][-7:-2]
+                if not pd.isna(row["Q2"])
+                else "nan",
+                "CABLEAPPCASEINDEX2": "Q2"
+                + str(int(float(row["Qn2"])))
+                + " OF "
+                + str(int(float(row["Q2"])))
+                + "Q"
+                if not pd.isna(row["Q2"])
+                else "nan",
+                "CABLEAPPCASE2": row["CableAppCase2"]
+                if not pd.isna(row["Q2"])
+                else "nan",
             }
         )
     return sheetsDict
@@ -104,7 +134,10 @@ def get_blocks(sheet, df: pd.DataFrame):
     required_blocks.append(("BASE_TEXT", (0, 0)))
     required_blocks.append(("PSP_BORDER_BLOCK", (0, 0)))
     if not sheet["isAppcase"]:
-        required_blocks.append(("APPCASE_BLOCK", (0, 0)))
+        if not sheet["isAppcase2"]:
+            required_blocks.append(("2APPCASE_BLOCK", (0, 0)))
+        else:
+            required_blocks.append(("APPCASE_BLOCK", (0, 0)))
     return required_blocks
 
 

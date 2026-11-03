@@ -3,6 +3,9 @@ import pandas as pd
 import copy
 
 
+pd.set_option("display.max_rows", None)
+
+
 #############################################################################
 # This class is used to create an Rsection object that takes the spreadsheet
 # and creates one big dataframe(not split) containing all the rows that would
@@ -16,6 +19,12 @@ class RSection:
         self.MAX_ROWS = 40
         self.dataframe = pd.read_excel(excel_file, sheet_name=["Border", "D", "E", "F"])
         self.op_signal = OPSignalsSheet(self.dataframe["D"], self.bordervalues)
+        self.idf_signal = IDFSignalsSheet(
+            self.dataframe["D"], self.bordervalues, 2
+        )  # To be updated
+        self.idf_points = IDFPointsSheet(
+            self.dataframe["E"], self.bordervalues, 2
+        )  # To be updated
 
     @property
     def bordervalues(self):
@@ -53,10 +62,15 @@ class MountingSheet:
 # Reseved Column A and B
 ###################
 class IDFSignalsSheet:
-    def __init__(self, dataframe, bordervalues):
-        self.MAX_ROWS = 40
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.MAX = 14
+        self.MAX_PER_SHEET = 5
         self.dataframe = dataframe
         self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.df = self.build_df()
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
 
     def build_df(self):
         functiondict = {
@@ -68,32 +82,136 @@ class IDFSignalsSheet:
             "r": ("(R)UG", "(R)UGCX"),
         }
         tables: list[pd.DataFrame] = []
-        for _, row in self.dataframe.iterrows():
+        for _, row in self.dataframe.fillna("").iterrows():
             table = pd.DataFrame(
-                index=range(7),
+                index=range(8),
                 data={
                     "ROW": "A",
                     "POS": range(1, 9),
-                    "INPUT TERMINAL": f"{range(1, 9)}-",
+                    "INPUT TERMINAL": [f"{i}-" for i in range(1, 9)],
                     "FUNCTION": "SPARE",
                     "TYPE": "110 COPA 8 SURGE PROTECTION",
                     "OUTPUT TERMINAL": range(1, 9),
                     "SHEET": "-",
                 },
             )
-            if row["Aspect"].strip + row["Dir"].strip <= 8:
-                pass
-            else:
-                table1 = table
-                table2 = table
-
-                for character in characters:
-                    function.extend(
+            if len(row["Aspect"] + row["Dir"]) <= 4:
+                dir = str(row["Dir"].lower() if pd.notna(row["Dir"]) else "")
+                table1_characters = row["Aspect"] + dir
+                table1_function = []
+                for character in table1_characters:
+                    table1_function.extend(
                         [
                             f"{row['SignalName'][:-1]}{functiondict[character][0]}",
                             f"{row['SignalName'][:-1]}{functiondict[character][1]}",
                         ]
                     )
+                table.loc[range(len(table1_function)), "FUNCTION"] = table1_function
+                table.loc[range(len(table1_function)), "SHEET"] = row["Sheet"]
+                tables.append(table)
+            else:
+                # Split into characters for table 1 and table2
+                table1 = table.copy()
+                table2 = table.copy()
+                table1_characters = row["Aspect"]
+                table2_characters = str(
+                    row["Dir"].lower() if pd.notna(row["Dir"]) else ""
+                )
+                table1_function = []
+                for character in table1_characters:
+                    table1_function.extend(
+                        [
+                            f"{row['SignalName'][:-1]}{functiondict[character][0]}",
+                            f"{row['SignalName'][:-1]}{functiondict[character][1]}",
+                        ]
+                    )
+                table2_function = []
+                for character in table2_characters:
+                    table2_function.extend(
+                        [
+                            f"{row['SignalName'][:-1]}{functiondict[character][0]}",
+                            f"{row['SignalName'][:-1]}{functiondict[character][1]}",
+                        ]
+                    )
+                table1.loc[range(len(table1_function)), "FUNCTION"] = table1_function
+                table2.loc[range(len(table2_function)), "FUNCTION"] = table2_function
+                table1.loc[range(len(table1_function)), "SHEET"] = row["Sheet"]
+                table2.loc[range(len(table2_function)), "SHEET"] = row["Sheet"]
+                tables.append(table1)
+                tables.append(table2)
+        df = pd.concat(tables, ignore_index=True)
+        df["POS"] = df.index // 8 + 1
+        return df
+
+    def split_df(self):
+        dfs = [group for _, group in self.df.groupby(["POS"], sort=False, dropna=False)]
+        # If rows exceed max allowed go to next column(B) and restart POS numbering
+        # using df[whatever] is possible because dataframes are mutable objects
+        for df in dfs:
+            if df["POS"].iloc[0] > self.MAX:
+                df["ROW"] = "B"
+                df["POS"] = df["POS"] - self.MAX
+        index = 0
+        while index + 1 < len(dfs):
+            df_current = dfs[index]
+            df_next = dfs[index + 1]
+            if (
+                len(df_current) + len(df_next) <= self.MAX_PER_SHEET * 8
+                and df_current["ROW"].iloc[0] == df_next["ROW"].iloc[0]
+            ):
+                dfs[index] = pd.concat([df_current, df_next])
+                dfs.pop(index + 1)
+            else:
+                index += 1
+        return dfs
+
+    def build_blocks(self):
+        # Iterate through list to isolate dataframe to a sheet
+        blocks = []
+        for sheetindex, dataframe in enumerate(self.df_split, start=1):
+            blockdatalist = []
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues])
+            blockdatalist.append(
+                [
+                    "IDF_BASE",
+                    (0, 0),
+                    {
+                        "TABLE_HEAD": f"OP 11 - {dataframe['ROW'].iloc[0]}",
+                    },
+                ]
+            )
+            blockdatalist.append(
+                [
+                    "BORDER_INDEX_NAME",
+                    (0, 0),
+                    {
+                        "BORDER_INDEX_NAME": f"OP 11 - {dataframe['ROW'].iloc[0]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
+                    },
+                ]
+            )
+
+            dfs = [group for _, group in dataframe.groupby(["POS"])]
+            for i, df in enumerate(dfs):
+                blockdatalist.append(
+                    [
+                        "IDFSIG_TABLE",
+                        (0, 0 - 40 * i),
+                        {
+                            "A1": df["ROW"].iloc[0],
+                            "A2": df["POS"].iloc[0],
+                            **{
+                                f"A{e}": f"{df['FUNCTION'].iloc[e - 3]}"
+                                for e in range(3, 11)
+                            },
+                            **{
+                                f"A{e}": f"{df['SHEET'].iloc[e - 11]}"
+                                for e in range(11, 19)
+                            },
+                        },
+                    ]
+                )
+            blocks.append(blockdatalist)
+        return blocks
 
 
 #######################
@@ -102,8 +220,72 @@ class IDFSignalsSheet:
 # Reserved Column C
 #######################
 class IDFPointsSheet:
-    def __init__(self):
-        pass
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.MAX = 14
+        self.MAX_PER_SHEET = 5
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+
+    def split_df(self):
+        df_split = [
+            group
+            for _, group in self.dataframe.groupby(
+                self.dataframe.index // self.MAX_PER_SHEET
+            )
+        ]
+        return df_split
+
+    def build_blocks(self):
+        # Iterate through list to isolate dataframe to a sheet
+        blocks = []
+        for sheetindex, dataframe in enumerate(self.df_split, start=1):
+            blockdatalist = []
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues])
+            blockdatalist.append(
+                [
+                    "IDF_BASE",
+                    (0, 0),
+                    {
+                        "TABLE_HEAD": f"OP 11 - {dataframe['IDFRow'].iloc[0][0]}",
+                    },
+                ]
+            )
+            blockdatalist.append(
+                [
+                    "BORDER_INDEX_NAME",
+                    (0, 0),
+                    {
+                        "BORDER_INDEX_NAME": f"OP 11 - {dataframe['IDFRow'].iloc[0][0]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
+                    },
+                ]
+            )
+            for i, (_, row) in enumerate(dataframe.iterrows()):
+                blockdatalist.append(
+                    [
+                        "IDFPOINT_TABLE",
+                        (0, 0 - 40 * i),
+                        {
+                            "A1_1": row["IDFRow"][0],
+                            "A1_2": row["IDFRow"][0],
+                            "A2_1": row["IDFRow"][1:],
+                            "A2_2": int(row["IDFRow"][1:]) + 1,
+                            **{
+                                f"A3_{e}": f"{row['PointName']} - W{e}"
+                                for e in range(1, 5)
+                            },
+                            **{
+                                f"A3_{e}": f"{row['PointName']} - W{e - 4}"
+                                for e in range(5, 9)
+                            },
+                            **{f"A4_{e}": row["Sheet"] for e in range(1, 9)},
+                        },
+                    ]
+                )
+            blocks.append(blockdatalist)
+        return blocks
 
 
 #########################
@@ -185,7 +367,6 @@ class OPSignalsSheet:
                                 f"{row['SignalName'][:-1]}{functiondict[character][1]}",
                             ]
                         )
-                    # CORE list
                     row_count = len(function)
                     indexes = range(last_row, last_row + row_count)
                     table.loc[indexes, "FUNCTION"] = function
@@ -272,10 +453,18 @@ class OPSignalsSheet:
             blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues])
             blockdatalist.append(
                 [
-                    "OPSIG_BASE_TEXT",
+                    "OPSIG_BASE",
                     (0, 0),
                     {
-                        "OP_BASE_TEXT": "OP 11 - D",
+                        "TABLE_HEAD": "OP 11 - D",
+                    },
+                ]
+            )
+            blockdatalist.append(
+                [
+                    "BORDER_INDEX_NAME",
+                    (0, 0),
+                    {
                         "BORDER_INDEX_NAME": f"OP 11 - D STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})",
                     },
                 ]
@@ -364,7 +553,8 @@ class DrawingRenderer:
 
 if __name__ == "__main__":
     r_section = RSection("./autobook.xlsx")
+
     Renderer = DrawingRenderer(
-        r_section.op_signal.blocks, "./templates/Roptemplate.dxf"
+        r_section.idf_points.blocks, "./templates/Roptemplate.dxf"
     )
     Renderer.render_sheets()
