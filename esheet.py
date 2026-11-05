@@ -28,10 +28,10 @@ def updateDict(data: pd.DataFrame):
                 "BORDER_REV": f"{row['Rev']}",
                 "BORDER_SHEET": f"{row['Sheet']}",
                 "BORDER_STATION_L1": f"{row['Station']} {row['Room']}"
-                if row["Room"] != ""
+                if row["Room"] != "nan"
                 else f"{row['Station']}",
                 "BORDER_STATION_L2": f"({row['Sta']} {row['Room']})"
-                if row["Room"] != ""
+                if row["Room"] != "nan"
                 else f"({row['Sta']})",
                 "BORDER_STATION_CODE": f"{row['Code']}",
                 # Power
@@ -52,7 +52,7 @@ def updateDict(data: pd.DataFrame):
                 "IDFROW1": f"{row['IDFRow']}",
                 "IDFROW2": f"{row['IDFRow'][0]}{int(row['IDFRow'][1:]) + 1}",
                 "POINTNAME": f"{row['PointName']}",
-                "LOC": f"RSS LOC-{row['LOC']} CABINET",
+                "LOC": f"RSS LOC-{row['LOC']:.2d} CABINET",
                 "ROOM_TYPE": f"{row['RoomType']}",
             }
         )

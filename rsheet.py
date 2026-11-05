@@ -18,11 +18,14 @@ class RSection:
     def __init__(self, excel_file):
         self.MAX_ROWS = 40
         self.dataframe = pd.read_excel(excel_file, sheet_name=["Border", "D", "E", "F"])
-        self.op_signal = OPSignalsSheet(self.dataframe["D"], self.bordervalues)
         self.idf_signal = IDFSignalsSheet(
             self.dataframe["D"], self.bordervalues, 2
         )  # To be updated
         self.idf_points = IDFPointsSheet(
+            self.dataframe["E"], self.bordervalues, 2
+        )  # To be updated
+        self.op_signal = OPSignalsSheet(self.dataframe["D"], self.bordervalues)
+        self.op_points = OPPointsSheet(
             self.dataframe["E"], self.bordervalues, 2
         )  # To be updated
 
@@ -170,13 +173,15 @@ class IDFSignalsSheet:
         blocks = []
         for sheetindex, dataframe in enumerate(self.df_split, start=1):
             blockdatalist = []
-            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues])
+            bordersheet = f"R{self.sheet + sheetindex - 1:03d}"
+            self.bordervalues["BORDER_SHEET"] = bordersheet
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
             blockdatalist.append(
                 [
                     "IDF_BASE",
                     (0, 0),
                     {
-                        "TABLE_HEAD": f"OP 11 - {dataframe['ROW'].iloc[0]}",
+                        "TABLE_HEAD": f"IDF 11 - {dataframe['ROW'].iloc[0]}",
                     },
                 ]
             )
@@ -185,7 +190,7 @@ class IDFSignalsSheet:
                     "BORDER_INDEX_NAME",
                     (0, 0),
                     {
-                        "BORDER_INDEX_NAME": f"OP 11 - {dataframe['ROW'].iloc[0]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
+                        "BORDER_INDEX_NAME": f"IDF 11 - {dataframe['ROW'].iloc[0]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
                     },
                 ]
             )
@@ -453,7 +458,7 @@ class OPSignalsSheet:
             blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues])
             blockdatalist.append(
                 [
-                    "OPSIG_BASE",
+                    "OP_BASE",
                     (0, 0),
                     {
                         "TABLE_HEAD": "OP 11 - D",
@@ -509,8 +514,73 @@ class OPSignalsSheet:
 # Max 40 terminals per sheet
 ########################
 class OPPointsSheet:
-    def __init__(self):
-        pass
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.MAX = 14
+        self.MAX_PER_SHEET = 10
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+
+    def split_df(self):
+        df_split = [
+            group
+            for _, group in self.dataframe.groupby(
+                self.dataframe.index // self.MAX_PER_SHEET
+            )
+        ]
+        return df_split
+
+    def build_blocks(self):
+        # Iterate through list to isolate dataframe to a sheet
+        blocks = []
+        for sheetindex, dataframe in enumerate(self.df_split, start=1):
+            blockdatalist = []
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues])
+            blockdatalist.append(
+                [
+                    "OP_BASE",
+                    (0, 0),
+                    {
+                        "TABLE_HEAD": f"OP 11 - {dataframe['OPRow'].iloc[0][0]}",
+                    },
+                ]
+            )
+            blockdatalist.append(
+                [
+                    "BORDER_INDEX_NAME",
+                    (0, 0),
+                    {
+                        "BORDER_INDEX_NAME": f"OP 11 - {dataframe['IDFRow'].iloc[0][0]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
+                    },
+                ]
+            )
+            for i, (_, row) in enumerate(dataframe.iterrows()):
+                blockdatalist.append(
+                    [
+                        "OPPOINT_TABLE",
+                        (0, 0 - 20 * i),
+                        {
+                            **{f"A1_{e}": row["OPRow"][0] for e in range(1, 5)},
+                            **{f"A1_{e}": row["OPRow"][0] for e in range(1, 5)},
+                            "A2_1": 1 + 4 * i,
+                            "A2_2": 2 + 4 * i,
+                            "A2_3": 3 + 4 * i,
+                            "A2_4": 4 + 4 * i,
+                            **{
+                                f"A3_{e}": f"{row['PointName']} - W{e}"
+                                for e in range(1, 5)
+                            },
+                            **{f"A6_{e}": row["Sheet"] for e in range(1, 5)},
+                            "CABLENAME_L1": row["CableBox"],
+                            "CABLENAME_L2": "4c",
+                            "CABLENAME_L3": row["PointName"],
+                        },
+                    ]
+                )
+            blocks.append(blockdatalist)
+        return blocks
 
 
 #########################
@@ -555,6 +625,6 @@ if __name__ == "__main__":
     r_section = RSection("./autobook.xlsx")
 
     Renderer = DrawingRenderer(
-        r_section.idf_points.blocks, "./templates/Roptemplate.dxf"
+        r_section.idf_signal.blocks, "./templates/Roptemplate.dxf"
     )
     Renderer.render_sheets()

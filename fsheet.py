@@ -49,10 +49,10 @@ def updateDict(data: pd.DataFrame):
                 "T_AZ2": row["AZgr"] + "/" + row["AZnr"] + "AZ",
                 # Dictionary section mainly used for layout_block
                 "BORDER_STATION_L1": f"{row['Station']} {row['Room']}"
-                if row["Room"] != ""
+                if row["Room"] != "nan"
                 else f"{row['Station']}",
                 "BORDER_STATION_L2": f"({row['Sta']} {row['Room']})"
-                if row["Room"] != ""
+                if row["Room"] != "nan"
                 else f"({row['Sta']})",
                 "BORDER_AZ": row["AZgr"]
                 + "/"

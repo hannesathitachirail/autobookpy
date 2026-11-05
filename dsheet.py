@@ -54,7 +54,7 @@ def updateDict(data: pd.DataFrame):
                 "OTHERASPDIR": row["OtherAspDir"],
                 # BASE_TEXt values
                 "ROOM_TYPE": row["RoomType"],
-                "LOC": f"RSS LOC-{row['LOC']} CABINET",
+                "LOC": f"RSS LOC-{row['LOC']:.2d} CABINET",
                 "POWER_INPUT": row["SCM"],
                 # Border block values
                 "BORDER_STATION_L1": f"{row['Station']} {row['Room']}"

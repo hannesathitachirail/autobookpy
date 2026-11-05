@@ -30,10 +30,10 @@ def updateDict(data: pd.DataFrame):
                 "BORDER_NAME": bordernames[f"{row['Bordername']}"][1],
                 # PSP_BORDER_BLOCk
                 "BORDER_STATION_L1": f"{row['Station']} {row['Room']}"
-                if row["Room"] != ""
+                if row["Room"] != "nan"
                 else f"{row['Station']}",
                 "BORDER_STATION_L2": f"({row['Sta']} {row['Room']})"
-                if row["Room"] != ""
+                if row["Room"] != "nan"
                 else f"({row['Sta']})",
                 "BORDER_SHEET": f"{row['Sheet'][0]}000",
                 "BORDER_CSE": row["CSE"],
@@ -41,6 +41,7 @@ def updateDict(data: pd.DataFrame):
                 "BORDER_DATE": row["Date"],
                 "BORDER_DOC_NAME": row["Doc"],
                 "BORDER_REV": row["Rev"],
+                "INDEX_NAME": bordernames[f"{row['Bordername']}"][0][4:],
             }
         )
     return sheetsDict
@@ -51,6 +52,7 @@ def get_blocks(sheet, df: pd.DataFrame):
     # General
     required_blocks.append(("BASE_TEXT", (0, 0), {}))
     required_blocks.append(("PSP_BORDER_BLOCK", (0, 0), {}))
+    required_blocks.append(("INDEX_NAME", (0, 0), {}))
     for index, row in df.iterrows():
         tablevalues: dict = {
             "A1": f"{row['Sheet']}",
