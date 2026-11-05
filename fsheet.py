@@ -86,16 +86,16 @@ def updateDict(data: pd.DataFrame):
                 "APPCASENAME": row["CableAppCase"][-7:-2]
                 if not pd.isna(row["Q"])
                 else "nan",
-                "CABLEAPPCASEINDEX": "Q"
+                "CABLEAPPCASEINDEX": "(Q"
                 + str(int(float(row["Qn"])))
                 + " OF "
                 + str(int(float(row["Q"])))
-                + "Q"
+                + "Q)"
                 if not pd.isna(row["Q"])
                 else "nan",
                 "CABLEAPPCASE": row["CableAppCase"] if not pd.isna(row["Q"]) else "nan",
                 # Dictionary section mainly used for 2APPCASE_BLOCK
-                "CABLEAPPCASEQ2": str(int(float(row["Q2"]))) + "Q22"
+                "CABLEAPPCASEQ2": str(int(float(row["Q2"]))) + "Q"
                 if not pd.isna(row["Q2"])
                 else "nan",
                 "APNR12": int(float(row["Qn2"])) * 4 - 3
@@ -113,11 +113,11 @@ def updateDict(data: pd.DataFrame):
                 "APPCASENAME2": row["CableAppCase2"][-7:-2]
                 if not pd.isna(row["Q2"])
                 else "nan",
-                "CABLEAPPCASEINDEX2": "Q2"
+                "CABLEAPPCASEINDEX2": "(Q"
                 + str(int(float(row["Qn2"])))
                 + " OF "
                 + str(int(float(row["Q2"])))
-                + "Q"
+                + "Q)"
                 if not pd.isna(row["Q2"])
                 else "nan",
                 "CABLEAPPCASE2": row["CableAppCase2"]
