@@ -17,6 +17,7 @@ bordernames: dict = {
 
 def updateDict(data: pd.DataFrame):
     data = data.astype(str)  # Convert all dataframe values to strings
+    data["LOC"] = data["LOC"].astype(str).str.zfill(2)
     data["Bordername"] = data["Sheet"].str[0]
     sheetsDict = []
     for row in data.to_dict(orient="records"):

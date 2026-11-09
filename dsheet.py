@@ -12,22 +12,26 @@ output = "./out/"
 
 def updateDict(data: pd.DataFrame):
     data = data.fillna("")
+    data["LOC"] = data["LOC"].astype(str).str.zfill(2)
     data["Dir"] = data["Dir"].astype(str) + "   "
     data["Aspect"] = data["Aspect"].astype(str) + "   "
-    data["isfirstscm"] = ~data["SCM"].duplicated()
-    data["OtherSheet"] = data.groupby("SCM")["Sheet"].transform(
+
+    group_cols = ["LOC", "SCM"]
+
+    data["isfirstscm"] = ~data[group_cols].duplicated()
+    data["OtherSheet"] = data.groupby(group_cols)["Sheet"].transform(
         lambda x: x.iloc[::-1].values if len(x) == 2 else ""
     )
-    data["OtherSig"] = data.groupby("SCM")["SignalName"].transform(
+    data["OtherSig"] = data.groupby(group_cols)["SignalName"].transform(
         lambda x: x.iloc[::-1].values if len(x) == 2 else ""
     )
-    data["OtherPowerSheet"] = data.groupby("SCM")["PowerSheet"].transform(
+    data["OtherPowerSheet"] = data.groupby(group_cols)["PowerSheet"].transform(
         lambda x: x.iloc[::-1].values if len(x) == 2 else ""
     )
-    OtherAsp = data.groupby("SCM")["Aspect"].transform(
+    OtherAsp = data.groupby(group_cols)["Aspect"].transform(
         lambda x: x.iloc[::-1].values if len(x) == 2 else ""
     )
-    OtherDir = data.groupby("SCM")["Dir"].transform(
+    OtherDir = data.groupby(group_cols)["Dir"].transform(
         lambda x: x.iloc[::-1].values if len(x) == 2 else ""
     )
     data["OtherAspDir"] = (
@@ -54,7 +58,7 @@ def updateDict(data: pd.DataFrame):
                 "OTHERASPDIR": row["OtherAspDir"],
                 # BASE_TEXt values
                 "ROOM_TYPE": row["RoomType"],
-                "LOC": f"RSS LOC-{row['LOC']:.2d} CABINET",
+                "LOC": f"RSS LOC-{row['LOC']} CABINET",
                 "POWER_INPUT": row["SCM"],
                 # Border block values
                 "BORDER_STATION_L1": f"{row['Station']} {row['Room']}"
@@ -105,7 +109,7 @@ def updateDict(data: pd.DataFrame):
                 "APPCASE_NAME": f"{row['CableAppCase'][-7:-2]}",
                 **{
                     f"APPCASE{i}": f"{int(row['AppCaseNr'] or 0) + i - 1}"
-                    for i in range(1, 13)
+                    for i in range(1, 15)
                 },
                 **{
                     f"CABLEAPPCASE{i}": f"{(int(row['AppCaseNr'] or 0) + i) // 2}a"
@@ -120,16 +124,16 @@ def updateDict(data: pd.DataFrame):
                 "CABLEAPPCASE_L22": f"{row['CableAppCaseQ2']}",
                 "APPCASE_NAME2": f"{row['CableAppCase2'][-7:-2]}",
                 **{
-                    f"APPCASE{i}2": f"{int(row['AppCaseNr2'] or 0) + i - 1}"
-                    for i in range(1, 13)
+                    f"APPCASE{i}_2": f"{int(row['AppCaseNr2'] or 0) + i - 1}"
+                    for i in range(1, 15)
                 },
                 **{
-                    f"CABLEAPPCASE{i}2": f"{(int(row['AppCaseNr2'] or 0) + i) // 2}a"
-                    for i in range(1, 32, 2)
+                    f"CABLEAPPCASE{i}_2": f"{(int(row['AppCaseNr2'] or 0) + i) // 2}a"
+                    for i in range(1, 34, 2)
                 },
                 **{
-                    f"CABLEAPPCASE{i + 1}2": f"{(int(row['AppCaseNr2'] or 0) + i) // 2}b"
-                    for i in range(1, 32, 2)
+                    f"CABLEAPPCASE{i + 1}_2": f"{(int(row['AppCaseNr2'] or 0) + i) // 2}b"
+                    for i in range(1, 34, 2)
                 },
                 # Direction Definitions
                 "ASPECTD1_1": f"({'↑' if row['Dir'][0] == 'S' else row['Dir'][0]})UG",
@@ -211,7 +215,7 @@ def get_blocks(sheet, df: pd.DataFrame):
     required_blocks.append(("PSP_BORDER_BLOCK", (0, 0)))
     # Power block
     if sheet["OtherSheet"] == "":
-        if len(sheet["DIR"]) == 0:
+        if len(sheet["DIR"].strip()) == 0:
             required_blocks.append(("POWER_1A_1SIG", (0, 0)))
         else:
             required_blocks.append(("POWER_2A_1SIG", (0, 0)))
@@ -240,6 +244,7 @@ def get_blocks(sheet, df: pd.DataFrame):
             (75.4413, 216.6655) if sheet["ISFIRSTSCM"] else (75.4413, 121.0856),
         )
     )
+
     # SIGNAL REF block
     if sheet["OTHERASPDIR"] > 0:
         required_blocks.append(

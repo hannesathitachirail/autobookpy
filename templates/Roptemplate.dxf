@@ -501,19 +501,19 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2461350.265462963
+2461354.292129630
   9
 $TDUUPDATE
  40
-2461350.182129629
+2461354.208796296
   9
 $TDINDWG
  40
-16.6702844560
+20.4855506597
   9
 $TDUSRTIMER
  40
-16.6702844560
+20.4855506597
   9
 $USRTIMER
  70
@@ -553,7 +553,7 @@ $SPLINESEGS
   9
 $HANDSEED
   5
-BEA59
+BEC10
   9
 $SURFTAB1
  70
@@ -937,7 +937,7 @@ $FINGERPRINTGUID
   9
 $VERSIONGUID
   2
-{D4ADE6D4-4AEA-0E47-ABDA-F4BE6969982D}
+{E1283E5A-C886-954F-9355-6A9EFE324D41}
   9
 $EXTNAMES
 290
@@ -1183,7 +1183,7 @@ ObjectDBX Classes
  90
         0
  91
-       11
+       13
 280
      0
 281
@@ -1279,7 +1279,7 @@ ObjectDBX Classes
  90
      1152
  91
-       10
+        7
 280
      0
 281
@@ -1583,7 +1583,7 @@ ObjectDBX Classes
  90
         0
  91
-       35
+       15
 280
      0
 281
@@ -1855,7 +1855,7 @@ ACAD_ARRAY
  90
       129
  91
-        2
+        0
 280
      0
 281
@@ -1871,7 +1871,7 @@ ObjectDBX Classes
  90
      1025
  91
-        2
+        0
 280
      0
 281
@@ -1887,7 +1887,7 @@ ObjectDBX Classes
  90
      1025
  91
-        1
+        0
 280
      0
 281
@@ -1903,7 +1903,7 @@ ObjectDBX Classes
  90
      1025
  91
-        1
+        0
 280
      0
 281
@@ -1919,7 +1919,7 @@ ObjectDBX Classes
  90
      1025
  91
-        3
+        0
 280
      0
 281
@@ -1935,7 +1935,7 @@ ObjectDBX Classes
  90
      1025
  91
-        3
+        0
 280
      0
 281
@@ -2031,7 +2031,7 @@ ObjectDBX Classes
  90
      1153
  91
-        6
+        2
 280
      0
 281
@@ -2175,7 +2175,7 @@ ObjectDBX Classes
  90
      1153
  91
-        3
+        1
 280
      0
 281
@@ -3087,7 +3087,7 @@ AcAeEditorObj
  90
      1024
  91
-        3
+        1
 280
      0
 281
@@ -3103,7 +3103,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3119,7 +3119,7 @@ AecBaseEx80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3135,7 +3135,7 @@ AecBaseEx80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk
  90
       129
  91
-        3
+        0
 280
      0
 281
@@ -3151,7 +3151,7 @@ AecBaseEx80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3167,7 +3167,7 @@ AecBaseEx80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3183,7 +3183,7 @@ AecBaseEx80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk
  90
       129
  91
-        3
+        0
 280
      0
 281
@@ -3199,7 +3199,7 @@ AecBaseEx80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3215,7 +3215,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3231,7 +3231,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3247,7 +3247,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3263,7 +3263,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3279,7 +3279,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        7
+        0
 280
      0
 281
@@ -3295,7 +3295,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3311,7 +3311,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3327,7 +3327,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3343,7 +3343,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-       12
+        0
 280
      0
 281
@@ -3359,7 +3359,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3375,7 +3375,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3391,7 +3391,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3407,7 +3407,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        2
+        0
 280
      0
 281
@@ -3423,7 +3423,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3439,7 +3439,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3455,7 +3455,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3471,7 +3471,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3487,7 +3487,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3503,7 +3503,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3519,7 +3519,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3535,7 +3535,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3551,7 +3551,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3567,7 +3567,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-       11
+        0
 280
      0
 281
@@ -3583,7 +3583,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3599,7 +3599,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3615,7 +3615,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3631,7 +3631,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        2
+        0
 280
      0
 281
@@ -3647,7 +3647,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3663,7 +3663,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3679,7 +3679,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3695,7 +3695,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3711,7 +3711,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3727,7 +3727,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3743,7 +3743,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3759,7 +3759,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3775,7 +3775,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3791,7 +3791,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3807,7 +3807,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3823,7 +3823,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        2
+        0
 280
      0
 281
@@ -3839,7 +3839,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3855,7 +3855,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        2
+        0
 280
      0
 281
@@ -3871,7 +3871,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3887,7 +3887,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3903,7 +3903,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3919,7 +3919,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3935,7 +3935,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        2
+        0
 280
      0
 281
@@ -3951,7 +3951,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3967,7 +3967,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3983,7 +3983,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -3999,7 +3999,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4015,7 +4015,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4031,7 +4031,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4047,7 +4047,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4063,7 +4063,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        3
+        0
 280
      0
 281
@@ -4079,7 +4079,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4095,7 +4095,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        4
+        0
 280
      0
 281
@@ -4111,7 +4111,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4127,7 +4127,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4143,7 +4143,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        5
+        0
 280
      0
 281
@@ -4159,7 +4159,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4175,7 +4175,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        3
+        0
 280
      0
 281
@@ -4191,7 +4191,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4207,7 +4207,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4223,7 +4223,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        4
+        0
 280
      0
 281
@@ -4239,7 +4239,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4255,7 +4255,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        3
+        0
 280
      0
 281
@@ -4271,7 +4271,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4287,7 +4287,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4303,7 +4303,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4319,7 +4319,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4335,7 +4335,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4351,7 +4351,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4367,7 +4367,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4383,7 +4383,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4399,7 +4399,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        9
+        0
 280
      0
 281
@@ -4415,7 +4415,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4431,7 +4431,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4447,7 +4447,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4463,7 +4463,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4479,7 +4479,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4495,7 +4495,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4511,7 +4511,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4527,7 +4527,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4543,7 +4543,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4559,7 +4559,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4575,7 +4575,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4591,7 +4591,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4607,7 +4607,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4623,7 +4623,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       893
  91
-        1
+        0
 280
      0
 281
@@ -4639,7 +4639,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4655,7 +4655,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4671,7 +4671,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4687,7 +4687,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4703,7 +4703,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4719,7 +4719,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4735,7 +4735,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4751,7 +4751,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4767,7 +4767,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4783,7 +4783,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4799,7 +4799,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        2
+        0
 280
      0
 281
@@ -4815,7 +4815,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4831,7 +4831,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4847,7 +4847,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4863,7 +4863,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        2
+        0
 280
      0
 281
@@ -4879,7 +4879,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4895,7 +4895,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4911,7 +4911,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4927,7 +4927,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4943,7 +4943,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4959,7 +4959,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        4
+        0
 280
      0
 281
@@ -4975,7 +4975,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -4991,7 +4991,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        2
+        0
 280
      0
 281
@@ -5007,7 +5007,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5023,7 +5023,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5039,7 +5039,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5055,7 +5055,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5071,7 +5071,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5087,7 +5087,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5103,7 +5103,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5119,7 +5119,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5135,7 +5135,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5151,7 +5151,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5167,7 +5167,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5183,7 +5183,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5199,7 +5199,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5215,7 +5215,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5231,7 +5231,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        2
+        0
 280
      0
 281
@@ -5247,7 +5247,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5263,7 +5263,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5279,7 +5279,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5295,7 +5295,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5311,7 +5311,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5327,7 +5327,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5343,7 +5343,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5359,7 +5359,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        2
+        0
 280
      0
 281
@@ -5375,7 +5375,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5391,7 +5391,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5407,7 +5407,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5423,7 +5423,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5439,7 +5439,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5455,7 +5455,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5471,7 +5471,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5487,7 +5487,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5503,7 +5503,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5519,7 +5519,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5535,7 +5535,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5551,7 +5551,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5567,7 +5567,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5583,7 +5583,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5599,7 +5599,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5615,7 +5615,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5631,7 +5631,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5647,7 +5647,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5663,7 +5663,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5679,7 +5679,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5695,7 +5695,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5711,7 +5711,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5727,7 +5727,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5743,7 +5743,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5759,7 +5759,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5775,7 +5775,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5791,7 +5791,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5807,7 +5807,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5823,7 +5823,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5839,7 +5839,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5855,7 +5855,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5871,7 +5871,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5887,7 +5887,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        3
+        0
 280
      0
 281
@@ -5903,7 +5903,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5919,7 +5919,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5935,7 +5935,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5951,7 +5951,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5967,7 +5967,7 @@ AecSchedule80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5983,7 +5983,7 @@ AecSchedule80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -5999,7 +5999,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6015,7 +6015,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6031,7 +6031,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6047,7 +6047,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6063,7 +6063,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6079,7 +6079,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6095,7 +6095,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        4
+        0
 280
      0
 281
@@ -6111,7 +6111,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6127,7 +6127,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6143,7 +6143,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6159,7 +6159,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6175,7 +6175,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6191,7 +6191,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6207,7 +6207,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6223,7 +6223,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6239,7 +6239,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6255,7 +6255,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6271,7 +6271,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6287,7 +6287,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6303,7 +6303,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6319,7 +6319,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6335,7 +6335,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        3
+        0
 280
      0
 281
@@ -6351,7 +6351,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6367,7 +6367,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6383,7 +6383,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6399,7 +6399,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6415,7 +6415,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6431,7 +6431,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6447,7 +6447,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6463,7 +6463,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6479,7 +6479,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6495,7 +6495,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6511,7 +6511,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6527,7 +6527,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6543,7 +6543,7 @@ AecArchBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autode
  90
       129
  91
-        1
+        0
 280
      0
 281
@@ -6559,7 +6559,7 @@ AecBase80|Product Desc: Autodesk Architectural Desktop 2007 |Company: Autodesk,I
  90
       129
  91
-        8
+        1
 280
      0
 281
@@ -6701,9 +6701,9 @@ AcDbViewportTableRecord
  21
 1.0
  12
-195.4994998397134
+195.4994998261094
  22
-132.9116497614744
+132.9116499256478
  13
 0.0
  23
@@ -6729,7 +6729,7 @@ AcDbViewportTableRecord
  37
 0.0
  40
-268.1190991516763
+267.525477076423
  41
 1.72542735042735
  42
@@ -40809,7 +40809,7 @@ VIEW
 100
 AcDbSymbolTable
  70
-    13
+     4
   0
 ENDTAB
   0
@@ -41873,7 +41873,7 @@ BLOCK_RECORD
 100
 AcDbSymbolTable
  70
-    52
+    30
   0
 BLOCK_RECORD
   5
@@ -42279,7 +42279,7 @@ AA470
 102
 {ACAD_XDICTIONARY
 360
-BE452
+BEBCD
 102
 }
 330
@@ -42367,7 +42367,7 @@ FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
 1001
 AcDbDynamicBlockGUID
 1000
-{480265D7-CD63-274C-B7BF-5CE3E1B16A4D}
+{932FE2C8-795F-024F-B884-7D7F5047DECA}
   0
 BLOCK_RECORD
   5
@@ -43210,6 +43210,204 @@ FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
 AcDbDynamicBlockGUID
 1000
 {2FEE0F22-7171-A345-8E00-8C5C787EB756}
+  0
+BLOCK_RECORD
+  5
+BEB0C
+102
+{ACAD_XDICTIONARY
+360
+BEB11
+102
+}
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+A$Cdc1353e8
+340
+0
+ 70
+     4
+280
+     1
+281
+     0
+  0
+BLOCK_RECORD
+  5
+BEB24
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+OPAXLE_TABLE_END
+340
+0
+310
+28000000200000002000000001002000000000000010000001000000010000000000000000000000302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+310
+00FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFF0000FFFF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+310
+0000FFFF302821FF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFF0000FFFF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFF
+310
+FF0000FFFF302821FF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFF0000FFFF302821FF302821FF0000FFFF302821FFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF302821FF302821FFFFFFFFFFFFFFFFFF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFFFFFF
+310
+FFFF0000FFFF302821FF302821FF302821FF0000FFFF302821FF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF302821FF0000FFFF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+ 70
+     4
+280
+     1
+281
+     0
+  0
+BLOCK_RECORD
+  5
+BEB69
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+OPAXLE_TABLE_START
+340
+0
+310
+28000000200000002000000001002000000000000010000001000000010000000000000000000000302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+310
+00FFFF302821FF302821FF302821FF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFF0000FFFF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+310
+0000FFFF302821FF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFF0000FFFF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF0000FFFF0000FFFFFFFFFFFFFFFFFFFFFFFFFF
+310
+FF0000FFFF302821FF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF0000FFFF0000FFFF302821FF302821FF0000FFFF302821FFFFFFFFFF0000FFFFFFFFFFFFFFFFFFFF0000FFFF302821FF302821FFFFFFFFFFFFFFFFFF302821FF302821FF0000FFFFFFFFFFFFFFFFFFFFFFFF
+310
+FFFF0000FFFF302821FF302821FF302821FF0000FFFF302821FF0000FFFFFFFFFFFFFFFFFFFF0000FFFFFFFFFFFF302821FF0000FFFF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821
+310
+FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF3028
+310
+21FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF30
+310
+2821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+310
+302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF302821FF
+ 70
+     4
+280
+     1
+281
+     0
   0
 ENDTAB
   0
@@ -44531,7 +44729,7 @@ OP_BASE
   0
 LINE
   5
-BE43F
+BEBBA
 330
 AA470
 100
@@ -44555,7 +44753,7 @@ AcDbLine
   0
 LINE
   5
-BE440
+BEBBB
 330
 AA470
 100
@@ -44579,7 +44777,7 @@ AcDbLine
   0
 LINE
   5
-BE441
+BEBBC
 330
 AA470
 100
@@ -44603,7 +44801,7 @@ AcDbLine
   0
 LINE
   5
-BE442
+BEBBD
 330
 AA470
 100
@@ -44627,7 +44825,7 @@ AcDbLine
   0
 LINE
   5
-BE443
+BEBBE
 330
 AA470
 100
@@ -44651,7 +44849,7 @@ AcDbLine
   0
 LINE
   5
-BE444
+BEBBF
 330
 AA470
 100
@@ -44675,7 +44873,7 @@ AcDbLine
   0
 LINE
   5
-BE445
+BEBC0
 330
 AA470
 100
@@ -44699,7 +44897,7 @@ AcDbLine
   0
 LINE
   5
-BE446
+BEBC1
 330
 AA470
 100
@@ -44723,7 +44921,7 @@ AcDbLine
   0
 TEXT
   5
-BE447
+BEBC2
 330
 AA470
 100
@@ -44759,7 +44957,7 @@ AcDbText
   0
 TEXT
   5
-BE448
+BEBC3
 330
 AA470
 100
@@ -44771,9 +44969,9 @@ DGN3
 100
 AcDbText
  10
-196.6860440597324
+195.5716114607495
  20
-237.5556794555064
+237.5556794555061
  30
 0.0
  40
@@ -44785,9 +44983,9 @@ TYPE
  72
      1
  11
-199.8146154883039
+198.700182889321
  21
-237.5556794555064
+237.5556794555061
  31
 0.0
 100
@@ -44795,7 +44993,7 @@ AcDbText
   0
 TEXT
   5
-BE449
+BEBC4
 330
 AA470
 100
@@ -44831,7 +45029,7 @@ AcDbText
   0
 TEXT
   5
-BE44A
+BEBC5
 330
 AA470
 100
@@ -44867,7 +45065,7 @@ AcDbText
   0
 TEXT
   5
-BE44B
+BEBC6
 330
 AA470
 100
@@ -44903,7 +45101,7 @@ AcDbText
   0
 TEXT
   5
-BE44C
+BEBC7
 330
 AA470
 100
@@ -44915,7 +45113,7 @@ DGN3
 100
 AcDbText
  10
-153.113448984049
+152.6250051740503
  20
 237.5556794555063
  30
@@ -44929,7 +45127,7 @@ FUNCTION
  72
      1
  11
-159.5848775554776
+159.0964337454789
  21
 237.5556794555063
  31
@@ -44939,7 +45137,7 @@ AcDbText
   0
 LINE
   5
-BE44D
+BEBC8
 330
 AA470
 100
@@ -44963,7 +45161,7 @@ AcDbLine
   0
 TEXT
   5
-BE44E
+BEBC9
 330
 AA470
 100
@@ -44999,7 +45197,7 @@ AcDbText
   0
 LINE
   5
-BE44F
+BEBCA
 330
 AA470
 100
@@ -45023,7 +45221,7 @@ AcDbLine
   0
 LINE
   5
-BE450
+BEBCB
 330
 AA470
 100
@@ -45047,7 +45245,7 @@ AcDbLine
   0
 ATTDEF
   5
-BE451
+BEBCC
 330
 AA470
 100
@@ -46893,7 +47091,7 @@ DGN3
 100
 AcDbText
  10
-84.62635176682406
+84.62635176682404
  20
 236.4897627698545
  30
@@ -46905,7 +47103,7 @@ ROW
  72
      1
  11
-87.91206605253835
+87.91206605253833
  21
 237.4897627698545
  31
@@ -46929,9 +47127,9 @@ DGN3
 100
 AcDbText
  10
-99.60454796518334
+99.60454796518336
  20
-236.4020710057971
+236.402071005797
  30
 0.0
  40
@@ -47003,7 +47201,7 @@ AcDbText
  10
 223.7205801854113
  20
-236.4547430501267
+236.4547430501266
  30
 0.0
  40
@@ -47109,7 +47307,7 @@ DGN3
 100
 AcDbText
  10
-257.914921848071
+257.9149218480711
  20
 236.3619084042899
  30
@@ -47143,13 +47341,13 @@ CIRCUIT
 100
 AcDbLine
  10
-95.50510344412735
+95.50510344412733
  20
 239.9547430501265
  30
 0.0
  11
-95.50510344412707
+95.50510344412709
  21
 234.9547430501266
  31
@@ -47269,7 +47467,7 @@ AcDbLine
  30
 0.0
  11
-286.1603330199614
+286.1603330199613
  21
 234.9547430501266
  31
@@ -47973,7 +48171,7 @@ DGN3
 100
 AcDbText
  10
-122.8827167801599
+122.8827167801598
  20
 196.5698669664593
  30
@@ -48007,7 +48205,7 @@ DGN3
 100
 AcDbText
  10
-122.8827167801599
+122.8827167801598
  20
 201.5698669664593
  30
@@ -48075,7 +48273,7 @@ DGN3
 100
 AcDbText
  10
-122.8827167801599
+122.8827167801598
  20
 211.5698669664593
  30
@@ -48109,7 +48307,7 @@ DGN3
 100
 AcDbText
  10
-122.8827167801599
+122.8827167801598
  20
 216.5698669664593
  30
@@ -48143,7 +48341,7 @@ DGN3
 100
 AcDbText
  10
-122.8827167801599
+122.8827167801598
  20
 221.5698669664593
  30
@@ -48177,7 +48375,7 @@ DGN3
 100
 AcDbText
  10
-122.8827167801599
+122.8827167801598
  20
 226.5698669664593
  30
@@ -48211,7 +48409,7 @@ DGN3
 100
 AcDbText
  10
-122.7398596373028
+122.7398596373027
  20
 231.5698669664593
  30
@@ -48599,13 +48797,13 @@ CIRCUIT
 100
 AcDbLine
  10
-95.50510344412735
+95.50510344412733
  20
 194.954743050128
  30
 0.0
  11
-95.50510344412707
+95.50510344412709
  21
 234.9547430501266
  31
@@ -48719,13 +48917,13 @@ CIRCUIT
 100
 AcDbLine
  10
-286.1603330199614
+286.1603330199613
  20
 194.954743050128
  30
 0.0
  11
-286.1603330199614
+286.1603330199613
  21
 234.9547430501266
  31
@@ -49741,7 +49939,7 @@ CIRCUIT
 100
 AcDbLine
  10
-80.49474432810569
+80.49474432810567
  20
 214.9547430501265
  30
@@ -50175,7 +50373,7 @@ DGN3
 100
 AcDbText
  10
-123.3589072563504
+123.3589072563503
  20
 196.5698669664593
  30
@@ -50311,7 +50509,7 @@ DGN3
 100
 AcDbText
  10
-123.3589072563504
+123.3589072563503
  20
 216.5698669664593
  30
@@ -50801,13 +50999,13 @@ CIRCUIT
 100
 AcDbLine
  10
-95.50510344412735
+95.50510344412733
  20
 194.954743050128
  30
 0.0
  11
-95.50510344412707
+95.50510344412709
  21
 234.9547430501266
  31
@@ -50921,13 +51119,13 @@ CIRCUIT
 100
 AcDbLine
  10
-286.1603330199614
+286.1603330199613
  20
 194.954743050128
  30
 0.0
  11
-286.1603330199614
+286.1603330199613
  21
 234.9547430501266
  31
@@ -52243,7 +52441,7 @@ CIRCUIT
 100
 AcDbLine
  10
-95.99999999999999
+96.0
  20
 226.0000000000001
  30
@@ -52297,7 +52495,7 @@ AcDbLine
  30
 0.0
  11
-95.99999999999999
+96.0
  21
 226.0000000000001
  31
@@ -52483,7 +52681,7 @@ CIRCUIT
 100
 AcDbLine
  10
-96.00000000000001
+96.0
  20
 221.0000000000001
  30
@@ -52531,13 +52729,13 @@ CIRCUIT
 100
 AcDbLine
  10
-95.99999999999999
+96.0
  20
 226.0000000000001
  30
 0.0
  11
-96.00000000000001
+96.0
  21
 221.0000000000001
  31
@@ -52771,7 +52969,7 @@ CIRCUIT
 100
 AcDbLine
  10
-96.00000000000001
+96.0
  20
 221.0000000000001
  30
@@ -52965,7 +53163,7 @@ DGN3
 100
 AcDbText
  10
-191.7954209845591
+191.7954209845592
  20
 232.5000000000001
  30
@@ -53001,7 +53199,7 @@ DGN3
 100
 AcDbText
  10
-191.7954209845591
+191.7954209845592
  20
 227.5000000000001
  30
@@ -53037,9 +53235,9 @@ DGN3
 100
 AcDbText
  10
-191.7954209845591
+191.7954209845592
  20
-222.5
+222.5000000000001
  30
 0.0
  40
@@ -53253,7 +53451,7 @@ DGN3
 100
 AcDbText
  10
-219.5820940321378
+228.8928230555216
  20
 221.6682129654119
  30
@@ -53301,7 +53499,7 @@ DGN3
 100
 AcDbText
  10
-219.8309248436922
+228.8928230555216
  20
 228.356318929109
  30
@@ -53349,7 +53547,7 @@ DGN3
 100
 AcDbText
  10
-219.5975685850952
+228.8928230555216
  20
 225.0056869543842
  30
@@ -53397,9 +53595,9 @@ DGN3
 100
 AcDbText
  10
-281.8599147081272
+284.6044814206445
  20
-217.6841717890904
+218.5920122292554
  30
 0.0
  40
@@ -53445,9 +53643,9 @@ DGN3
 100
 AcDbText
  10
-156.3320596051764
+159.096433745479
  20
-217.6738554204522
+218.5920122292555
  30
 0.0
  40
@@ -53493,9 +53691,9 @@ DGN3
 100
 AcDbText
  10
-122.7103111555333
+125.4592107428786
  20
-217.6738554204521
+218.5920122292554
  30
 0.0
  40
@@ -53541,9 +53739,9 @@ DGN3
 100
 AcDbText
  10
-103.4248081440109
+105.9403514727592
  20
-217.592159559835
+218.5000000000001
  30
 0.0
  40
@@ -53589,9 +53787,9 @@ DGN3
 100
 AcDbText
  10
-103.475564677711
+105.9403514727591
  20
-222.5818431911968
+223.5000000000001
  30
 0.0
  40
@@ -53637,9 +53835,9 @@ DGN3
 100
 AcDbText
  10
-122.7610676892335
+125.4592107428786
  20
-222.6738554204521
+223.5920122292554
  30
 0.0
  40
@@ -53685,9 +53883,9 @@ DGN3
 100
 AcDbText
  10
-156.3828161388765
+159.096433745479
  20
-222.6738554204521
+223.5920122292554
  30
 0.0
  40
@@ -53733,9 +53931,9 @@ DGN3
 100
 AcDbText
  10
-281.9106712418273
+284.6044814206444
  20
-222.6738554204521
+223.5920122292554
  30
 0.0
  40
@@ -53781,9 +53979,9 @@ DGN3
 100
 AcDbText
  10
-103.4910392306683
+105.9403514727591
  20
-227.5818431911968
+228.5000000000001
  30
 0.0
  40
@@ -53829,9 +54027,9 @@ DGN3
 100
 AcDbText
  10
-122.7765422421908
+125.4592107428786
  20
-227.6738554204521
+228.5920122292554
  30
 0.0
  40
@@ -53877,9 +54075,9 @@ DGN3
 100
 AcDbText
  10
-156.3982906918338
+159.0964337454789
  20
-227.6738554204522
+228.5920122292555
  30
 0.0
  40
@@ -53925,9 +54123,9 @@ DGN3
 100
 AcDbText
  10
-281.9261457947847
+284.6044814206444
  20
-227.6738554204521
+228.5920122292554
  30
 0.0
  40
@@ -53973,9 +54171,9 @@ DGN3
 100
 AcDbText
  10
-103.7243954892653
+105.9403514727591
  20
-232.592159559835
+233.5000000000001
  30
 0.0
  40
@@ -54021,9 +54219,9 @@ DGN3
 100
 AcDbText
  10
-123.0098985007877
+125.4592107428785
  20
-232.6738554204521
+233.5920122292554
  30
 0.0
  40
@@ -54069,9 +54267,9 @@ DGN3
 100
 AcDbText
  10
-156.6316469504308
+159.0964337454789
  20
-232.6738554204522
+233.5920122292554
  30
 0.0
  40
@@ -54117,9 +54315,9 @@ DGN3
 100
 AcDbText
  10
-282.1595020533816
+284.6044814206443
  20
-232.6841717890903
+233.5920122292554
  30
 0.0
  40
@@ -54156,6 +54354,4440 @@ ENDBLK
 BE8E6
 330
 BE8E4
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+BEB13
+330
+BEB0C
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+A$Cdc1353e8
+ 70
+     0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+A$Cdc1353e8
+  1
+
+  0
+TEXT
+  5
+BEB0D
+330
+BEB0C
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+0.2995873452543975
+ 20
+15.01607083446254
+ 30
+0.0
+ 40
+2.0
+  1
+1
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+0.721114167812857
+ 21
+16.01607083446254
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB0E
+330
+BEB0C
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+0.0662310866574805
+ 20
+4.98968363136176
+ 30
+0.0
+ 40
+2.0
+  1
+2
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+0.7211141678129139
+ 21
+6.0
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB0F
+330
+BEB0C
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+0.0507565337001214
+ 20
+10.00000000000003
+ 30
+0.0
+ 40
+2.0
+  1
+3
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+0.7211141678129139
+ 21
+11.00000000000003
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB10
+330
+BEB0C
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+-0.0000000000000162
+ 20
+0.0013755158184319
+ 30
+0.0
+ 40
+2.0
+  1
+4
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+0.7211141678129139
+ 21
+1.0
+ 31
+0.0
+100
+AcDbText
+  0
+ENDBLK
+  5
+BEB14
+330
+BEB0C
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+BEB25
+330
+BEB24
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+OPAXLE_TABLE_END
+ 70
+     2
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+OPAXLE_TABLE_END
+  1
+
+  0
+LINE
+  5
+BEB27
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000284
+ 20
+-5.0
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB28
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+163.0462189561581
+ 20
+-5.0
+ 30
+0.0
+ 11
+199.0762348684208
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB29
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 11
+0.0000000000000284
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB2A
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+199.0762348684208
+ 20
+0.0
+ 30
+0.0
+ 11
+199.0762348684208
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB2B
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+19.88070294551835
+ 20
+0.0
+ 30
+0.0
+ 11
+19.88070294551838
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB2C
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+38.57919361834674
+ 20
+0.0
+ 30
+0.0
+ 11
+38.57919361834674
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB2D
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+87.61367387261129
+ 20
+0.0
+ 30
+0.0
+ 11
+87.61367387261136
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB2E
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+117.7866919060309
+ 20
+0.0
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB2F
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+147.9597099394483
+ 20
+0.0
+ 30
+0.0
+ 11
+147.9597099394483
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB30
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+178.1327279728678
+ 20
+0.0
+ 30
+0.0
+ 11
+178.1327279728678
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB31
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000568
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB32
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+163.0462189561581
+ 20
+-10.00803541723127
+ 30
+0.0
+ 11
+199.0762348684208
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB33
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000284
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+0.0000000000000568
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB34
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+199.0762348684208
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+199.0762348684208
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB35
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+19.88070294551838
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+19.88070294551841
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB36
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+38.57919361834674
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+38.57919361834679
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB37
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+87.61367387261136
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+87.61367387261138
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB38
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+117.7866919060309
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB39
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+147.9597099394484
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+147.9597099394484
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB3A
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+178.1327279728678
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+178.1327279728678
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB3B
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000853
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB3C
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+163.0462189561581
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+199.0762348684209
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB3D
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000568
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+0.0000000000000853
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB3E
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+199.0762348684209
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+199.0762348684209
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB3F
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+19.88070294551841
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+19.88070294551843
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB40
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+38.57919361834679
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+38.57919361834679
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB41
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+87.61367387261136
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+87.61367387261142
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB42
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+117.7866919060309
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB43
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+147.9597099394484
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+147.9597099394484
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB44
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+178.1327279728678
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+178.1327279728678
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB45
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000853
+ 20
+-20.01607083446254
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB46
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+117.7866919060309
+ 20
+-20.01607083446254
+ 30
+0.0
+ 11
+199.0762348684209
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB47
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000568
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+0.0000000000000853
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB48
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+199.0762348684209
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+199.0762348684209
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB49
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+19.88070294551841
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+19.88070294551843
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB4A
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+38.57919361834679
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+38.57919361834679
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB4B
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+87.61367387261136
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+87.61367387261142
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB4C
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+117.7866919060309
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB4D
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+147.9597099394484
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+147.9597099394484
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB4E
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+178.1327279728678
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+178.1327279728678
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB4F
+330
+BEB24
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+163.0462189561581
+ 20
+-20.01607083446254
+ 30
+0.0
+ 11
+163.0462189561581
+ 21
+0.0
+ 31
+0.0
+  0
+TEXT
+  5
+BEB50
+330
+BEB24
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+170.1679466419544
+ 20
+-3.5
+ 30
+0.0
+ 40
+2.0
+  1
+1
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+170.5894734645129
+ 21
+-2.5
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB51
+330
+BEB24
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+169.9345903833575
+ 20
+-13.52638720310078
+ 30
+0.0
+ 40
+2.0
+  1
+2
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+170.589473464513
+ 21
+-12.51607083446254
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB52
+330
+BEB24
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+169.9191158304001
+ 20
+-8.51607083446251
+ 30
+0.0
+ 40
+2.0
+  1
+3
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+170.589473464513
+ 21
+-7.51607083446251
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB53
+330
+BEB24
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+169.8683592967
+ 20
+-18.51469531864411
+ 30
+0.0
+ 40
+2.0
+  1
+4
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+170.589473464513
+ 21
+-17.51607083446254
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB54
+330
+BEB24
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+96.74619389344766
+ 20
+-3.500687757909215
+ 30
+0.0
+ 40
+2.0
+  1
+TERMINAL
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+102.7001828893211
+ 21
+-2.5
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB55
+330
+BEB24
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+96.74619389344771
+ 20
+-13.51675859237175
+ 30
+0.0
+ 40
+2.0
+  1
+TERMINAL
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+102.7001828893211
+ 21
+-12.51607083446254
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB56
+330
+BEB24
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+96.74619389344771
+ 20
+-8.516758592371726
+ 30
+0.0
+ 40
+2.0
+  1
+TERMINAL
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+102.7001828893211
+ 21
+-7.51607083446251
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB57
+330
+BEB24
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+96.74619389344771
+ 20
+-18.51675859237175
+ 30
+0.0
+ 40
+2.0
+  1
+TERMINAL
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+102.7001828893211
+ 21
+-17.51607083446254
+ 31
+0.0
+100
+AcDbText
+  0
+ATTDEF
+  5
+BEB58
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+155.4478211872797
+ 20
+-10.01837036082668
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+155.4478211872797
+ 21
+-10.01837036082668
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A5
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB59
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+188.6044814206444
+ 20
+-17.42405860520719
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+188.6044814206444
+ 21
+-17.42405860520719
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A6_4
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB5A
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+63.0964337454791
+ 20
+-17.42405860520716
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+63.0964337454791
+ 21
+-17.42405860520716
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A3_4
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB5B
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+29.45921074287867
+ 20
+-17.42405860520719
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+29.45921074287867
+ 21
+-17.42405860520719
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A2_4
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB5C
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+9.940351472759232
+ 20
+-17.51607083446254
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+9.940351472759232
+ 21
+-17.51607083446254
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A1_4
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB5D
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+9.940351472759232
+ 20
+-12.51607083446254
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+9.940351472759232
+ 21
+-12.51607083446254
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A1_3
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB5E
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+29.45921074287867
+ 20
+-12.42405860520719
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+29.45921074287867
+ 21
+-12.42405860520719
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A2_3
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB5F
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+63.0964337454791
+ 20
+-12.42405860520716
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+63.0964337454791
+ 21
+-12.42405860520716
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A3_3
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB60
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+188.6044814206444
+ 20
+-12.42405860520719
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+188.6044814206444
+ 21
+-12.42405860520719
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A6_3
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB61
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+9.940351472759203
+ 20
+-7.516070834462539
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+9.940351472759203
+ 21
+-7.516070834462539
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A1_2
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB62
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+29.45921074287864
+ 20
+-7.424058605207193
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+29.45921074287864
+ 21
+-7.424058605207193
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A2_2
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB63
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+63.09643374547905
+ 20
+-7.424058605207164
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+63.09643374547905
+ 21
+-7.424058605207164
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A3_2
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB64
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+188.6044814206444
+ 20
+-7.424058605207193
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+188.6044814206444
+ 21
+-7.424058605207193
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A6_2
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB65
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+9.940351472759175
+ 20
+-2.5
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+9.940351472759175
+ 21
+-2.5
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A1_1
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB66
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+29.45921074287861
+ 20
+-2.407987770744654
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+29.45921074287861
+ 21
+-2.407987770744654
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A2_1
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB67
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+63.09643374547905
+ 20
+-2.407987770744625
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+63.09643374547905
+ 21
+-2.407987770744625
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A3_1
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB68
+330
+BEB24
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+188.6044814206444
+ 20
+-2.407987770744654
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+188.6044814206444
+ 21
+-2.407987770744654
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A6_1
+ 70
+     0
+280
+     1
+  0
+ENDBLK
+  5
+BEB26
+330
+BEB24
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+BEB6A
+330
+BEB69
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+OPAXLE_TABLE_START
+ 70
+     2
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+OPAXLE_TABLE_START
+  1
+
+  0
+LINE
+  5
+BEB6C
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000284
+ 20
+-5.0
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB6D
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+163.0462189561581
+ 20
+-5.0
+ 30
+0.0
+ 11
+199.0762348684208
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB6E
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 11
+0.0000000000000284
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB6F
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+199.0762348684208
+ 20
+0.0
+ 30
+0.0
+ 11
+199.0762348684208
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB70
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+19.88070294551835
+ 20
+0.0
+ 30
+0.0
+ 11
+19.88070294551838
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB71
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+38.57919361834674
+ 20
+0.0
+ 30
+0.0
+ 11
+38.57919361834674
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB72
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+87.61367387261129
+ 20
+0.0
+ 30
+0.0
+ 11
+87.61367387261136
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB73
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+117.7866919060309
+ 20
+0.0
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB74
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+147.9597099394483
+ 20
+0.0
+ 30
+0.0
+ 11
+147.9597099394483
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB75
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+178.1327279728678
+ 20
+0.0
+ 30
+0.0
+ 11
+178.1327279728678
+ 21
+-5.0
+ 31
+0.0
+  0
+LINE
+  5
+BEB76
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000568
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB77
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+163.0462189561581
+ 20
+-10.00803541723127
+ 30
+0.0
+ 11
+199.0762348684208
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB78
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000284
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+0.0000000000000568
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB79
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+199.0762348684208
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+199.0762348684208
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB7A
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+19.88070294551838
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+19.88070294551841
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB7B
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+38.57919361834674
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+38.57919361834679
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB7C
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+87.61367387261136
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+87.61367387261138
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB7D
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+117.7866919060309
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB7E
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+147.9597099394484
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+147.9597099394484
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB7F
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+178.1327279728678
+ 20
+-5.016070834462539
+ 30
+0.0
+ 11
+178.1327279728678
+ 21
+-10.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB80
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000853
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB81
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+163.0462189561581
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+199.0762348684209
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB82
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000568
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+0.0000000000000853
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB83
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+199.0762348684209
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+199.0762348684209
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB84
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+19.88070294551841
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+19.88070294551843
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB85
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+38.57919361834679
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+38.57919361834679
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB86
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+87.61367387261136
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+87.61367387261142
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB87
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+117.7866919060309
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB88
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+147.9597099394484
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+147.9597099394484
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB89
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+178.1327279728678
+ 20
+-10.01607083446254
+ 30
+0.0
+ 11
+178.1327279728678
+ 21
+-15.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB8A
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000853
+ 20
+-20.01607083446254
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB8B
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+147.9597099394484
+ 20
+-20.01607083446254
+ 30
+0.0
+ 11
+199.0762348684209
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB8C
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+0.0000000000000568
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+0.0000000000000853
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB8D
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+199.0762348684209
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+199.0762348684209
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB8E
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+19.88070294551841
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+19.88070294551843
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB8F
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+38.57919361834679
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+38.57919361834679
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB90
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+87.61367387261136
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+87.61367387261142
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB91
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+117.7866919060309
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+117.7866919060309
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB92
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+147.9597099394484
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+147.9597099394484
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB93
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+178.1327279728678
+ 20
+-15.01607083446254
+ 30
+0.0
+ 11
+178.1327279728678
+ 21
+-20.01607083446254
+ 31
+0.0
+  0
+LINE
+  5
+BEB94
+330
+BEB69
+100
+AcDbEntity
+  8
+CIRCUIT
+100
+AcDbLine
+ 10
+163.0462189561581
+ 20
+-20.01607083446254
+ 30
+0.0
+ 11
+163.0462189561581
+ 21
+0.0
+ 31
+0.0
+  0
+TEXT
+  5
+BEB95
+330
+BEB69
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+170.1679466419544
+ 20
+-3.5
+ 30
+0.0
+ 40
+2.0
+  1
+1
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+170.5894734645129
+ 21
+-2.5
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB96
+330
+BEB69
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+169.9345903833575
+ 20
+-13.52638720310078
+ 30
+0.0
+ 40
+2.0
+  1
+2
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+170.589473464513
+ 21
+-12.51607083446254
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB97
+330
+BEB69
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+169.9191158304001
+ 20
+-8.51607083446251
+ 30
+0.0
+ 40
+2.0
+  1
+3
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+170.589473464513
+ 21
+-7.51607083446251
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB98
+330
+BEB69
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+169.8683592967
+ 20
+-18.51469531864411
+ 30
+0.0
+ 40
+2.0
+  1
+4
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+170.589473464513
+ 21
+-17.51607083446254
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB99
+330
+BEB69
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+96.74619389344766
+ 20
+-3.500687757909215
+ 30
+0.0
+ 40
+2.0
+  1
+TERMINAL
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+102.7001828893211
+ 21
+-2.5
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB9A
+330
+BEB69
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+96.74619389344771
+ 20
+-13.51675859237175
+ 30
+0.0
+ 40
+2.0
+  1
+TERMINAL
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+102.7001828893211
+ 21
+-12.51607083446254
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB9B
+330
+BEB69
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+96.74619389344771
+ 20
+-8.516758592371726
+ 30
+0.0
+ 40
+2.0
+  1
+TERMINAL
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+102.7001828893211
+ 21
+-7.51607083446251
+ 31
+0.0
+100
+AcDbText
+  0
+TEXT
+  5
+BEB9C
+330
+BEB69
+100
+AcDbEntity
+  8
+0
+100
+AcDbText
+ 10
+96.74619389344771
+ 20
+-18.51675859237175
+ 30
+0.0
+ 40
+2.0
+  1
+TERMINAL
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+102.7001828893211
+ 21
+-17.51607083446254
+ 31
+0.0
+100
+AcDbText
+  0
+ATTDEF
+  5
+BEB9D
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+155.4478211872797
+ 20
+-10.01837036082668
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+155.4478211872797
+ 21
+-10.01837036082668
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A5
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB9E
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+188.6044814206444
+ 20
+-17.42405860520719
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+188.6044814206444
+ 21
+-17.42405860520719
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A6_4
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEB9F
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+63.0964337454791
+ 20
+-17.42405860520716
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+63.0964337454791
+ 21
+-17.42405860520716
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A3_4
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBA0
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+29.45921074287867
+ 20
+-17.42405860520719
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+29.45921074287867
+ 21
+-17.42405860520719
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A2_4
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBA1
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+9.940351472759232
+ 20
+-17.51607083446254
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+9.940351472759232
+ 21
+-17.51607083446254
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A1_4
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBA2
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+9.940351472759232
+ 20
+-12.51607083446254
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+9.940351472759232
+ 21
+-12.51607083446254
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A1_3
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBA3
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+29.45921074287867
+ 20
+-12.42405860520719
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+29.45921074287867
+ 21
+-12.42405860520719
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A2_3
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBA4
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+63.0964337454791
+ 20
+-12.42405860520716
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+63.0964337454791
+ 21
+-12.42405860520716
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A3_3
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBA5
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+188.6044814206444
+ 20
+-12.42405860520719
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+188.6044814206444
+ 21
+-12.42405860520719
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A6_3
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBA6
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+9.940351472759203
+ 20
+-7.516070834462539
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+9.940351472759203
+ 21
+-7.516070834462539
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A1_2
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBA7
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+29.45921074287864
+ 20
+-7.424058605207193
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+29.45921074287864
+ 21
+-7.424058605207193
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A2_2
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBA8
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+63.09643374547905
+ 20
+-7.424058605207164
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+63.09643374547905
+ 21
+-7.424058605207164
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A3_2
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBA9
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+188.6044814206444
+ 20
+-7.424058605207193
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+188.6044814206444
+ 21
+-7.424058605207193
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A6_2
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBAA
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+9.940351472759175
+ 20
+-2.5
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+9.940351472759175
+ 21
+-2.5
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A1_1
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBAB
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+29.45921074287861
+ 20
+-2.407987770744654
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+29.45921074287861
+ 21
+-2.407987770744654
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A2_1
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBAC
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+63.09643374547905
+ 20
+-2.407987770744625
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+63.09643374547905
+ 21
+-2.407987770744625
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A3_1
+ 70
+     0
+280
+     1
+  0
+ATTDEF
+  5
+BEBAD
+330
+BEB69
+100
+AcDbEntity
+  8
+TEXT
+  6
+DGN3
+100
+AcDbText
+ 10
+188.6044814206444
+ 20
+-2.407987770744654
+ 30
+0.0
+ 40
+2.0
+  1
+
+ 41
+0.9
+  7
+Standard-arrow
+ 72
+     4
+ 11
+188.6044814206444
+ 21
+-2.407987770744654
+ 31
+0.0
+100
+AcDbAttributeDefinition
+280
+     0
+  3
+
+  2
+A6_1
+ 70
+     0
+280
+     1
+  0
+ENDBLK
+  5
+BEB6B
+330
+BEB69
 100
 AcDbEntity
   8
@@ -54893,23 +59525,23 @@ AcDbEntity
 100
 AcDbViewport
  10
-209.2239698210401
+209.2239697076467
  20
-147.7374921854089
+147.7374923593927
  30
 0.0
  40
-515.7333653410471
+515.7333651607372
  41
-298.9018142162354
+298.9018141117337
  68
      1
  69
      1
  12
-209.2239698210401
+209.2239697076467
  22
-147.7374921854089
+147.7374923593927
  13
 0.0
  23
@@ -54941,7 +59573,7 @@ AcDbViewport
  44
 0.0
  45
-298.9018142162354
+298.9018141117337
  50
 0.0
  51
@@ -59937,7 +64569,7 @@ FDFFFFFFFDFFFFFFFDFFFFFF2400000025000000260000002700000028000000
 310
 16000500FFFFFFFFFFFFFFFF020000001603000000000000C000000000000046
 310
-000000000000000000000000C0006F3DDD6CDD0103000000C000000000000000
+00000000000000000000000060AB1D440770DD0103000000C000000000000000
 310
 01004F006C006500000000000000000000000000000000000000000000000000
 310
@@ -190849,7 +195481,7 @@ FDFFFFFFE6000000FEFFFFFFFEFFFFFFFDFFFFFF060000000700000008000000
 310
 16000500FFFFFFFFFFFFFFFF020000001503000000000000C000000000000046
 310
-000000000000000000000000000E723DDD6CDD0103000000C000000000000000
+000000000000000000000000601C20440770DD0103000000C000000000000000
 310
 01004F006C006500000000000000000000000000000000000000000000000000
 310
@@ -198769,7 +203401,7 @@ ACAD_VISUALSTYLE
   3
 ACDB_RECOMPOSE_DATA
 350
-BEA58
+BEC0F
   3
 AcDbVariableDictionary
 350
@@ -209639,7 +214271,7 @@ BDE9D
   0
 DICTIONARY
   5
-BE452
+BEBCD
 330
 AA470
 100
@@ -209736,6 +214368,22 @@ AcDbDictionary
      1
 281
      1
+  0
+DICTIONARY
+  5
+BEB11
+330
+BEB0C
+100
+AcDbDictionary
+280
+     1
+281
+     1
+  3
+ACAD_SORTENTS
+360
+BEB12
   0
 DICTIONARY
   5
@@ -209941,13 +214589,13 @@ AcDbIdSet
  90
         4
 330
-62228
-330
 62224
 330
 62225
 330
 62227
+330
+62228
 100
 AcDbFieldList
   0
@@ -209983,11 +214631,11 @@ AcDbXrecord
 280
      1
 300
-{D4ADE6D4-4AEA-0E47-ABDA-F4BE6969982D}
+{E1283E5A-C886-954F-9355-6A9EFE324D41}
 301
 {C595A5F5-5840-154E-8BDA-11DC3B8279E6}
 302
-{D4ADE6D4-4AEA-0E47-ABDA-F4BE6969982D}
+{E1283E5A-C886-954F-9355-6A9EFE324D41}
 303
 C:\Users\T9815037\Documents\Hitachi\WSL\autobookpy\templates\Roptemplate.dxf
 301
@@ -210529,7 +215177,7 @@ X-Ray
   0
 XRECORD
   5
-BEA58
+BEC0F
 102
 {ACAD_REACTORS
 330
@@ -210855,7 +215503,7 @@ AcDbProxyObject
 161
                 32
 310
-90140A006C
+90140A0000
 330
 621C4
  94
@@ -210889,7 +215537,7 @@ AcDbProxyObject
 161
                 32
 310
-90140A0000
+90140A008C
 330
 621D2
  94
@@ -210947,37 +215595,9 @@ AcDbDictionary
 281
      1
   3
-Elevation
+Section_Elev
 350
-BE2D2
-  3
-Model
-350
-BE2CF
-  3
-Model High Detail
-350
-BE2D6
-  3
-Model Low Detail
-350
-BE2D5
-  3
-Plan
-350
-BE2D0
-  3
-Plan High Detail
-350
-BE2D4
-  3
-Plan Low Detail
-350
-BE2D3
-  3
-Reflected
-350
-BE2D1
+BEAED
   0
 DICTIONARY
   5
@@ -210994,602 +215614,6 @@ C
 AcDbDictionary
 281
      1
-  3
-AecDbDispRep2dSection
-350
-BE1CF
-  3
-AecDbDispRepAnchor
-350
-BE1CE
-  3
-AecDbDispRepAnchorBubToGrid
-350
-BE270
-  3
-AecDbDispRepAnchorBubToGridMdl
-350
-BE25A
-  3
-AecDbDispRepAnchorBubToGridRcp
-350
-BE24C
-  3
-AecDbDispRepAnchorEntToNode
-350
-BE1C9
-  3
-AecDbDispRepAnchorExtendedTagToEnt
-350
-BE1B5
-  3
-AecDbDispRepAnchorTagToEnt
-350
-BE1C0
-  3
-AecDbDispRepBdgElevLineModel
-350
-BE276
-  3
-AecDbDispRepBdgElevLinePlan
-350
-BE1E8
-  3
-AecDbDispRepBdgElevLinePlan100
-350
-BE213
-  3
-AecDbDispRepBdgElevLinePlan50
-350
-BE206
-  3
-AecDbDispRepBdgElevLineRcp
-350
-BE24A
-  3
-AecDbDispRepBdgSectionLineModel
-350
-BE27D
-  3
-AecDbDispRepBdgSectionLinePlan
-350
-BE21B
-  3
-AecDbDispRepBdgSectionLinePlan100
-350
-BE20C
-  3
-AecDbDispRepBdgSectionLinePlan50
-350
-BE1FC
-  3
-AecDbDispRepBdgSectionLineRcp
-350
-BE25C
-  3
-AecDbDispRepBdgSectionModel
-350
-BE23F
-  3
-AecDbDispRepBdgSectionSubDiv
-350
-BE22D
-  3
-AecDbDispRepCeilingGrid
-350
-BE1DF
-  3
-AecDbDispRepCeilingGridModel
-350
-BE240
-  3
-AecDbDispRepCeilingGridPlan100
-350
-BE1F8
-  3
-AecDbDispRepCeilingGridPlan50
-350
-BE1EE
-  3
-AecDbDispRepCeilingGridRcp
-350
-BE254
-  3
-AecDbDispRepClipVolModel
-350
-BE1AC
-  3
-AecDbDispRepClipVolPlan
-350
-BE1B3
-  3
-AecDbDispRepClipVolResSubDiv
-350
-BE1BE
-  3
-AecDbDispRepClipVolResult
-350
-BE1C6
-  3
-AecDbDispRepColumnGrid
-350
-BE21D
-  3
-AecDbDispRepColumnGridModel
-350
-BE235
-  3
-AecDbDispRepColumnGridPlan100
-350
-BE1E1
-  3
-AecDbDispRepColumnGridPlan50
-350
-BE208
-  3
-AecDbDispRepColumnGridRcp
-350
-BE23D
-  3
-AecDbDispRepCurtainWallLayoutModel
-350
-BE260
-  3
-AecDbDispRepCurtainWallLayoutPlan
-350
-BE211
-  3
-AecDbDispRepCurtainWallLayoutPlan100
-350
-BE225
-  3
-AecDbDispRepCurtainWallLayoutPlan50
-350
-BE217
-  3
-AecDbDispRepCurtainWallUnitModel
-350
-BE242
-  3
-AecDbDispRepCurtainWallUnitPlan
-350
-BE1FE
-  3
-AecDbDispRepCurtainWallUnitPlan100
-350
-BE1EC
-  3
-AecDbDispRepCurtainWallUnitPlan50
-350
-BE1E4
-  3
-AecDbDispRepDimGroupPlan
-350
-BE26E
-  3
-AecDbDispRepDimGroupPlan100
-350
-BE268
-  3
-AecDbDispRepDimGroupPlan50
-350
-BE26C
-  3
-AecDbDispRepDisplayTheme
-350
-BE1D3
-  3
-AecDbDispRepDoorElev
-350
-BE25E
-  3
-AecDbDispRepDoorModel
-350
-BE22F
-  3
-AecDbDispRepDoorNominal
-350
-BE244
-  3
-AecDbDispRepDoorPlan
-350
-BE256
-  3
-AecDbDispRepDoorPlan50
-350
-BE231
-  3
-AecDbDispRepDoorPlanHekto
-350
-BE272
-  3
-AecDbDispRepDoorRcp
-350
-BE24E
-  3
-AecDbDispRepDoorThresholdPlan
-350
-BE237
-  3
-AecDbDispRepDoorThresholdSymbolPlan
-350
-BE233
-  3
-AecDbDispRepEditInPlaceProfile
-350
-BE1C2
-  3
-AecDbDispRepEntRef
-350
-BE1C7
-  3
-AecDbDispRepLayoutCurve
-350
-BE1CC
-  3
-AecDbDispRepLayoutGrid2d
-350
-BE1C4
-  3
-AecDbDispRepLayoutGrid3d
-350
-BE1D1
-  3
-AecDbDispRepMaskBlockRef
-350
-BE1AE
-  3
-AecDbDispRepMaskBlockRefRcp
-350
-BE239
-  3
-AecDbDispRepMassElemModel
-350
-BE1D7
-  3
-AecDbDispRepMassElemPlan100
-350
-BE252
-  3
-AecDbDispRepMassElemPlan50
-350
-BE250
-  3
-AecDbDispRepMassElemRcp
-350
-BE23B
-  3
-AecDbDispRepMassElemSchem
-350
-BE1DB
-  3
-AecDbDispRepMassGroupModel
-350
-BE1D5
-  3
-AecDbDispRepMassGroupPlan
-350
-BE1D9
-  3
-AecDbDispRepMassGroupPlan100
-350
-BE278
-  3
-AecDbDispRepMassGroupPlan50
-350
-BE258
-  3
-AecDbDispRepMassGroupRcp
-350
-BE274
-  3
-AecDbDispRepMaterial
-350
-BE1B0
-  3
-AecDbDispRepMvBlockRef
-350
-BE1B7
-  3
-AecDbDispRepMvBlockRefModel
-350
-BE1CB
-  3
-AecDbDispRepMvBlockRefPlan100
-350
-BE1E3
-  3
-AecDbDispRepMvBlockRefPlan50
-350
-BE20E
-  3
-AecDbDispRepMvBlockRefRcp
-350
-BE27A
-  3
-AecDbDispRepOpening
-350
-BE262
-  3
-AecDbDispRepOpeningModel
-350
-BE264
-  3
-AecDbDispRepOpeningPlan100
-350
-BE246
-  3
-AecDbDispRepOpeningPlan50
-350
-BE266
-  3
-AecDbDispRepOpeningPlanReflected
-350
-BE27B
-  3
-AecDbDispRepOpeningSillPlan
-350
-BE248
-  3
-AecDbDispRepPolygonModel
-350
-BE1BC
-  3
-AecDbDispRepPolygonTrueColour
-350
-BE1B8
-  3
-AecDbDispRepRailingModel
-350
-BE26A
-  3
-AecDbDispRepRailingPlan
-350
-BE281
-  3
-AecDbDispRepRailingPlan100
-350
-BE2B7
-  3
-AecDbDispRepRailingPlan50
-350
-BE28F
-  3
-AecDbDispRepRoofModel
-350
-BE293
-  3
-AecDbDispRepRoofPlan
-350
-BE202
-  3
-AecDbDispRepRoofPlan100
-350
-BE219
-  3
-AecDbDispRepRoofPlan50
-350
-BE20F
-  3
-AecDbDispRepRoofRcp
-350
-BE289
-  3
-AecDbDispRepRoofSlabModel
-350
-BE2AD
-  3
-AecDbDispRepRoofSlabPlan
-350
-BE1F4
-  3
-AecDbDispRepRoofSlabPlan100
-350
-BE1EA
-  3
-AecDbDispRepRoofSlabPlan50
-350
-BE1F2
-  3
-AecDbDispRepScheduleTable
-350
-BE2CD
-  3
-AecDbDispRepSlabModel
-350
-BE2A3
-  3
-AecDbDispRepSlabPlan
-350
-BE200
-  3
-AecDbDispRepSlabPlan100
-350
-BE1F6
-  3
-AecDbDispRepSlabPlan50
-350
-BE221
-  3
-AecDbDispRepSlice
-350
-BE1BA
-  3
-AecDbDispRepSpaceDecomposed
-350
-BE28B
-  3
-AecDbDispRepSpaceModel
-350
-BE283
-  3
-AecDbDispRepSpacePlan
-350
-BE1FA
-  3
-AecDbDispRepSpacePlan100
-350
-BE215
-  3
-AecDbDispRepSpacePlan50
-350
-BE1E6
-  3
-AecDbDispRepSpaceRcp
-350
-BE28D
-  3
-AecDbDispRepSpaceVolume
-350
-BE287
-  3
-AecDbDispRepStairModel
-350
-BE2AB
-  3
-AecDbDispRepStairPlan
-350
-BE2B5
-  3
-AecDbDispRepStairPlan100
-350
-BE2B9
-  3
-AecDbDispRepStairPlan50
-350
-BE2B1
-  3
-AecDbDispRepStairPlanOverlapping
-350
-BE297
-  3
-AecDbDispRepStairRcp
-350
-BE291
-  3
-AecDbDispRepWallGraph
-350
-BE299
-  3
-AecDbDispRepWallModel
-350
-BE295
-  3
-AecDbDispRepWallPlan
-350
-BE21F
-  3
-AecDbDispRepWallPlan100
-350
-BE1DD
-  3
-AecDbDispRepWallPlan50
-350
-BE227
-  3
-AecDbDispRepWallRcp
-350
-BE2A9
-  3
-AecDbDispRepWallSchem
-350
-BE29B
-  3
-AecDbDispRepWindowAssemblyModel
-350
-BE2B3
-  3
-AecDbDispRepWindowAssemblyPlan
-350
-BE223
-  3
-AecDbDispRepWindowAssemblyPlan100
-350
-BE20A
-  3
-AecDbDispRepWindowAssemblyPlan50
-350
-BE229
-  3
-AecDbDispRepWindowAssemblySillPlan
-350
-BE2BB
-  3
-AecDbDispRepWindowElev
-350
-BE27F
-  3
-AecDbDispRepWindowModel
-350
-BE2A7
-  3
-AecDbDispRepWindowNominal
-350
-BE29F
-  3
-AecDbDispRepWindowPlan
-350
-BE29D
-  3
-AecDbDispRepWindowPlan100
-350
-BE285
-  3
-AecDbDispRepWindowPlan50
-350
-BE2A5
-  3
-AecDbDispRepWindowRcp
-350
-BE2AF
-  3
-AecDbDispRepWindowSillPlan
-350
-BE2A1
-  3
-AecDbDispRepZone
-350
-BE1F0
-  3
-AecDbDispRepZonePlan100
-350
-BE204
-  3
-AecDbDispRepZonePlan50
-350
-BE22B
-  3
-AecsDbDispRepMemberElevationDesign
-350
-BE2C7
-  3
-AecsDbDispRepMemberElevationDetail
-350
-BE2C9
-  3
-AecsDbDispRepMemberLogical
-350
-BE2BF
-  3
-AecsDbDispRepMemberModelDesign
-350
-BE2C1
-  3
-AecsDbDispRepMemberModelDetail
-350
-BE2BD
-  3
-AecsDbDispRepMemberPlanDesign
-350
-BE2C3
-  3
-AecsDbDispRepMemberPlanDetail
-350
-BE2C5
-  3
-AecsDbDispRepMemberPlanSketch
-350
-BE2CB
   0
 DICTIONARY
   5
@@ -211606,570 +215630,6 @@ C
 AcDbDictionary
 281
      1
-  3
-*A1
-350
-BE1AD
-  3
-*A10
-350
-BE1C1
-  3
-*A100
-350
-BE27C
-  3
-*A101
-350
-BE27E
-  3
-*A102
-350
-BE280
-  3
-*A103
-350
-BE282
-  3
-*A104
-350
-BE284
-  3
-*A105
-350
-BE286
-  3
-*A106
-350
-BE288
-  3
-*A107
-350
-BE28A
-  3
-*A108
-350
-BE28C
-  3
-*A109
-350
-BE28E
-  3
-*A11
-350
-BE1C3
-  3
-*A110
-350
-BE290
-  3
-*A111
-350
-BE292
-  3
-*A112
-350
-BE294
-  3
-*A113
-350
-BE296
-  3
-*A114
-350
-BE298
-  3
-*A115
-350
-BE29A
-  3
-*A116
-350
-BE29C
-  3
-*A117
-350
-BE29E
-  3
-*A118
-350
-BE2A0
-  3
-*A119
-350
-BE2A2
-  3
-*A12
-350
-BE1C5
-  3
-*A120
-350
-BE2A4
-  3
-*A121
-350
-BE2A6
-  3
-*A122
-350
-BE2A8
-  3
-*A123
-350
-BE2AA
-  3
-*A124
-350
-BE2AC
-  3
-*A125
-350
-BE2AE
-  3
-*A126
-350
-BE2B0
-  3
-*A127
-350
-BE2B2
-  3
-*A128
-350
-BE2B4
-  3
-*A129
-350
-BE2B6
-  3
-*A13
-350
-BE1C8
-  3
-*A130
-350
-BE2B8
-  3
-*A131
-350
-BE2BA
-  3
-*A132
-350
-BE2BC
-  3
-*A133
-350
-BE2BE
-  3
-*A134
-350
-BE2C0
-  3
-*A135
-350
-BE2C2
-  3
-*A136
-350
-BE2C4
-  3
-*A137
-350
-BE2C6
-  3
-*A138
-350
-BE2C8
-  3
-*A139
-350
-BE2CA
-  3
-*A14
-350
-BE1CA
-  3
-*A140
-350
-BE2CC
-  3
-*A141
-350
-BE2CE
-  3
-*A15
-350
-BE1CD
-  3
-*A16
-350
-BE1D0
-  3
-*A17
-350
-BE1D2
-  3
-*A18
-350
-BE1D4
-  3
-*A19
-350
-BE1D6
-  3
-*A2
-350
-BE1AF
-  3
-*A20
-350
-BE1D8
-  3
-*A21
-350
-BE1DA
-  3
-*A22
-350
-BE1DC
-  3
-*A23
-350
-BE1DE
-  3
-*A24
-350
-BE1E0
-  3
-*A25
-350
-BE1E2
-  3
-*A26
-350
-BE1E5
-  3
-*A27
-350
-BE1E7
-  3
-*A28
-350
-BE1E9
-  3
-*A29
-350
-BE1EB
-  3
-*A3
-350
-BE1B2
-  3
-*A30
-350
-BE1ED
-  3
-*A31
-350
-BE1EF
-  3
-*A32
-350
-BE1F1
-  3
-*A33
-350
-BE1F3
-  3
-*A34
-350
-BE1F5
-  3
-*A35
-350
-BE1F7
-  3
-*A36
-350
-BE1F9
-  3
-*A37
-350
-BE1FB
-  3
-*A38
-350
-BE1FD
-  3
-*A39
-350
-BE1FF
-  3
-*A4
-350
-BE1B4
-  3
-*A40
-350
-BE201
-  3
-*A41
-350
-BE203
-  3
-*A42
-350
-BE205
-  3
-*A43
-350
-BE207
-  3
-*A44
-350
-BE209
-  3
-*A45
-350
-BE20B
-  3
-*A46
-350
-BE20D
-  3
-*A47
-350
-BE210
-  3
-*A48
-350
-BE212
-  3
-*A49
-350
-BE214
-  3
-*A5
-350
-BE1B6
-  3
-*A50
-350
-BE216
-  3
-*A51
-350
-BE218
-  3
-*A52
-350
-BE21A
-  3
-*A53
-350
-BE21C
-  3
-*A54
-350
-BE21E
-  3
-*A55
-350
-BE220
-  3
-*A56
-350
-BE222
-  3
-*A57
-350
-BE224
-  3
-*A58
-350
-BE226
-  3
-*A59
-350
-BE228
-  3
-*A6
-350
-BE1B9
-  3
-*A60
-350
-BE22A
-  3
-*A61
-350
-BE22C
-  3
-*A62
-350
-BE22E
-  3
-*A63
-350
-BE230
-  3
-*A64
-350
-BE232
-  3
-*A65
-350
-BE234
-  3
-*A66
-350
-BE236
-  3
-*A67
-350
-BE238
-  3
-*A68
-350
-BE23A
-  3
-*A69
-350
-BE23C
-  3
-*A7
-350
-BE1BB
-  3
-*A70
-350
-BE23E
-  3
-*A71
-350
-BE241
-  3
-*A72
-350
-BE243
-  3
-*A73
-350
-BE245
-  3
-*A74
-350
-BE247
-  3
-*A75
-350
-BE249
-  3
-*A76
-350
-BE24B
-  3
-*A77
-350
-BE24D
-  3
-*A78
-350
-BE24F
-  3
-*A79
-350
-BE251
-  3
-*A8
-350
-BE1BD
-  3
-*A80
-350
-BE253
-  3
-*A81
-350
-BE255
-  3
-*A82
-350
-BE257
-  3
-*A83
-350
-BE259
-  3
-*A84
-350
-BE25B
-  3
-*A85
-350
-BE25D
-  3
-*A86
-350
-BE25F
-  3
-*A87
-350
-BE261
-  3
-*A88
-350
-BE263
-  3
-*A89
-350
-BE265
-  3
-*A9
-350
-BE1BF
-  3
-*A90
-350
-BE267
-  3
-*A91
-350
-BE269
-  3
-*A92
-350
-BE26B
-  3
-*A93
-350
-BE26D
-  3
-*A94
-350
-BE26F
-  3
-*A95
-350
-BE271
-  3
-*A96
-350
-BE273
-  3
-*A97
-350
-BE275
-  3
-*A98
-350
-BE277
-  3
-*A99
-350
-BE279
   0
 DICTIONARY
   5
@@ -212202,10 +215662,6 @@ C
 AcDbDictionary
 281
      1
-  3
-AEC_VARS_DWG_SETUP
-350
-BE1B1
   0
 DICTIONARY
   5
@@ -212451,7 +215907,7 @@ AcDbProxyObject
 161
                 64
 310
-90541A000000000000
+90541A000000000061
 330
 621D5
 330
@@ -213190,6 +216646,22 @@ BDDC3
 AcDbSortentsTable
 330
 BDDC1
+  0
+SORTENTSTABLE
+  5
+BEB12
+102
+{ACAD_REACTORS
+330
+BEB11
+102
+}
+330
+BEB11
+100
+AcDbSortentsTable
+330
+BEB0C
   0
 XRECORD
   5
@@ -223213,7 +226685,7 @@ AcDbProxyObject
 161
                 32
 310
-000101010C
+0001010100
 330
 621C1
  94
@@ -223337,7 +226809,7 @@ AcDbProxyObject
 161
                 88
 310
-00010141401550052034007F
+000101414015500520340001
 330
 621C1
 330
@@ -224937,7 +228409,7 @@ AcDbDictionary
   3
 ACAD_ROUNDTRIP_2008_TABLESTYLE_CELLSTYLEMAP
 360
-BEA57
+BEC0E
   0
 ACAD_PROXY_OBJECT
   5
@@ -225137,7 +228609,7 @@ AcDbProxyObject
 162
                232
 311
-41D1001940198018401D401B001D001064C006500670065006E006400A00
+41D1001940198018401D401B001D001064C006500670065006E006400A48
 161
                509
 310
@@ -226857,7 +230329,7 @@ TEXT
   0
 CELLSTYLEMAP
   5
-BEA57
+BEC0E
 102
 {ACAD_REACTORS
 330
@@ -228329,7 +231801,7 @@ B001A401CC01D000800110017C01080130017C011541004E00530049005F0042004C005F00520065
 311
 069006F006E006C00690073007400640044948019401D801A401CC01A401BC01B801B001A401CC01D000800104017C01080130017C011541004E00530049005F0042004C005F005200650076006900730069006F006E006C00690073007400610044948019401D801A401CC01A401BC01B801B001A401CC01D000800104017
 311
-C01500130017C011541004E00530049005F0054004C005F005200650076006900730069006F006E006C006900730074006100A61
+C01500130017C011541004E00530049005F0054004C005F005200650076006900730069006F006E006C006900730074006100A00
 161
                504
 310
@@ -229137,11 +232609,11 @@ FF3366FF6666FF9966FFCC66FFFF9900009900339900669900999900CC9900FF9933009933339933
 310
 FF3366FF3399FF33CCFF33FFFF6600FF6633FF6666FF6699FF66CCFF66FFFF9900FF9933FF9966FF9999FF99CCFF99FFFFCC00FFCC33FFCC66FFCC99FFCCCCFFCCFFFFFF00FFFF33FFFF66FFFF99FFFFCCFFFFFF0000000D0D0D1A1A1A2828283535354343435050505D5D5D6B6B6B787878868686939393A1A1A1AEAEAEBB
 310
-BBBBC9C9C9D6D6D6E4E4E4F1F1F1FFFFFF0000000000000000000000000000000000000000000000000000000000002E4550F1000000C94944415478DAEDD1311100300C0331F3475B080190A563CEA787A04FB47BA5FD03947E05000000000000000000000000000000000000000000000000000000000000000000000000
+BBBBC9C9C9D6D6D6E4E4E4F1F1F1FFFFFF0000000000000000000000000000000000000000000000000000000000002E4550F1000000CD4944415478DAEDD0A11100300C0331EF3F6D46E8000D086C737A6C622577B5B6CC9AEEBE0B0000000000000000000000000000000000000000000000000000000000000000000000
 310
-0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004E039416
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000E0
 310
-ED062D77A31FA684CB220000000049454E44AE426082AE4260829E164035BE1D0D212716B59D02D8A8088E6EB71DC08E45F06D0BC893BAC0B4F6FCD402C6DF5104CF5904A3BF000C84CE3310CA6A40F73520360BE09BDD02D8A5062C7E9E4B5BC0841F9DA008AA01170E60C5C9D08A5DC04068CF81503EB208763F10CAD75A
+5D80B535670F791AAA9F8886CC130000000049454E44AE4260829E164035BE1D0D212716B59D02D8A8088E6EB71DC08E45F06D0BC893BAC0B4F6FCD402C6DF5104CF5904A3BF000C84CE3310CA6A40F73520360BE09BDD02D8A5062C7E9E4B5BC0841F9DA008AA01170E60C5C9D08A5DC04068CF81503EB208763F10CAD75A
 310
 11AA9601CAB77EF9A800765D10B98DEB22B7DE3B5E7F4164680151BF798E392D400DE86655387FC782483535D9631C6032D4CD64480D3019DA6E32D4FBBFC80000000000000000000000000000007C9F5F875A8E5A9B6FC96E0000000049454E44AE42608252DFB074582264AF01B54951771F30C55AE1F43678D1B0B49911
 310

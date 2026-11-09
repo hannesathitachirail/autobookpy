@@ -12,6 +12,7 @@ df = pd.read_excel(excelsheet, "E")
 
 def updateDict(data: pd.DataFrame):
     data = data.astype(str)  # Convert all dataframe values to strings
+    data["LOC"] = data["LOC"].astype(str).str.zfill(2)
     sheetsDict = []
     for row in data.to_dict(orient="records"):
         sheetsDict.append(
@@ -52,7 +53,7 @@ def updateDict(data: pd.DataFrame):
                 "IDFROW1": f"{row['IDFRow']}",
                 "IDFROW2": f"{row['IDFRow'][0]}{int(row['IDFRow'][1:]) + 1}",
                 "POINTNAME": f"{row['PointName']}",
-                "LOC": f"RSS LOC-{row['LOC']:.2d} CABINET",
+                "LOC": f"RSS LOC-{row['LOC']} CABINET",
                 "ROOM_TYPE": f"{row['RoomType']}",
             }
         )

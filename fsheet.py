@@ -11,6 +11,7 @@ df = pd.read_excel(excelsheet, "F")
 
 def updateDict(data: pd.DataFrame):
     data = data.astype(str)  # Convert all dataframe values to strings
+    data["LOC"] = data["LOC"].astype(str).str.zfill(2)
     sheetsDict = []
     for row in data.to_dict(orient="records"):
         sheetsDict.append(
@@ -67,6 +68,13 @@ def updateDict(data: pd.DataFrame):
                 "BORDER_DATE": row["Date"],
                 "BORDER_DOC_NAME": row["Doc"],
                 "BORDER_REV": row["Rev"],
+                "BORDER_NAME": row["AZgr"]
+                + "/"
+                + row["AZnr"]
+                + "AZ - "
+                + row["Track1"]
+                + " / "
+                + row["Track2"],
                 # Dictionary section mainly used for APPCASE_BLOCK
                 "CABLEAPPCASEQ": str(int(float(row["Q"]))) + "Q"
                 if not pd.isna(row["Q"])
