@@ -15,3 +15,7 @@ if __name__ == "__main__":
     fsheet.generatesheets("./templates/Ftemplate.dxf", excelsheet)
     end = time.perf_counter()
     print(f"Elapse time: {end - start:.0f}")
+    start = time.perf_counter()
+
+    end = time.perf_counter()
+    print(f"Batch time: {end - start:.0f}")

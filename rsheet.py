@@ -626,10 +626,12 @@ class OPCounterSheet:
             if pd.notna(df["CableAppCase"].iloc[0]):  # is Appcase
                 q = df["Q"].iloc[0]
                 qn = df["Qn"].iloc[-1]
-                for i in range(q - qn):
-
-                breakpoint()
-
+                for i in range(int(q - qn)):
+                    df.loc[df.index.max() + 1] = {
+                        "OP": df["OP"].iloc[0],
+                        "Sheet": "-",
+                        "Qn": qn + i + 1,
+                    }
         split_df = []
         for df in dfs:
             split_df.extend(
@@ -650,6 +652,7 @@ class OPCounterSheet:
     def build_blocks(self):
         # Iterate through list to isolate dataframe to a sheet
         blocks = []
+        prevpos = 0
         for sheetindex, dataframe in enumerate(self.df_split, start=1):
             blockdatalist = []
             self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
@@ -659,7 +662,7 @@ class OPCounterSheet:
                     "OP_BASE",
                     (0, 0),
                     {
-                        "TABLE_HEAD": f"OP 11 - {dataframe['OP'].iloc[0][0][-1]}",
+                        "TABLE_HEAD": f"OP 11 - {str(dataframe['OP'].iloc[0])[-1]}",
                     },
                 ]
             )
@@ -668,33 +671,61 @@ class OPCounterSheet:
                     "BORDER_INDEX_NAME",
                     (0, 0),
                     {
-                        "BORDER_INDEX_NAME": f"OP 11 - {dataframe['OP'].iloc[0][0][-1]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
+                        "BORDER_INDEX_NAME": f"OP 11 - {str(dataframe['OP'].iloc[0])[-1]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
                     },
                 ]
             )
+            cablestart_index = 0
             for i, (_, row) in enumerate(dataframe.iterrows()):
+                # If appcase and not last in df or last in appcase
+                # Return False if end of Cable or end of df
+                isend = (
+                    pd.notna(dataframe["Qn"].iloc[i + 1])
+                    if i + 1 < len(dataframe)
+                    else False
+                )
+                if not isend:
+                    size = i - cablestart_index
+                    blockdatalist.append(
+                        [
+                            "OPSIG_CABLENAME",
+                            (228, 224.5 - 10 * (i + cablestart_index)),
+                            {
+                                "CABLENAME_L1": "Something here",
+                                "CABLENAME_L2": "4Q",
+                                "CABLENAME_L3": "",
+                            },
+                        ]
+                    )
+                    cablestart_index = i + 1
                 blockdatalist.append(
                     [
-                        "OPPOINT_TABLE",
-                        (0, 0 - 20 * i),
+                        "OPAXLE_TABLE_START"
+                        if pd.notna(row["Qn"]) and isend
+                        else "OPAXLE_TABLE_END",
+                        (96, 236 - 20 * i),
                         {
-                            **{f"A1_{e}": row["OPRow"][0] for e in range(1, 5)},
-                            **{f"A1_{e}": row["OPRow"][0] for e in range(1, 5)},
-                            "A2_1": 1 + 4 * i,
-                            "A2_2": 2 + 4 * i,
-                            "A2_3": 3 + 4 * i,
-                            "A2_4": 4 + 4 * i,
-                            **{
-                                f"A3_{e}": f"{row['PointName']} - W{e}"
-                                for e in range(1, 5)
-                            },
-                            **{f"A6_{e}": row["Sheet"] for e in range(1, 5)},
-                            "CABLENAME_L1": row["CableBox"],
-                            "CABLENAME_L2": "4c",
-                            "CABLENAME_L3": row["PointName"],
+                            **{f"A1_{i}": str(row["OP"])[-1] for i in range(1, 5)},
+                            **{f"A2_{i}": f"{prevpos + i}" for i in range(1, 5)},
+                            "A3_1": f"{row['AZgr']:.0f}/{row['AZnr']:.0f}AZ SYS 1"
+                            if pd.notna(row["AZgr"])
+                            else "SPARE",
+                            "A3_2": f"{row['AZgr']:.0f}/{row['AZnr']:.0f}AZ SYS 2"
+                            if pd.notna(row["AZgr"])
+                            else "SPARE",
+                            "A3_3": f"{row['AZgr']:.0f}/{row['AZnr']:.0f}AZ Vcc"
+                            if pd.notna(row["AZgr"])
+                            else "SPARE",
+                            "A3_4": f"{row['AZgr']:.0f}/{row['AZnr']:.0f}AZ GND"
+                            if pd.notna(row["AZgr"])
+                            else "SPARE",
+                            "A5": f"Q{row['Qn']:.0f}" if pd.notna(row["Qn"]) else "Q1",
+                            **{f"A6_{i}": f"{row['Sheet']}" for i in range(1, 5)},
                         },
                     ]
                 )
+                prevpos += 4
+
             blocks.append(blockdatalist)
         return blocks
 
@@ -732,6 +763,6 @@ if __name__ == "__main__":
     r_section = RSection("./autobook.xlsx")
 
     Renderer = DrawingRenderer(
-        r_section.op_signal.blocks, "./templates/Roptemplate.dxf"
+        r_section.op_counter.blocks, "./templates/Roptemplate.dxf"
     )
     Renderer.render_sheets()
