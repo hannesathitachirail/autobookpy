@@ -18,21 +18,23 @@ pd.set_option("display.max_rows", None)
 # dataframes. This is used to create the Rsheet objects for every sheet(dataframes)
 #############################################################################
 class RSection:
-    def __init__(self, excel_file):
+    def __init__(self, excel_file, sheet):
         self.MAX_ROWS = 40
         self.dataframe = pd.read_excel(excel_file, sheet_name=["Border", "D", "E", "F"])
         self.idf_signal = IDFSignalsSheet(
-            self.dataframe["D"], self.bordervalues, 2
+            self.dataframe["D"], self.bordervalues, sheet
         )  # To be updated
         self.idf_points = IDFPointsSheet(
-            self.dataframe["E"], self.bordervalues, 2
+            self.dataframe["E"], self.bordervalues, self.idf_signal.next_sheet
         )  # To be updated
-        self.op_signal = OPSignalsSheet(self.dataframe["D"], self.bordervalues)
-        self.op_points = OPPointsSheet(
-            self.dataframe["E"], self.bordervalues, 2
+        self.op_signal = OPSignalsSheet(
+            self.dataframe["D"], self.bordervalues, self.idf_points.next_sheet
+        )
+        self.op_point = OPPointsSheet(
+            self.dataframe["E"], self.bordervalues, self.op_signal.next_sheet
         )  # To be updated
-        self.op_counter = OPCounterSheet(
-            self.dataframe["F"], self.bordervalues, 2
+        self.op_counter = OPCountersSheet(
+            self.dataframe["F"], self.bordervalues, self.op_point.next_sheet
         )  # To be updated
 
     @property
@@ -52,6 +54,7 @@ class RSection:
             "BORDER_STATION_CODE": row["Code"],
             "BORDER_DATE": row["Date"],
             "BORDER_DOC_NAME": row["Doc"],
+            "DocDate": row["DocDate"],
             "BORDER_REV": row["Rev"],
         }
         return columns
@@ -73,13 +76,14 @@ class MountingSheet:
 class IDFSignalsSheet:
     def __init__(self, dataframe, bordervalues, sheet):
         self.MAX = 14
-        self.MAX_PER_SHEET = 5
+        self.MAX_PER_SHEET = 5  # Max individual IDF's per sheet
         self.dataframe = dataframe
         self.bordervalues = bordervalues
         self.sheet = sheet
         self.df = self.build_df()
         self.df_split = self.split_df()
         self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet + len(self.df_split)
 
     def build_df(self):
         functiondict = {
@@ -238,6 +242,7 @@ class IDFPointsSheet:
         self.sheet = sheet
         self.df_split = self.split_df()
         self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet + len(self.df_split)
 
     def split_df(self):
         df_split = [
@@ -253,13 +258,14 @@ class IDFPointsSheet:
         blocks = []
         for sheetindex, dataframe in enumerate(self.df_split, start=1):
             blockdatalist = []
-            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues])
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
             blockdatalist.append(
                 [
                     "IDF_BASE",
                     (0, 0),
                     {
-                        "TABLE_HEAD": f"OP 11 - {dataframe['IDFRow'].iloc[0][0]}",
+                        "TABLE_HEAD": f"IDF 11 - {dataframe['IDFRow'].iloc[0][0]}",
                     },
                 ]
             )
@@ -268,7 +274,7 @@ class IDFPointsSheet:
                     "BORDER_INDEX_NAME",
                     (0, 0),
                     {
-                        "BORDER_INDEX_NAME": f"OP 11 - {dataframe['IDFRow'].iloc[0][0]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
+                        "BORDER_INDEX_NAME": f"IDF 11 - {dataframe['IDFRow'].iloc[0][0]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
                     },
                 ]
             )
@@ -303,13 +309,16 @@ class IDFPointsSheet:
 # Max 40 terminals per sheet
 ########################
 class OPSignalsSheet:
-    def __init__(self, dataframe, bordervalues):
+    def __init__(self, dataframe, bordervalues, sheet):
         self.MAX_ROWS = 40
         self.dataframe = dataframe
         self.bordervalues = bordervalues
+        self.sheet = sheet
         self.df = self.build_df()
         self.df_split = self.split_df()
         self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet + len(self.df_split)
+        self.op_numbers = self.df.groupby("SHEET").min()["POS"]
 
     # Split the self.opdf into serperate dataframes consisting of the data
     # for every R sheet
@@ -461,13 +470,14 @@ class OPSignalsSheet:
             rows = dataframe.to_dict("records")
             blockdatalist = []
             # Borderblock values
-            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues])
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
             blockdatalist.append(
                 [
                     "OP_BASE",
                     (0, 0),
                     {
-                        "TABLE_HEAD": "OP 11 - D",
+                        "TABLE_HEAD": f"OP 11 - {dataframe['ROW'].iloc[0]}",
                     },
                 ]
             )
@@ -526,8 +536,10 @@ class OPPointsSheet:
         self.dataframe = dataframe
         self.bordervalues = bordervalues
         self.sheet = sheet
+        self.op_numbers = {}
         self.df_split = self.split_df()
         self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet + len(self.df_split)
 
     def split_df(self):
         df_split = [
@@ -541,9 +553,11 @@ class OPPointsSheet:
     def build_blocks(self):
         # Iterate through list to isolate dataframe to a sheet
         blocks = []
+        prevpos = 0
         for sheetindex, dataframe in enumerate(self.df_split, start=1):
             blockdatalist = []
-            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues])
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
             blockdatalist.append(
                 [
                     "OP_BASE",
@@ -563,6 +577,8 @@ class OPPointsSheet:
                 ]
             )
             for i, (_, row) in enumerate(dataframe.iterrows()):
+                self.op_numbers[row["Sheet"]] = prevpos + 1
+                prevpos += 4
                 blockdatalist.append(
                     [
                         "OPPOINT_TABLE",
@@ -593,16 +609,18 @@ class OPPointsSheet:
 # Counters OP sheets
 # Max 40 terminals per sheet
 ########################
-class OPCounterSheet:
+class OPCountersSheet:
     def __init__(self, dataframe, bordervalues, sheet):
         self.MAX = 14
         self.MAX_PER_SHEET = 10
         self.dataframe = dataframe
         self.bordervalues = bordervalues
         self.sheet = sheet
+        self.op_numbers = {}
         self.df = self.build_df()
         self.df_split = self.split_df()
         self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet + len(self.df_split)
 
     def build_df(self):
         dfs = [
@@ -629,7 +647,9 @@ class OPCounterSheet:
                 for i in range(int(q - qn)):
                     df.loc[df.index.max() + 1] = {
                         "OP": df["OP"].iloc[0],
+                        "CableAppCase": df["CableAppCase"].iloc[0],
                         "Sheet": "-",
+                        "Q": q,
                         "Qn": qn + i + 1,
                     }
         split_df = []
@@ -656,7 +676,7 @@ class OPCounterSheet:
         for sheetindex, dataframe in enumerate(self.df_split, start=1):
             blockdatalist = []
             self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
-            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues])
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
             blockdatalist.append(
                 [
                     "OP_BASE",
@@ -685,19 +705,25 @@ class OPCounterSheet:
                     else False
                 )
                 if not isend:
-                    size = i - cablestart_index
+                    if pd.isna(row["CableAppCase"]):
+                        cable_l1 = row["CableBox"]
+                        cable_l2 = "1Q"
+                    else:
+                        cable_l1 = row["CableAppCase"]
+                        cable_l2 = f"{row['Q']:.0f}Q"
                     blockdatalist.append(
                         [
                             "OPSIG_CABLENAME",
                             (228, 224.5 - 10 * (i + cablestart_index)),
                             {
-                                "CABLENAME_L1": "Something here",
-                                "CABLENAME_L2": "4Q",
+                                "CABLENAME_L1": cable_l1,
+                                "CABLENAME_L2": cable_l2,
                                 "CABLENAME_L3": "",
                             },
                         ]
                     )
                     cablestart_index = i + 1
+                self.op_numbers[row["Sheet"]] = prevpos + 1
                 blockdatalist.append(
                     [
                         "OPAXLE_TABLE_START"
@@ -756,13 +782,26 @@ class DrawingRenderer:
             while insert := len(psp.query("INSERT")):
                 for insert in list(psp.query("INSERT")):
                     insert.explode()
-            drawing.saveas(f"R00{index}.dxf")
+            drawing.saveas(
+                f"out/{sheetblocks[0][-1]['DocDate']}-{sheetblocks[0][-1]['BORDER_DOC_NAME']}-{sheetblocks[0][-1]['BORDER_SHEET']}-REV-{sheetblocks[0][-1]['BORDER_REV']}.dxf"
+            )
 
 
 if __name__ == "__main__":
-    r_section = RSection("./autobook.xlsx")
-
-    Renderer = DrawingRenderer(
+    r_section = RSection("./autobook.xlsx", 2)
+    breakpoint()
+    DrawingRenderer(
+        r_section.idf_signal.blocks, "./templates/Roptemplate.dxf"
+    ).render_sheets()
+    DrawingRenderer(
+        r_section.idf_points.blocks, "./templates/Roptemplate.dxf"
+    ).render_sheets()
+    DrawingRenderer(
+        r_section.op_signal.blocks, "./templates/Roptemplate.dxf"
+    ).render_sheets()
+    DrawingRenderer(
+        r_section.op_point.blocks, "./templates/Roptemplate.dxf"
+    ).render_sheets()
+    DrawingRenderer(
         r_section.op_counter.blocks, "./templates/Roptemplate.dxf"
-    )
-    Renderer.render_sheets()
+    ).render_sheets()

@@ -4,14 +4,16 @@ import pandas as pd
 import copy
 import time
 import numpy as np
+import rsheet
 
 excelsheet = "./autobook.xlsx"
 output = "./out/"
 df = pd.read_excel(excelsheet, "E")
 
 
-def updateDict(data: pd.DataFrame):
+def updateDict(data: pd.DataFrame, op_numbers):
     data = data.astype(str)  # Convert all dataframe values to strings
+    data["OPnr"] = data["Sheet"].map(op_numbers)
     data["LOC"] = data["LOC"].astype(str).str.zfill(2)
     sheetsDict = []
     for row in data.to_dict(orient="records"):
@@ -72,6 +74,7 @@ def get_blocks(sheet, df: pd.DataFrame):
 def generatesheets(
     templatefile: str,
     excelsheet,
+    op_numbers,
 ):
     dataframes = pd.read_excel(
         excelsheet,
@@ -82,7 +85,7 @@ def generatesheets(
         dataframes["Border"],
         how="cross",
     )
-    sheetsDict = updateDict(dataframe)
+    sheetsDict = updateDict(dataframe, op_numbers)
     template = ez.readfile(templatefile)
 
     for sheet in sheetsDict:
@@ -115,6 +118,9 @@ def generatesheets(
 
 if __name__ == "__main__":
     start = time.perf_counter()
-    generatesheets("./templates/Etemplate.dxf", "./autobook.xlsx")
+    r_section = rsheet.RSection("./autobook.xlsx", 2)
+    generatesheets(
+        "./templates/Etemplate.dxf", "./autobook.xlsx", r_section.op_point.op_numbers
+    )
     end = time.perf_counter()
     print(f"Elapse time: {end - start:.0f}")

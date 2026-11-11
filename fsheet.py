@@ -3,14 +3,16 @@ from ezdxf.addons import odafc
 import pandas as pd
 import copy
 import time
+import rsheet
 
 excelsheet = "./autobook.xlsx"
 output = "./out/"
 df = pd.read_excel(excelsheet, "F")
 
 
-def updateDict(data: pd.DataFrame):
+def updateDict(data: pd.DataFrame, op_numbers):
     data = data.astype(str)  # Convert all dataframe values to strings
+    data["OPnr"] = data["Sheet"].map(op_numbers)
     data["LOC"] = data["LOC"].astype(str).str.zfill(2)
     sheetsDict = []
     for row in data.to_dict(orient="records"):
@@ -149,10 +151,7 @@ def get_blocks(sheet, df: pd.DataFrame):
     return required_blocks
 
 
-def generatesheets(
-    templatefile: str,
-    excelsheet,
-):
+def generatesheets(templatefile: str, excelsheet, op_numbers):
     dataframes = pd.read_excel(
         excelsheet,
         sheet_name=["F", "Border"],
@@ -162,7 +161,7 @@ def generatesheets(
         dataframes["Border"],
         how="cross",
     )
-    sheetsDict = updateDict(dataframe)
+    sheetsDict = updateDict(dataframe, op_numbers)
     template = ez.readfile(templatefile)
     for sheet in sheetsDict:
         newdrawing = copy.deepcopy(template)
@@ -193,6 +192,9 @@ def generatesheets(
 
 if __name__ == "__main__":
     start = time.perf_counter()
-    generatesheets("./templates/Ftemplate.dxf", "./autobook.xlsx")
+    r_section = rsheet.RSection("./autobook.xlsx", 2)
+    generatesheets(
+        "./templates/Ftemplate.dxf", "./autobook.xlsx", r_section.op_counter.op_numbers
+    )
     end = time.perf_counter()
     print(f"Elapse time: {end - start:.0f}")
