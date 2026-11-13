@@ -83,6 +83,31 @@ def health() -> dict[str, str]:
 
 
 ###############################################################################
+# Provide autobook.xlsx & dxfdwg.lsp
+###############################################################################
+
+
+@app.get("/download-template")
+async def download_template():
+    file_path = TEMPLATE_DIR / "autobook.xlsx"
+    return FileResponse(
+        path=file_path,
+        filename="autobook.xlsx",
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
+
+
+@app.get("/download-convert")
+async def download_convert():
+    file_path = TEMPLATE_DIR / "dxfdwg.lsp"
+    return FileResponse(
+        path=file_path,
+        filename="dxfdwg.lsp",
+        media_type="text/plain",
+    )
+
+
+###############################################################################
 # Autobook generation route
 ###############################################################################
 

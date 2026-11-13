@@ -1,14 +1,17 @@
 services:
+  ###############################################################################
+  # main autobook container
+  ###############################################################################
   autobook:
     build:
       context: ./src
       args:
         HTTP_PROXY: ${HTTP_PROXY:-}
         HTTPS_PROXY: ${HTTPS_PROXY:-}
-        NO_PROXY: ${NO_PROXY:-localhost,127.0.0.1}
+        NO_PROXY: ${NO_PROXY:-localhost,127.0.0.1,autobook}
     environment:
       HTTP_PROXY: ${HTTP_PROXY:-}
       HTTPS_PROXY: ${HTTPS_PROXY:-}
-      NO_PROXY: ${NO_PROXY:-localhost,127.0.0.1}
+      NO_PROXY: ${NO_PROXY:-localhost,127.0.0.1,autobook}
     ports:
       - "8000:8000"

@@ -46,6 +46,7 @@
     background-color: #334155 !important;
     color: #64748b !important;
   }
+
 </style>
 
 <!doctype html>
@@ -87,6 +88,31 @@
         #status {
             margin-top: 20px;
         }
+        .download-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-top: 8px;
+            margin-bottom: 16px;
+                  
+            /* Automatically inherits your page's text colour and font */
+            color: inherit;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            
+            /* Subtle translucent background & border that works on both light and dark themes */
+            background-color: rgba(128, 128, 128, 0.08);
+            border: 1px solid rgba(128, 128, 128, 0.35);
+            border-radius: 6px;
+            
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .download-btn:hover {
+            background-color: rgba(128, 128, 128, 0.16);
+            border-color: currentColor;
+        }
     </style>
 </head>
 
@@ -94,8 +120,14 @@
     <h1>Autobook CAD Generator</h1>
 
     <p>
-        Upload an autobook Excel workbook to generate
-        the complete DXF drawing package.
+      Upload and Excel workbook to generate a zipped DXF drawing package.
+      <br>
+      <a 
+        href="/download-template" download="autobook.xlsx" class="download-btn">Download autobook.xlsx 
+      </a>
+      <a 
+        href="/download-convert" download="dxfdwg.lsp" class="download-btn">Download dxf to dwg converter
+      </a>
     </p>
 
     <div id="drop-zone">

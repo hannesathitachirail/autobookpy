@@ -688,7 +688,8 @@ class OPCountersSheet:
                     "BORDER_INDEX_NAME",
                     (0, 0),
                     {
-                        "BORDER_INDEX_NAME": f"OP 11 - {str(dataframe['OP'].iloc[0])[-1]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
+                        "BORDER_INDEX_NAME": f"OP 11 - {str(dataframe['OP'].iloc[0])[-1]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})",
+                        "BORDER_INDEX_NAME": f"OPn 11 - {str(dataframe['OP'].iloc[0])[-1]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})",
                     },
                 ]
             )

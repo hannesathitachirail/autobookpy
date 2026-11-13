@@ -1,6 +1,7 @@
 # autobookpy
 
 ## Usage Guide
+ - See [docker installation guide](https://docs.docker.com/get-started/get-docker/)
 
 ```
 # clone git repo 
