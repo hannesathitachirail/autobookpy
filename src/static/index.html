@@ -1,0 +1,226 @@
+<style>
+  html, body {
+    background-color: #0f172a !important;
+    color: #f8fafc !important;
+  }
+
+  /* Turns white cards/containers dark */
+  div, main, section, form, .card, .container {
+    background-color: #1e293b !important;
+    color: #f8fafc !important;
+    border-color: #334155 !important;
+  }
+
+  /* Keeps nested elements transparent so they don't clash */
+  div > div, form > div {
+    background-color: transparent !important;
+  }
+
+  h1, h2, h3, label, strong {
+    color: #f8fafc !important;
+  }
+
+  p, span, small {
+    color: #94a3b8 !important;
+  }
+
+  /* File dropzone area */
+  [class*="drop"], [id*="drop"], [class*="upload"], [id*="upload"] {
+    background-color: #0f172a !important;
+    border-color: #475569 !important;
+    color: #cbd5e1 !important;
+  }
+
+  /* Generate button */
+  button, input[type="submit"] {
+    background-color: #3b82f6 !important;
+    color: #ffffff !important;
+    border: none !important;
+  }
+
+  button:hover:not(:disabled), input[type="submit"]:hover:not(:disabled) {
+    background-color: #2563eb !important;
+  }
+
+  button:disabled, input[type="submit"]:disabled {
+    background-color: #334155 !important;
+    color: #64748b !important;
+  }
+</style>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+    <title>Autobook CAD Generator</title>
+
+    <style>
+        body {
+            max-width: 760px;
+            margin: 60px auto;
+            padding: 0 20px;
+            font-family: system-ui, sans-serif;
+        }
+
+        #drop-zone {
+            padding: 70px 30px;
+            border: 2px dashed #777;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #drop-zone.dragging {
+            border-color: #0067b8;
+            background: #eef6fc;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 22px;
+        }
+
+        #status {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Autobook CAD Generator</h1>
+
+    <p>
+        Upload an autobook Excel workbook to generate
+        the complete DXF drawing package.
+    </p>
+
+    <div id="drop-zone">
+        Drop autobook.xlsx here, or click to select it.
+    </div>
+
+    <input
+        id="file-input"
+        type="file"
+        accept=".xlsx"
+        hidden
+    >
+
+    <button id="generate-button" disabled>
+        Generate drawings
+    </button>
+
+    <p id="status"></p>
+
+    <script>
+        const dropZone =
+            document.getElementById("drop-zone");
+
+        const fileInput =
+            document.getElementById("file-input");
+
+        const generateButton =
+            document.getElementById("generate-button");
+
+        const status =
+            document.getElementById("status");
+
+        let selectedFile = null;
+
+        dropZone.addEventListener("click", () => {
+            fileInput.click();
+        });
+
+        dropZone.addEventListener("dragover", event => {
+            event.preventDefault();
+            dropZone.classList.add("dragging");
+        });
+
+        dropZone.addEventListener("dragleave", () => {
+            dropZone.classList.remove("dragging");
+        });
+
+        dropZone.addEventListener("drop", event => {
+            event.preventDefault();
+            dropZone.classList.remove("dragging");
+
+            selectFile(event.dataTransfer.files[0]);
+        });
+
+        fileInput.addEventListener("change", () => {
+            selectFile(fileInput.files[0]);
+        });
+
+        function selectFile(file) {
+            if (!file) {
+                return;
+            }
+
+            if (!file.name.toLowerCase().endsWith(".xlsx")) {
+                status.textContent =
+                    "Please select an .xlsx workbook.";
+
+                return;
+            }
+
+            selectedFile = file;
+            dropZone.textContent = file.name;
+            generateButton.disabled = false;
+            status.textContent = "";
+        }
+
+        generateButton.addEventListener("click", async () => {
+            if (!selectedFile) {
+                return;
+            }
+
+            generateButton.disabled = true;
+            status.textContent = "Generating CAD drawings...";
+
+            const formData = new FormData();
+            formData.append("workbook", selectedFile);
+
+            try {
+                const response = await fetch(
+                    "/generate",
+                    {
+                        method: "POST",
+                        body: formData,
+                    }
+                );
+
+                if (!response.ok) {
+                    const error = await response.json();
+
+                    throw new Error(
+                        error.detail || "Generation failed."
+                    );
+                }
+
+                const zipFile = await response.blob();
+                const downloadUrl =
+                    URL.createObjectURL(zipFile);
+
+                const link =
+                    document.createElement("a");
+
+                link.href = downloadUrl;
+                link.download = "autobook-drawings.zip";
+                link.click();
+
+                URL.revokeObjectURL(downloadUrl);
+
+                status.textContent =
+                    "Drawings generated successfully.";
+            } catch (error) {
+                status.textContent = error.message;
+            } finally {
+                generateButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
