@@ -492,4 +492,316 @@ class OPSignalsSheet:
                 ]
             )
             cablestart_index = 0
-            for i, row in enumerate(
+            for i, row in enumerate(rows):
+                block = []
+                row2 = rows[i + 1] if i + 1 < len(rows) else {"CABLE NAME": ""}
+                blockdict = {
+                    "A1": row["ROW"],
+                    "A2": row["POS"],
+                    "A3": row["FUNCTION"],
+                    "A4": row["TYPE"],
+                    "A5": row["CORE"],
+                    "A6": row["SHEET"],
+                    "CABLENAME_L1": row["CABLE NAME"],
+                    "CABLENAME_L2": row["CABLE PAIR"],
+                    "CABLENAME_L3": row["CABLE DEST"],
+                }
+
+                if row["CABLE NAME"] == row2["CABLE NAME"]:
+                    block.append(
+                        ["OPSIG_TABLE_6_1_START", (96, 236 - 5 * i), blockdict]
+                    )
+                else:
+                    block.append(["OPSIG_TABLE_6_1_END", (96, 236 - 5 * i), blockdict])
+                    block.append(
+                        [
+                            "OPSIG_CABLENAME",
+                            (228, 236 - 5 * (cablestart_index + i + 2) / 2),
+                            blockdict,
+                        ]
+                    )
+                    cablestart_index = i
+                blockdatalist.extend(block)
+            blocks.append(blockdatalist)
+        return blocks
+
+
+#########################
+# Points OP sheets
+# Max 40 terminals per sheet
+########################
+class OPPointsSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.MAX = 14
+        self.MAX_PER_SHEET = 10
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.op_numbers = {}
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet + len(self.df_split)
+
+    def split_df(self):
+        df_split = [
+            group.sort_values("CableBox", key=lambda x: x.str.split(".").str[-1])
+            for _, group in self.dataframe.groupby(
+                self.dataframe.index // self.MAX_PER_SHEET
+            )
+        ]
+        return df_split
+
+    def build_blocks(self):
+        # Iterate through list to isolate dataframe to a sheet
+        blocks = []
+        prevpos = 0
+        for sheetindex, dataframe in enumerate(self.df_split, start=1):
+            blockdatalist = []
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            blockdatalist.append(
+                [
+                    "OP_BASE",
+                    (0, 0),
+                    {
+                        "TABLE_HEAD": f"OP 11 - {dataframe['OPRow'].iloc[0][0]}",
+                    },
+                ]
+            )
+            blockdatalist.append(
+                [
+                    "BORDER_INDEX_NAME",
+                    (0, 0),
+                    {
+                        "BORDER_INDEX_NAME": f"OP 11 - {dataframe['OPRow'].iloc[0][0]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
+                    },
+                ]
+            )
+            for i, (_, row) in enumerate(dataframe.iterrows()):
+                self.op_numbers[row["Sheet"]] = prevpos + 1
+                blockdatalist.append(
+                    [
+                        "OPPOINT_TABLE",
+                        (0, 0 - 20 * i),
+                        {
+                            **{f"A1_{e}": row["OPRow"][0] for e in range(1, 5)},
+                            **{f"A2_{i}": f"{prevpos + i}" for i in range(1, 5)},
+                            **{
+                                f"A3_{e}": f"{row['PointName']} - W{e}"
+                                for e in range(1, 5)
+                            },
+                            **{f"A6_{e}": row["Sheet"] for e in range(1, 5)},
+                            "CABLENAME_L1": row["CableBox"],
+                            "CABLENAME_L2": "4c",
+                            "CABLENAME_L3": row["PointName"],
+                        },
+                    ]
+                )
+                prevpos += 4
+            blocks.append(blockdatalist)
+        return blocks
+
+
+#########################
+# Counters OP sheets
+# Max 40 terminals per sheet
+########################
+class OPCountersSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.MAX = 14
+        self.MAX_PER_SHEET = 10
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.op_numbers = {}
+        self.df = self.build_df()
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet + len(self.df_split)
+
+    def build_df(self):
+        dfs = [
+            group.sort_values("Qn")
+            if not pd.isna(group["CableAppCase"].iloc[0])
+            else group.sort_values(
+                "CableBox", key=lambda x: x.str.split(".").str[-1].astype(int)
+            )
+            for _, group in self.dataframe.groupby("CableAppCase", dropna=False)
+        ]
+        df = pd.concat(dfs, ignore_index=True)
+        return df
+
+    def split_df(self):
+        dfs = [
+            group
+            for _, group in self.df.groupby(["CableAppCase"], sort=False, dropna=False)
+        ]
+        # Add the spare rows for appcases
+        for df in dfs:
+            if pd.notna(df["CableAppCase"].iloc[0]):  # is Appcase
+                q = df["Q"].iloc[0]
+                qn = df["Qn"].iloc[-1]
+                for i in range(int(q - qn)):
+                    df.loc[df.index.max() + 1] = {
+                        "OP": df["OP"].iloc[0],
+                        "CableAppCase": df["CableAppCase"].iloc[0],
+                        "Sheet": "-",
+                        "Q": q,
+                        "Qn": qn + i + 1,
+                    }
+        split_df = []
+        for df in dfs:
+            split_df.extend(
+                group
+                for _, group in df.groupby(np.arange(len(df)) // self.MAX_PER_SHEET)
+            )
+        index = 0
+        while index + 1 < len(split_df):
+            df_current = split_df[index]
+            df_next = split_df[index + 1]
+            if len(df_current) + len(df_next) <= self.MAX_PER_SHEET:
+                split_df[index] = pd.concat([df_current, df_next])
+                split_df.pop(index + 1)
+            else:
+                index += 1
+        return split_df
+
+    def build_blocks(self):
+        # Iterate through list to isolate dataframe to a sheet
+        blocks = []
+        prevpos = 0
+        for sheetindex, dataframe in enumerate(self.df_split, start=1):
+            blockdatalist = []
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            blockdatalist.append(
+                [
+                    "OP_BASE",
+                    (0, 0),
+                    {
+                        "TABLE_HEAD": f"OP 11 - {str(dataframe['OP'].iloc[0])[-1]}",
+                    },
+                ]
+            )
+            blockdatalist.append(
+                [
+                    "BORDER_INDEX_NAME",
+                    (0, 0),
+                    {
+                        "BORDER_INDEX_NAME": f"OP 11 - {str(dataframe['OP'].iloc[0])[-1]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
+                    },
+                ]
+            )
+            cablestart_index = 0
+            for i, (_, row) in enumerate(dataframe.iterrows()):
+                # If appcase and not last in df or last in appcase
+                # Return False if end of Cable or end of df
+                isend = (
+                    pd.notna(dataframe["Qn"].iloc[i + 1])
+                    if i + 1 < len(dataframe)
+                    else False
+                )
+                if not isend:
+                    if pd.isna(row["CableAppCase"]):
+                        cable_l1 = row["CableBox"]
+                        cable_l2 = "1Q"
+                    else:
+                        cable_l1 = row["CableAppCase"]
+                        cable_l2 = f"{row['Q']:.0f}Q"
+                    blockdatalist.append(
+                        [
+                            "OPSIG_CABLENAME",
+                            (228, 224.5 - 10 * (i + cablestart_index)),
+                            {
+                                "CABLENAME_L1": cable_l1,
+                                "CABLENAME_L2": cable_l2,
+                                "CABLENAME_L3": "",
+                            },
+                        ]
+                    )
+                    cablestart_index = i + 1
+                self.op_numbers[row["Sheet"]] = prevpos + 1
+                blockdatalist.append(
+                    [
+                        "OPAXLE_TABLE_START"
+                        if pd.notna(row["Qn"]) and isend
+                        else "OPAXLE_TABLE_END",
+                        (96, 236 - 20 * i),
+                        {
+                            **{f"A1_{i}": str(row["OP"])[-1] for i in range(1, 5)},
+                            **{f"A2_{i}": f"{prevpos + i}" for i in range(1, 5)},
+                            "A3_1": f"{row['AZgr']:.0f}/{row['AZnr']:.0f}AZ SYS 1"
+                            if pd.notna(row["AZgr"])
+                            else "SPARE",
+                            "A3_2": f"{row['AZgr']:.0f}/{row['AZnr']:.0f}AZ SYS 2"
+                            if pd.notna(row["AZgr"])
+                            else "SPARE",
+                            "A3_3": f"{row['AZgr']:.0f}/{row['AZnr']:.0f}AZ Vcc"
+                            if pd.notna(row["AZgr"])
+                            else "SPARE",
+                            "A3_4": f"{row['AZgr']:.0f}/{row['AZnr']:.0f}AZ GND"
+                            if pd.notna(row["AZgr"])
+                            else "SPARE",
+                            "A5": f"Q{row['Qn']:.0f}" if pd.notna(row["Qn"]) else "Q1",
+                            **{f"A6_{i}": f"{row['Sheet']}" for i in range(1, 5)},
+                        },
+                    ]
+                )
+                prevpos += 4
+
+            blocks.append(blockdatalist)
+        return blocks
+
+
+#############################################################################
+# Used to create the drawing files from the Rsheets(
+#############################################################################
+class DrawingRenderer:
+    def __init__(self, blocks, template, output_dir: Path):
+        self.block_list = blocks
+        self.template = ez.readfile(template)
+        self.output_dir = output_dir
+
+    def render_sheets(self):
+        self.output_dir = Path(self.output_dir)
+        self.output_dir.mkdir(parents=True, exist_ok=True)
+
+        for index, sheetblocks in enumerate(self.block_list):
+            drawing = copy.deepcopy(self.template)
+            psp = drawing.paperspace()
+            msp = drawing.modelspace()
+            for block in sheetblocks:
+                # block contains (block_str: str, placement:(int,int), attribute_defs: dict)
+                if "PSP" in block[0]:
+                    psp.add_auto_blockref(*block)
+                else:
+                    msp.add_auto_blockref(*block)
+            while insert := len(msp.query("INSERT")):
+                for insert in list(msp.query("INSERT")):
+                    insert.explode()
+
+            while insert := len(psp.query("INSERT")):
+                for insert in list(psp.query("INSERT")):
+                    insert.explode()
+            output_file = (
+                self.output_dir
+                / f"{sheetblocks[0][-1]['DocDate']}-{sheetblocks[0][-1]['BORDER_DOC_NAME']}-{sheetblocks[0][-1]['BORDER_SHEET']}-REV-{sheetblocks[0][-1]['BORDER_REV']}.dxf"
+            )
+            drawing.saveas(output_file)
+
+
+if __name__ == "__main__":
+    r_section = RSection(Path("../autobook.xlsx"), 2)
+
+    r_subsections = [
+        r_section.idf_signal,
+        r_section.idf_points,
+        r_section.op_signal,
+        r_section.op_point,
+        r_section.op_counter,
+    ]
+    for i in r_subsections:
+        renderer = DrawingRenderer(
+            i.blocks, str("../templates/Roptemplate.dxf"), Path("../out/")
+        )
+        renderer.render_sheets()
