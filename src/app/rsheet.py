@@ -1,10 +1,12 @@
 from itertools import groupby
+from re import split
 
 import ezdxf as ez
 import pandas as pd
 import copy
 import numpy as np
 from pathlib import Path
+import time
 
 
 pd.set_option("display.max_rows", None)
@@ -22,6 +24,7 @@ class RSection:
     def __init__(self, excel_file, sheet):
         self.MAX_ROWS = 40
         self.dataframe = pd.read_excel(excel_file, sheet_name=["Border", "D", "E", "F"])
+        ################ RACK sections #############
         self.idf_signal = IDFSignalsSheet(
             self.dataframe["D"], self.bordervalues, sheet
         )  # To be updated
@@ -37,6 +40,29 @@ class RSection:
         self.op_counter = OPCountersSheet(
             self.dataframe["F"], self.bordervalues, self.op_point.next_sheet
         )  # To be updated
+        ####################### CABINET Section #####################
+        self.power = PowerRackSheet(
+            self.dataframe["D"], self.bordervalues, self.op_counter.next_sheet + 1
+        )
+        self.io = IORackSheet(
+            self.dataframe["D"], self.bordervalues, self.power.next_sheet + 1
+        )
+        self.points = PointsRackSheet(
+            self.dataframe["E"], self.bordervalues, self.io.next_sheet + 1
+        )
+        self.signals = SignalsRackSheet(
+            self.dataframe["D"], self.bordervalues, self.points.next_sheet + 1
+        )
+        self.strip = StripRackSheet(
+            self.dataframe, self.bordervalues, self.signals.next_sheet + 1
+        )
+        ##################### Axle Cabinet Section ####################
+        self.axlecabinet = AxleCabinetSheet(
+            self.dataframe["F"], self.bordervalues, self.strip.next_sheet + 1
+        )
+        self.fadc = AxleFADCSheet(
+            self.dataframe["F"], self.bordervalues, self.axlecabinet.next_sheet + 1
+        )
 
     @property
     def bordervalues(self):
@@ -754,20 +780,767 @@ class OPCountersSheet:
         return blocks
 
 
+###############################################################################
+# Cabinet Layout
+###############################################################################
+class CabinetSheet:
+    pass
+
+
+###############################################################################
+# A - Power Rack layout
+###############################################################################
+class PowerRackSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet + 1
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet
+
+    def build_blocks(self):
+        blocks = []
+        loc = self.dataframe["LOC"].iloc[0]
+        blockdatalist = []
+        self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
+        blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+        blockdatalist.append(
+            ["POWER_RACK_SHEET_BASE", (0, 0), {"LOC": f"RSS LOC-{loc}"}]
+        )
+        blockdatalist.append(
+            [
+                "BORDER_INDEX_NAME",
+                (0, 0),
+                {
+                    "BORDER_INDEX_NAME": "A - POWER RACK LAYOUT",
+                },
+            ]
+        )
+        blocks.append(blockdatalist)
+        return blocks
+
+
+###############################################################################
+# C - IO Rack layout
+###############################################################################
+class IORackSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet
+
+    def build_blocks(self):
+        blocks = []
+        loc = self.dataframe["LOC"].iloc[0]
+        blockdatalist = []
+        self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
+        blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+        blockdatalist.append(["IO_RACK_SHEET_BASE", (0, 0), {"LOC": f"RSS LOC-{loc}"}])
+        blockdatalist.append(
+            [
+                "BORDER_INDEX_NAME",
+                (0, 0),
+                {
+                    "BORDER_INDEX_NAME": "C - IO RACK LAYOUT",
+                },
+            ]
+        )
+        blocks.append(blockdatalist)
+        return blocks
+
+
+###############################################################################
+# D - Points Rack Layout
+###############################################################################
+class PointsRackSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet
+
+    def build_blocks(self):
+        blocks = []
+        loc = self.dataframe["LOC"].iloc[0]
+        blockdatalist = []
+        self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
+        blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+        blockdatalist.append(
+            [
+                "POINTS_RACK_SHEET_BASE",
+                (0, 0),
+                {
+                    "LOC": f"RSS LOC-{loc}",
+                    **{f"IO_RACK_SHEET_PCM0{i + 1}": "SPARE" for i in range(9)},
+                    **{
+                        f"IO_RACK_SHEET_PCM0{i + 1}": f"PCM 0{i + 1}"
+                        for i in range(len(self.dataframe))
+                    },
+                    **{
+                        f"IO_RACK_SHEET_PCM0{i + 1}_POINT": f"{self.dataframe['PointName'].iloc[i]}"
+                        for i in range(len(self.dataframe))
+                    },
+                },
+            ]
+        )
+        blockdatalist.append(
+            [
+                "BORDER_INDEX_NAME",
+                (0, 0),
+                {
+                    "BORDER_INDEX_NAME": "D - POINTS RACK LAYOUT",
+                },
+            ]
+        )
+        blocks.append(blockdatalist)
+        return blocks
+
+
+###############################################################################
+# E - Signals Rack Layout
+###############################################################################
+class SignalsRackSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet
+
+    def split_df(self):
+        dfs = [
+            group
+            for _, group in self.dataframe.groupby(["SCM"], sort=False, dropna=False)
+        ]
+        return dfs
+
+    def build_blocks(self):
+        # Iterate through list to isolate dataframe to a sheet
+        blocks = []
+        loc = self.dataframe["LOC"].iloc[0]
+        blockdatalist = []
+        self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
+        blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+        blockdatalist.append(
+            [
+                "SIGNALS_RACK_SHEET_BASE",
+                (0, 0),
+                {
+                    "LOC": f"RSS LOC-{loc}",
+                },
+            ]
+        )
+        blockdatalist.append(
+            [
+                "BORDER_INDEX_NAME",
+                (0, 0),
+                {
+                    "BORDER_INDEX_NAME": "E - SIGNSLS RACK LAYOUT",
+                },
+            ]
+        )
+
+        scm_count = 1
+        for scm_columndf in self.df_split:
+            scm_columndf = scm_columndf.fillna("")
+            if len(scm_columndf) < 2:
+                signal1 = scm_columndf["SignalName"].iloc[0][:-1]
+                signal2 = scm_columndf["SignalName"].iloc[0][:-1]
+                aspect1 = scm_columndf["Aspect"].iloc[0]
+                aspect2 = str(scm_columndf["Dir"].iloc[0]).lower()
+            else:
+                signal1 = scm_columndf["SignalName"].iloc[0][:-1]
+                signal2 = scm_columndf["SignalName"].iloc[1][:-1]
+                aspect1 = scm_columndf["Aspect"].iloc[0]
+                aspect2 = scm_columndf["Aspect"].iloc[1]
+
+            def get_scm_list(signal, aspect):
+                scmdict = {
+                    "GHR": [
+                        f"{signal} RG",
+                        f"{signal} HG",
+                        f"{signal} DG",
+                        "-",
+                        "-",
+                    ],
+                    "HR": [
+                        f"{signal} RG",
+                        f"{signal} HG",
+                        "-",
+                        "-",
+                        "-",
+                    ],
+                    "R": [
+                        f"{signal} RG",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                    ],
+                    "lsr": [
+                        "-",
+                        f"{signal} (L)UG",
+                        f"{signal} (↑)UG",
+                        "-",
+                        f"{signal} (R)UG",
+                    ],
+                    "ls": [
+                        "-",
+                        f"{signal} (L)UG",
+                        f"{signal} (↑)UG",
+                        "-",
+                        "-",
+                    ],
+                    "sr": [
+                        "-",
+                        f"{signal} (↑)UG",
+                        f"{signal} (R)UG",
+                        "-",
+                        "-",
+                    ],
+                    "lr": [
+                        "-",
+                        f"{signal} (L)UG",
+                        f"{signal} (R)UG",
+                        "-",
+                        "-",
+                    ],
+                    "": [
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                    ],
+                }
+                return scmdict[aspect]
+
+            scmlist = get_scm_list(signal1, aspect1) + get_scm_list(signal2, aspect2)
+
+            blockdatalist.append(
+                [
+                    "SIGNALS_RACK_SHEET_TABLE",
+                    (0 + 28 * (scm_count - 1), 0),
+                    {
+                        "SIGNALS_RACK_SHEET_SCM01_0": f"SCM {scm_count:02d}",
+                        **{
+                            f"SIGNALS_RACK_SHEET_SCM01_{i}": e
+                            for i, e in enumerate(scmlist, start=1)
+                        },
+                    },
+                ]
+            )
+            scm_count += 1
+        while scm_count <= 12:
+            blockdatalist.append(
+                [
+                    "SIGNALS_RACK_SHEET_TABLE_SPARE",
+                    (0 + 28 * (scm_count - 1), 0),
+                    {"SIGNALS_RACK_SHEET_SCM01_0": f"SCM {scm_count:02d}"},
+                ]
+            )
+            scm_count += 1
+        blocks.append(blockdatalist)
+        return blocks
+
+
+###############################################################################
+# ROW A, B, C, D, E, F, G, H, J, K, L, M, N & P Strip Analysis
+###############################################################################
+class StripRackSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.MAX_ROWS = 47
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.blank_dfs = self._blank_dfs()
+        self.dfs = self.build_dfs()
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet
+
+    # Use the build_df function to build the base dataframes for each row, for the entire A-P Rows of the table
+    # This dataframe is the minimal possible, don't consider the signals/points
+    # Rows with varying sizes:
+    #   - K/L (Points circuit breakers)
+    #   - M/N (Signals circuit breakers)
+    def _blank_dfs(self):
+        loc = self.dataframe["D"]["LOC"].iloc[0]
+        df_A = pd.DataFrame(
+            {
+                "ROW": ["A"] * 7,
+                "POS": ["-", *range(1, 7)],
+                "FUNCTION": ["POWER RACK"] + ["LPSM"] * 4 + ["FPSM"] * 2,
+                "TYPE": ["VM1000"] + ["VM1102"] * 4 + ["VM1112"] * 2,
+                "SHEET": ["-"] * 7,
+            }
+        )
+        df_B = pd.DataFrame(
+            {
+                "ROW": ["B"],
+                "POS": ["-"],
+                "FUNCTION": ["BLANK PANEL"],
+                "TYPE": ["-"],
+                "SHEET": ["-"],
+            }
+        )
+        df_C = pd.DataFrame(
+            {
+                "ROW": ["C"] * 16,
+                "POS": ["-", *range(1, 16)],
+                "FUNCTION": [
+                    "IO RACK",
+                    "PSM",
+                    "A-QEXM",
+                    "A-SPM",
+                    "B-SPM",
+                    "B-QEXM",
+                    *["BLANK PANEL"] * 8,
+                    "BLANK PANEL",
+                    "BLANK PANEL",
+                ],
+                "TYPE": [
+                    "VM1068",
+                    "VM1905",
+                    "VM1322",
+                    "VM1902",
+                    "VM1902",
+                    "VM1322",
+                    *["TC2801"] * 8,
+                    "TMC-001",
+                    "TMC-001",
+                ],
+                "SHEET": ["-"] * 16,
+            }
+        )
+        df_D = pd.DataFrame(
+            {
+                "ROW": ["D"] * 10,
+                "POS": ["-", *range(1, 10)],
+                "FUNCTION": ["POINTS RACK"] + ["BLANK PANEL"] * 9,
+                "TYPE": ["VM1056"] + ["VC201"] * 9,
+                "SHEET": ["-"] * 10,
+            }
+        )
+        df_E = pd.DataFrame(
+            {
+                "ROW": ["E"] * 13,
+                "POS": ["-", *range(1, 13)],
+                "FUNCTION": ["SIGNALS RACK"] + ["BLANK PANEL"] * 12,
+                "TYPE": [
+                    "VM1057",
+                    *["VM1501"] * 8,
+                    *["VC200"] * 4,
+                ],
+                "SHEET": ["-"] * 13,
+            }
+        )
+        df_F = pd.DataFrame(
+            {
+                "ROW": ["F"] * 9,
+                "POS": ["-", *range(1, 9)],
+                "FUNCTION": [
+                    "220VAC POWER DISTRIBUTION",
+                    "LIGHTING PROTECTION MODULE",
+                    "MAIN POWER-I",
+                    "POWER RACK-I",
+                    "VDN SWITCH-I",
+                    "MAIN POWER-II",
+                    "POWER RACK-II",
+                    "VDN SWITCH-II",
+                    "FAN",
+                ],
+                "TYPE": [
+                    "-",
+                    "LIGHTING PROTECTION MODULE",
+                    *["CIRCUIT BREAKER"] * 7,
+                ],
+                "SHEET": ["-"] * 9,
+            }
+        )
+        df_G = pd.DataFrame(
+            {
+                "ROW": ["G"],
+                "POS": ["U60 - U83"],
+                "FUNCTION": ["INTERNAL WIRING"],
+                "TYPE": ["TERMINALS"],
+                "SHEET": ["-"],
+            }
+        )
+        df_H = pd.DataFrame(
+            {
+                "ROW": ["H"] * 8,
+                "POS": list(range(1, 9)),
+                "FUNCTION": [
+                    "VOLTAGE MONITOR",
+                    "VOLTAGE MONITOR",
+                    "24V POWER SUPPLY",
+                    "24V POWER SUPPLY",
+                    "24V POWER SUPPLY",
+                    f"LOC-{loc} VDN SWITCH A",
+                    f"LOC-{loc} VDN SWITCH B",
+                    f"LOC-{loc} S&D SWITCH",
+                ],
+                "TYPE": [
+                    "VM-1923-1",
+                    "VM-1923-2",
+                    *["QS10.241"] * 3,
+                    "-",
+                    "-",
+                    "-",
+                ],
+                "SHEET": [
+                    "-",
+                    "-",
+                    "-",
+                    "-",
+                    "-",
+                    "T002",
+                    "T002",
+                    "T002",
+                ],
+            }
+        )
+        df_J = pd.DataFrame(
+            {
+                "ROW": ["J"],
+                "POS": ["-"],
+                "FUNCTION": ["BLANK"],
+                "TYPE": ["-"],
+                "SHEET": ["-"],
+            }
+        )
+        df_K = pd.DataFrame(
+            {
+                "ROW": ["K"],
+                "POS": ["-"],
+                "FUNCTION": ["BLANK"],
+                "TYPE": ["-"],
+                "SHEET": ["-"],
+            }
+        )
+        df_L = pd.DataFrame(
+            {
+                "ROW": ["L"],
+                "POS": ["-"],
+                "FUNCTION": ["BLANK"],
+                "TYPE": ["-"],
+                "SHEET": ["-"],
+            }
+        )
+        df_M = pd.DataFrame(
+            {
+                "ROW": ["M"],
+                "POS": ["-"],
+                "FUNCTION": ["BLANK"],
+                "TYPE": ["-"],
+                "SHEET": ["-"],
+            }
+        )
+        df_N = pd.DataFrame(
+            {
+                "ROW": ["N"],
+                "POS": ["-"],
+                "FUNCTION": ["BLANK"],
+                "TYPE": ["-"],
+                "SHEET": ["-"],
+            }
+        )
+
+        df_P = pd.DataFrame(
+            {
+                "ROW": ["P"] * 14,
+                "POS": [
+                    "U97",
+                    "U96",
+                    "U95",
+                    "U94",
+                    "U93",
+                    "U92",
+                    "U91",
+                    "U90",
+                    "U44 - U33",
+                    "U4",
+                    "U3",
+                    "U2",
+                    "U1",
+                    "1 - 3",
+                ],
+                "FUNCTION": [
+                    "CX230V - POINTS POWER SUPPLY",
+                    "BX230V - POINTS POWER SUPPLY",
+                    "400VAC_N - POINTS POWER SUPPLY",
+                    "400VAC_L3 - POINTS POWER SUPPLY",
+                    "400VAC_L2 - POINTS POWER SUPPLY",
+                    "400VAC_L1 - POINTS POWER SUPPLY",
+                    "CX110V - SIGNALS POWER SUPPLY",
+                    "BX110V - SIGNALS POWER SUPPLY",
+                    "INTERNAL WIRING",
+                    "CX230V INPUT POWER 2",
+                    "BX230V INPUT POWER 2",
+                    "CX230V INPUT POWER 1",
+                    "BX230V INPUT POWER 1",
+                    "LIGHTNING PROTECTION MODULE",
+                ],
+                "TYPE": ["TERMINALS"] * 14,
+                "SHEET": [
+                    *["N00X"] * 8,
+                    "-",
+                    *["N00X"] * 4,
+                    "-",
+                ],
+            }
+        )
+        dfs = {
+            "A": df_A,
+            "B": df_B,
+            "C": df_C,
+            "D": df_D,
+            "E": df_E,
+            "F": df_F,
+            "G": df_G,
+            "H": df_H,
+            "J": df_J,
+            "K": df_K,
+            "L": df_L,
+            "M": df_M,
+            "N": df_N,
+            "P": df_P,
+        }
+        return dfs
+
+    # using the self.blank_dfs["A","B", ...] maninpulate the dataframes
+    # Most dfs stay the same, except for ("D", "E", "K", "L", "M", "N")
+    def build_dfs(self):
+        ####################### D #######################
+        for i, e in self.dataframe["E"].iterrows():
+            update = {
+                "FUNCTION": f"PCM {i + 1} ({e['PointName']})",
+                "TYPE": "VM1514",
+                "SHEET": e["Sheet"],
+            }
+            self.blank_dfs["D"].loc[i + 1, update.keys()] = update.values()
+
+        ####################### E #######################
+        for i, (_, e) in enumerate(
+            [group for group in self.dataframe["D"].groupby("SCM")]
+        ):
+            update = {
+                "FUNCTION": f"SCM {i + 1} ({e['SignalName'].iloc[0]})"
+                if len(e) < 2
+                else f"SCM {i + 1} ({e['SignalName'].iloc[0]} / {e['SignalName'].iloc[1]})",
+                "TYPE": "VM1501",
+                "SHEET": e["Sheet"].iloc[0]
+                if len(e) < 2
+                else f"{e['Sheet'].iloc[0]} / {e['Sheet'].iloc[1]}",
+            }
+            self.blank_dfs["E"].loc[i + 1, update.keys()] = update.values()
+
+            ####################### K #######################
+        update = {
+            "ROW": "K",
+            "POS": "U120-U127",
+            "FUNCTION": "INTERNAL WIRING",
+            "TYPE": "-",
+            "SHEET": "N00X",
+        }
+        self.blank_dfs["K"] = pd.DataFrame([update])
+        for i, e in self.dataframe["E"].iloc[:4].iterrows():
+            update = {
+                "ROW": "K",
+                "POS": f"K{2 * i + 1}",
+                "FUNCTION": f"230VAC - {e['PointName']}",
+                "TYPE": "CIRCUIT BREAKER 0.5A - 1 POLE",
+                "SHEET": "N00X",
+            }
+            self.blank_dfs["K"].loc[len(self.blank_dfs["K"]), update.keys()] = (
+                update.values()
+            )
+            update = {
+                "ROW": "K",
+                "POS": f"K{2 * i + 2}",
+                "FUNCTION": f"400VAC - {e['PointName']}",
+                "TYPE": "CIRCUIT BREAKER 5A - 3 POLE",
+                "SHEET": "N00X",
+            }
+            self.blank_dfs["K"].loc[len(self.blank_dfs["K"]), update.keys()] = (
+                update.values()
+            )
+        self.blank_dfs["K"] = self.blank_dfs["K"][::-1]
+        ####################### L #######################
+        if len(self.dataframe["E"].iloc[4:]) > 0:
+            self.blank_dfs["L"] = pd.DataFrame()
+        for i, e in self.dataframe["E"].iloc[4:].iterrows():
+            update = {
+                "ROW": "L",
+                "POS": f"K{2 * i + 1}",
+                "FUNCTION": f"230VAC - {e['PointName']}",
+                "TYPE": "CIRCUIT BREAKER 0.5A - 1 POLE",
+                "SHEET": "N00X",
+            }
+            self.blank_dfs["L"].loc[len(self.blank_dfs["L"]), update.keys()] = (
+                update.values()
+            )
+            update = {
+                "ROW": "L",
+                "POS": f"K{2 * i + 2}",
+                "FUNCTION": f"400VAC - {e['PointName']}",
+                "TYPE": "CIRCUIT BREAKER 5A - 3 POLE",
+                "SHEET": "N00X",
+            }
+            self.blank_dfs["L"].loc[len(self.blank_dfs["L"]), update.keys()] = (
+                update.values()
+            )
+        self.blank_dfs["L"] = self.blank_dfs["L"][::-1]
+        ####################### M #######################
+        update = {
+            "ROW": "M",
+            "POS": "U110-U113",
+            "FUNCTION": "INTERNAL WIRING",
+            "TYPE": "TERMINALS",
+            "SHEET": "-",
+        }
+        self.blank_dfs["M"] = pd.DataFrame([update])
+        for i, e in self.dataframe["D"].iloc[:10].iterrows():
+            update = {
+                "ROW": "M",
+                "POS": f"K{i + 1}",
+                "FUNCTION": e["SignalName"],
+                "TYPE": "CIRCUIT BREAKER 1A - 2 POLE"
+                if pd.isna(e["Dir"])
+                else "CIRCUIT BREAKER 2A - 2 POLE",
+                "SHEET": "N00X",
+            }
+            self.blank_dfs["M"].loc[len(self.blank_dfs["M"]), update.keys()] = (
+                update.values()
+            )
+        self.blank_dfs["M"] = self.blank_dfs["M"][::-1]
+        ####################### N #######################
+        if len(self.dataframe["D"].iloc[4:]) > 0:
+            self.blank_dfs["N"] = pd.DataFrame()
+        for i, e in self.dataframe["D"].iloc[10:].iterrows():
+            update = {
+                "ROW": "N",
+                "POS": f"K{i + 1}",
+                "FUNCTION": e["SignalName"],
+                "TYPE": "CIRCUIT BREAKER 1A - 2 POLE"
+                if pd.isna(e["Dir"])
+                else "CIRCUIT BREAKER 2A - 2 POLE",
+                "SHEET": "N00X",
+            }
+            self.blank_dfs["N"].loc[len(self.blank_dfs["N"]), update.keys()] = (
+                update.values()
+            )
+        self.blank_dfs["N"] = self.blank_dfs["N"][::-1]
+
+    # From self.blank_dfs use the combine code from OPSignalsSheet
+    # create dataframe for every sheet tables
+    def split_df(self):
+        split_dfs = list(self.blank_dfs.values())
+        index = 0
+        while index + 1 < len(split_dfs):
+            df_current = split_dfs[index]
+            df_next = split_dfs[index + 1]
+            if len(df_current) + len(df_next) <= self.MAX_ROWS:
+                split_dfs[index] = pd.concat([df_current, df_next], ignore_index=True)
+                split_dfs.pop(index + 1)
+            else:
+                index += 1
+        return split_dfs
+
+    def build_blocks(self):
+        blocks = []
+        for sheetindex, dataframe in enumerate(self.df_split):
+            blockdatalist = []
+            # Borderblock values
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            loc = self.dataframe["D"]["LOC"].iloc[0]
+            blockdatalist.append(
+                [
+                    "STRIP_ANALYSIS_TABLE_HEAD",
+                    (0, 0),
+                    {"TABLE_HEADING": f"RSS LOC-{loc} CABINET"},
+                ]
+            )
+            # INDEX NAME
+
+            rows: list[str] = [row for row, _ in dataframe.groupby("ROW")]
+            formated_rows: str = ", ".join(rows[:-1])
+            if len(rows) > 1:
+                formated_rows: str = f"{formated_rows} & {rows[-1]}"
+            blockdatalist.append(
+                [
+                    "BORDER_INDEX_NAME",
+                    (0, 0),
+                    {
+                        "BORDER_INDEX_NAME": f"RSS LOC-{loc} CABINET - ROW {formated_rows} STRIP ANALYSIS"
+                    },
+                ]
+            )
+            for i, df_row in dataframe.iterrows():
+                blockdatalist.append(
+                    [
+                        "STRIP_ANALYSIS_TABLE_ROW",
+                        (0, -5 * i),
+                        {
+                            "A1": df_row["ROW"],
+                            "A2": df_row["POS"],
+                            "A3": df_row["FUNCTION"],
+                            "A4": df_row["TYPE"],
+                            "A5": df_row["SHEET"],
+                        },
+                    ]
+                )
+            blocks.append(blockdatalist)
+        return blocks
+
+
+###############################################################################
+# Axle Counter Cabinet Layout
+###############################################################################
+class AxleCabinetSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.dfs = self.build_dfs()
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet
+
+
+###############################################################################
+# FADC COUNTER RACK
+###############################################################################
+class AxleFADCSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.dfs = self.build_dfs()
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet
+
+
 #############################################################################
 # Used to create the drawing files from the Rsheets(
 #############################################################################
 class DrawingRenderer:
-    def __init__(self, blocks, template, output_dir: Path):
-        self.block_list = blocks
+    def __init__(self, template, output_dir: Path):
         self.template = ez.readfile(template)
         self.output_dir = output_dir
 
-    def render_sheets(self):
+    def render_sheets(self, blocks):
         self.output_dir = Path(self.output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-        for index, sheetblocks in enumerate(self.block_list):
+        for index, sheetblocks in enumerate(blocks):
             drawing = copy.deepcopy(self.template)
             psp = drawing.paperspace()
             msp = drawing.modelspace()
@@ -792,7 +1565,10 @@ class DrawingRenderer:
 
 
 if __name__ == "__main__":
-    r_section = RSection(Path("../autobook.xlsx"), 2)
+    s = time.perf_counter()
+    r_section = RSection(Path("../templates/autobook.xlsx"), 2)
+    e = time.perf_counter()
+    print(f"Rsection dataframes generated: {e - s:0.2f}s")
 
     r_subsections = [
         r_section.idf_signal,
@@ -800,9 +1576,19 @@ if __name__ == "__main__":
         r_section.op_signal,
         r_section.op_point,
         r_section.op_counter,
+        r_section.power,
+        r_section.io,
+        r_section.points,
+        r_section.signals,
+        r_section.strip,
     ]
+    s = time.perf_counter()
+    renderer = DrawingRenderer(str("../templates/Roptemplate.dxf"), Path("../../out/"))
+    e = time.perf_counter()
+    print(f"DrawingRenderer set: {e - s:0.2f}s")
+
     for i in r_subsections:
-        renderer = DrawingRenderer(
-            i.blocks, str("../templates/Roptemplate.dxf"), Path("../out/")
-        )
-        renderer.render_sheets()
+        s = time.perf_counter()
+        renderer.render_sheets(i.blocks)
+        e = time.perf_counter()
+        print(f"Drawing build time: {e - s:0.2f}s")
