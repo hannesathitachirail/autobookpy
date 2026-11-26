@@ -7,6 +7,7 @@ import copy
 import numpy as np
 from pathlib import Path
 import time
+from pprint import pprint
 
 
 pd.set_option("display.max_rows", None)
@@ -62,6 +63,9 @@ class RSection:
         )
         self.fadc = AxleFADCSheet(
             self.dataframe["F"], self.bordervalues, self.axlecabinet.next_sheet + 1
+        )
+        self.axlestrip = StripAxleSheet(
+            self.dataframe["F"], self.bordervalues, self.fadc.next_sheet + 1
         )
 
     @property
@@ -1454,7 +1458,7 @@ class StripRackSheet:
 
     def build_blocks(self):
         blocks = []
-        for sheetindex, dataframe in enumerate(self.df_split):
+        for sheetindex, dataframe in enumerate(self.df_split, start=1):
             blockdatalist = []
             # Borderblock values
             self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
@@ -1508,9 +1512,9 @@ class AxleCabinetSheet:
         self.dataframe = dataframe
         self.bordervalues = bordervalues
         self.sheet = sheet
-        self.dfs = self.build_dfs()
-        self.df_split = self.split_df()
-        self.blocks = self.build_blocks()
+        # self.dfs = self.build_dfs()
+        # self.df_split = self.split_df()
+        # self.blocks = self.build_blocks()
         self.next_sheet = self.sheet
 
 
@@ -1523,9 +1527,356 @@ class AxleFADCSheet:
         self.bordervalues = bordervalues
         self.sheet = sheet
         self.dfs = self.build_dfs()
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet
+
+    # Create list of dataframes, grouped by the ["AZgr"] and ["FADC"] sorted by ["AEB"]
+    def build_dfs(self):
+        _i = [group for _, group in self.dataframe.groupby("AZgr", sort=False)]
+        dfs = []
+        for df in _i:
+            dfs.append(
+                [
+                    group.sort_values("AEB")
+                    for _, group in df.groupby("FADC", sort=False)
+                ]
+            )
+        return dfs
+
+    def build_blocks(self):
+        blocks = []
+        for sheetindex, dataframe in enumerate(self.dfs):
+            blockdatalist = []
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
+            self.sheet += 1
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            side1 = dataframe[0]
+            side1[["FM1", "FM2"]] = (
+                side1[["FM1", "FM2"]].fillna("").map(lambda x: f" ({x})" if x else "")
+            )
+            side2 = dataframe[1]
+            side2[["FM1", "FM2"]] = (
+                side2[["FM1", "FM2"]].fillna("").map(lambda x: f" ({x})" if x else "")
+            )
+            blockdatalist.append(
+                [
+                    "BORDER_INDEX_NAME",
+                    (0, 0),
+                    {
+                        "BORDER_INDEX_NAME": f"{side1['FADC'].iloc[0][0]} - FADC AXLE COUNTER {side1['AZgr'].iloc[0]} RACK LAYOUT",
+                    },
+                ]
+            )
+            blockdatalist.append(
+                [
+                    "AXLE_FADC_SHEET_BASE",
+                    (0, 0),
+                    {
+                        "AXLE_FADC_SHEET_HEADING": f"{side1['FADC'].iloc[0][0]} - FADC AXLE COUNTER {side1['AZgr'].iloc[0]} RACK (FRONT VIEW)",
+                        "AXLE_FADC_SHEET_SIDE1": f"{side1['FADC'].iloc[0]}",
+                        "AXLE_FADC_SHEET_SIDE1_1": f"{side1['FADC'].iloc[0]}",
+                        "AXLE_FADC_SHEET_SIDE2": f"{side2['FADC'].iloc[0]}",
+                        "AXLE_FADC_SHEET_SIDE2_1": f"{side2['FADC'].iloc[0]}",
+                        **{
+                            f"AXLE_FADC_SHEET_DIP_A1_{i + 3}": f"AEB{side1['AEB'].iloc[i]}-{side1['AZgr'].iloc[i]}/{side1['AZnr'].iloc[i]}"
+                            if i < len(side1)
+                            else f"AEB{i + 3}-"
+                            for i in range(7)
+                        },
+                        **{
+                            f"AXLE_FADC_SHEET_DIP_A2_{i + 2}": f"AEB{side2['AEB'].iloc[i]}-{side2['AZgr'].iloc[i]}/{side2['AZnr'].iloc[i]}"
+                            if i < len(side2)
+                            else f"AEB{i + 2}-"
+                            for i in range(7)
+                        },
+                    },
+                ]
+            )
+            for i in range(6):
+                blockdatalist.append(
+                    [
+                        "AXLE_FADC_SHEET_AEB"
+                        if i < len(side1)
+                        else "AXLE_FADC_SHEET_AEB_SPARE",
+                        (13.25 * i, 0),
+                        {
+                            "AXLE_FADC_SHEET_ID": f"{side1['AZgr'].iloc[i]}/{side1['AZnr'].iloc[i]}"
+                            if i < len(side1)
+                            else "",
+                            "AXLE_FADC_SHEET_TRACK": f"{side1['Track1'].iloc[i]}{side1['FM1'].iloc[i]} / {side1['Track2'].iloc[i]}{side1['FM2'].iloc[i]}"
+                            if i < len(side1)
+                            else "",
+                        },
+                    ]
+                )
+            for i in range(7):
+                blockdatalist.append(
+                    [
+                        "AXLE_FADC_SHEET_AEB"
+                        if i < len(side2)
+                        else "AXLE_FADC_SHEET_AEB_SPARE",
+                        (111.4916 + 13.25 * i, 0),
+                        {
+                            "AXLE_FADC_SHEET_ID": f"{side2['AZgr'].iloc[i]}/{side2['AZnr'].iloc[i]}"
+                            if i < len(side2)
+                            else "",
+                            "AXLE_FADC_SHEET_TRACK": f"{side2['Track1'].iloc[i]}{side2['FM1'].iloc[i]} / {side2['Track2'].iloc[i]}{side2['FM2'].iloc[i]}"
+                            if i < len(side2)
+                            else "",
+                        },
+                    ]
+                )
+            blocks.append(blockdatalist)
+        return blocks
+
+
+###############################################################################
+# ROW A, B, C, D, E, F, G, H, J, K Strip Analysis
+###############################################################################
+class StripAxleSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.MAX_ROWS = 47
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.blank_dfs = self._blank_dfs()
+        self.dfs = self.build_dfs()
         self.df_split = self.split_df()
         self.blocks = self.build_blocks()
         self.next_sheet = self.sheet
+
+    def _blank_dfs(self):
+        blank_rows = ["A", "B", "C", "D", "E", "F", "G", "H", "J"]
+        dfs = {}
+        for r in blank_rows:
+            dfs[r] = pd.DataFrame(
+                [
+                    {
+                        "ROW": r,
+                        "POS": "-",
+                        "FUNCTION": "-",
+                        "TYPE": "-",
+                        "SHEET": "-",
+                    }
+                ]
+            )
+        dfs["K"] = pd.DataFrame(
+            {
+                "ROW": ["K"] * 6,
+                "POS": [1, 2, 3, 4, 5, 6],
+                "FUNCTION": [
+                    "B60 SUPPLY 1",
+                    "B60 DC-DC",
+                    "N60 SUPPLY 1",
+                    "N60 DC-DC",
+                    "B60 SUPPLY 2",
+                    "N60 SUPPLY 2",
+                ],
+                "TYPE": [
+                    "ETA UK6-FSI/C (FUSE 6A)",
+                    "ETA UK6-FSI/C (FUSE 6A)",
+                    "PHOENIX UK6",
+                    "PHOENIX UK6",
+                    "ETA UK6-FSI/C (FUSE 6A)",
+                    "PHOENIX UK6",
+                ],
+                "SHEET": ["N00X"] * 6,
+            }
+        )
+        return dfs
+
+    def build_dfs(self):
+        # First format self.dataframe into list[list[pd.df(A1), pd.df(A2)]]
+        # Copy from AxleFADCSheet.build_dfs
+        _i = [group for _, group in self.dataframe.groupby("AZgr", sort=False)]
+        grouped_df = []
+        for df in _i:
+            grouped_df.append(
+                [
+                    group.sort_values("AEB")
+                    for _, group in df.groupby("FADC", sort=False)
+                ]
+            )
+        # continue with formatting self.blank_dfs
+        # self.blank_dfs["A"] example
+        for fadc in grouped_df:
+            side1 = fadc[0]
+            side2 = fadc[1]
+            self.blank_dfs[side1["FADC"].iloc[0][0]] = pd.DataFrame(
+                {
+                    "ROW": [side1["FADC"].iloc[0][0]] * 21,
+                    "POS": [
+                        "-",
+                        f"{side1['FADC'].iloc[0]}",
+                        "PSC",
+                        "AEB1",
+                        "AEB2",
+                        "AEB3",
+                        "AEB4",
+                        "AEB5",
+                        "AEB6",
+                        "AEB7",
+                        "AEB8",
+                        f"{side2['FADC'].iloc[0]}",
+                        "PSC",
+                        "AEB1",
+                        "AEB2",
+                        "AEB3",
+                        "AEB4",
+                        "AEB5",
+                        "AEB6",
+                        "AEB7",
+                        "AEB8",
+                    ],
+                    "FUNCTION": [
+                        f"FADC AXLE COUNTER {side1['AZgr'].iloc[0]} RACK",
+                        "BACKPLANE BP-PWR101-8 40TE GS01",
+                        "SUPPLY BOARD PSC101 GS01",
+                        "COMMS. BOARD COM-FSE",
+                        "COMMS. BOARD COM-Adc",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "BACKPLANE BP-PWR101-8 40TE GS01",
+                        "SUPPLY BOARD PSC101 GS01",
+                        "COMMS. BOARD COM-FSE",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                    ],
+                    "TYPE": [
+                        "BGT07",
+                        "19953",
+                        "19949",
+                        "112026",
+                        "23152",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "19953",
+                        "19949",
+                        "26534",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                    ],
+                    "SHEET": [
+                        "R00X",
+                        "-",
+                        "N00X",
+                        "T005",
+                        "T005",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "N00X",
+                        "T005",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                        "-",
+                    ],
+                }
+            )
+            for i, (_, row) in enumerate(side1.iterrows()):
+                update = {
+                    "FUNCTION": "EVALUATION BOARD AEB101GS11",
+                    "TYPE": "110813",
+                    "SHEET": row["Sheet"],
+                }
+                self.blank_dfs[side1["FADC"].iloc[0][0]].loc[i + 5, update.keys()] = (
+                    update.values()
+                )
+            for i, (_, row) in enumerate(side2.iterrows()):
+                update = {
+                    "FUNCTION": "EVALUATION BOARD AEB101GS11",
+                    "TYPE": "110813",
+                    "SHEET": row["Sheet"],
+                }
+                self.blank_dfs[side2["FADC"].iloc[0][0]].loc[i + 14, update.keys()] = (
+                    update.values()
+                )
+
+    def split_df(self):
+        split_dfs = list(self.blank_dfs.values())
+        index = 0
+        while index + 1 < len(split_dfs):
+            df_current = split_dfs[index]
+            df_next = split_dfs[index + 1]
+            if len(df_current) + len(df_next) <= self.MAX_ROWS:
+                split_dfs[index] = pd.concat([df_current, df_next], ignore_index=True)
+                split_dfs.pop(index + 1)
+            else:
+                index += 1
+        return split_dfs
+
+    def build_blocks(self):
+        blocks = []
+        for sheetindex, dataframe in enumerate(self.df_split):
+            blockdatalist = []
+            # Borderblock values
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            loc = self.dataframe["LOC"].iloc[0]
+            blockdatalist.append(
+                [
+                    "STRIP_ANALYSIS_TABLE_HEAD",
+                    (0, 0),
+                    {"TABLE_HEADING": "AZ CABINET"},
+                ]
+            )
+            # INDEX NAME
+
+            rows: list[str] = [row for row, _ in dataframe.groupby("ROW")]
+            formated_rows: str = ", ".join(rows[:-1])
+            if len(rows) > 1:
+                formated_rows: str = f"{formated_rows} & {rows[-1]}"
+            blockdatalist.append(
+                [
+                    "BORDER_INDEX_NAME",
+                    (0, 0),
+                    {
+                        "BORDER_INDEX_NAME": f"AZ CABINET - ROW {formated_rows} STRIP ANALYSIS"
+                    },
+                ]
+            )
+            for i, df_row in dataframe.iterrows():
+                blockdatalist.append(
+                    [
+                        "STRIP_ANALYSIS_TABLE_ROW",
+                        (0, -5 * i),
+                        {
+                            "A1": df_row["ROW"],
+                            "A2": df_row["POS"],
+                            "A3": df_row["FUNCTION"],
+                            "A4": df_row["TYPE"],
+                            "A5": df_row["SHEET"],
+                        },
+                    ]
+                )
+            blocks.append(blockdatalist)
+        return blocks
 
 
 #############################################################################
@@ -1581,6 +1932,8 @@ if __name__ == "__main__":
         r_section.points,
         r_section.signals,
         r_section.strip,
+        r_section.fadc,
+        r_section.axlestrip,
     ]
     s = time.perf_counter()
     renderer = DrawingRenderer(str("../templates/Roptemplate.dxf"), Path("../../out/"))
