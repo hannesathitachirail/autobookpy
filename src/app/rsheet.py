@@ -26,21 +26,22 @@ class RSection:
         self.MAX_ROWS = 40
         self.dataframe = pd.read_excel(excel_file, sheet_name=["Border", "D", "E", "F"])
         ################ RACK sections #############
+        self.rack = RackMountingSheet(self.dataframe, self.bordervalues, sheet)
         self.idf_signal = IDFSignalsSheet(
-            self.dataframe["D"], self.bordervalues, sheet
-        )  # To be updated
+            self.dataframe["D"], self.bordervalues, self.rack.next_sheet
+        )
         self.idf_points = IDFPointsSheet(
             self.dataframe["E"], self.bordervalues, self.idf_signal.next_sheet
-        )  # To be updated
+        )
         self.op_signal = OPSignalsSheet(
             self.dataframe["D"], self.bordervalues, self.idf_points.next_sheet
         )
         self.op_point = OPPointsSheet(
             self.dataframe["E"], self.bordervalues, self.op_signal.next_sheet
-        )  # To be updated
+        )
         self.op_counter = OPCountersSheet(
             self.dataframe["F"], self.bordervalues, self.op_point.next_sheet
-        )  # To be updated
+        )
         ####################### CABINET Section #####################
         self.power = PowerRackSheet(
             self.dataframe["D"], self.bordervalues, self.op_counter.next_sheet
@@ -100,9 +101,39 @@ class RSection:
 ######################################
 # First sheet/sheets of Rsection, showing front of rack containing all the columns
 ######################################
-class MountingSheet:
-    def __init__(self):
+class RackMountingSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.MAX_TERMINALS = 300
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.df = self.build_df()
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet
+
+    def build_df(self):
+        idf_dfs = []
+        op_dfs = []
+        idfcount = {}
+        opcount = {}
+        dfs = pd.concat(list(self.dataframe.values()), ignore_index=True)
+        breakpoint()
+
+        return
+
+    def split_df(self):
         pass
+
+    def build_blocks(self):
+        # Iterate through list to isolate dataframe to a sheet
+        blocks = []
+        for sheetindex, dataframe in enumerate(self.df_split, start=1):
+            blockdatalist = []
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            self.sheet += 1
+        return blocks
 
 
 ###################
