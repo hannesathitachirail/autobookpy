@@ -43,29 +43,35 @@ class RSection:
         )  # To be updated
         ####################### CABINET Section #####################
         self.power = PowerRackSheet(
-            self.dataframe["D"], self.bordervalues, self.op_counter.next_sheet + 1
+            self.dataframe["D"], self.bordervalues, self.op_counter.next_sheet
         )
         self.io = IORackSheet(
-            self.dataframe["D"], self.bordervalues, self.power.next_sheet + 1
+            self.dataframe["D"], self.bordervalues, self.power.next_sheet
         )
         self.points = PointsRackSheet(
-            self.dataframe["E"], self.bordervalues, self.io.next_sheet + 1
+            self.dataframe["E"], self.bordervalues, self.io.next_sheet
         )
         self.signals = SignalsRackSheet(
-            self.dataframe["D"], self.bordervalues, self.points.next_sheet + 1
+            self.dataframe["D"], self.bordervalues, self.points.next_sheet
         )
         self.strip = StripRackSheet(
-            self.dataframe, self.bordervalues, self.signals.next_sheet + 1
+            self.dataframe, self.bordervalues, self.signals.next_sheet
         )
         ##################### Axle Cabinet Section ####################
         self.axlecabinet = AxleCabinetSheet(
-            self.dataframe["F"], self.bordervalues, self.strip.next_sheet + 1
+            self.dataframe["F"], self.bordervalues, self.strip.next_sheet
         )
         self.fadc = AxleFADCSheet(
-            self.dataframe["F"], self.bordervalues, self.axlecabinet.next_sheet + 1
+            self.dataframe["F"], self.bordervalues, self.axlecabinet.next_sheet
         )
         self.axlestrip = StripAxleSheet(
-            self.dataframe["F"], self.bordervalues, self.fadc.next_sheet + 1
+            self.dataframe["F"], self.bordervalues, self.fadc.next_sheet
+        )
+        self.lstrip = AxleLSheet(
+            self.dataframe["F"], self.bordervalues, self.axlestrip.next_sheet
+        )
+        self.mstrip = AxleMSheet(
+            self.dataframe["F"], self.bordervalues, self.lstrip.next_sheet
         )
 
     @property
@@ -114,7 +120,7 @@ class IDFSignalsSheet:
         self.df = self.build_df()
         self.df_split = self.split_df()
         self.blocks = self.build_blocks()
-        self.next_sheet = self.sheet + len(self.df_split)
+        self.next_sheet = self.sheet
 
     def build_df(self):
         functiondict = {
@@ -214,8 +220,9 @@ class IDFSignalsSheet:
         blocks = []
         for sheetindex, dataframe in enumerate(self.df_split, start=1):
             blockdatalist = []
-            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
             blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            self.sheet += 1
             blockdatalist.append(
                 [
                     "IDF_BASE",
@@ -273,7 +280,7 @@ class IDFPointsSheet:
         self.sheet = sheet
         self.df_split = self.split_df()
         self.blocks = self.build_blocks()
-        self.next_sheet = self.sheet + len(self.df_split)
+        self.next_sheet = self.sheet
 
     def split_df(self):
         df_split = [
@@ -289,8 +296,9 @@ class IDFPointsSheet:
         blocks = []
         for sheetindex, dataframe in enumerate(self.df_split, start=1):
             blockdatalist = []
-            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
             blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            self.sheet += 1
             blockdatalist.append(
                 [
                     "IDF_BASE",
@@ -348,7 +356,7 @@ class OPSignalsSheet:
         self.df = self.build_df()
         self.df_split = self.split_df()
         self.blocks = self.build_blocks()
-        self.next_sheet = self.sheet + len(self.df_split)
+        self.next_sheet = self.sheet
         self.op_numbers = self.df.groupby("SHEET").min()["POS"]
 
     # Split the self.opdf into serperate dataframes consisting of the data
@@ -501,8 +509,9 @@ class OPSignalsSheet:
             rows = dataframe.to_dict("records")
             blockdatalist = []
             # Borderblock values
-            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
             blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            self.sheet += 1
             blockdatalist.append(
                 [
                     "OP_BASE",
@@ -570,7 +579,7 @@ class OPPointsSheet:
         self.op_numbers = {}
         self.df_split = self.split_df()
         self.blocks = self.build_blocks()
-        self.next_sheet = self.sheet + len(self.df_split)
+        self.next_sheet = self.sheet
 
     def split_df(self):
         df_split = [
@@ -587,8 +596,9 @@ class OPPointsSheet:
         prevpos = 0
         for sheetindex, dataframe in enumerate(self.df_split, start=1):
             blockdatalist = []
-            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
             blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            self.sheet += 1
             blockdatalist.append(
                 [
                     "OP_BASE",
@@ -647,7 +657,7 @@ class OPCountersSheet:
         self.df = self.build_df()
         self.df_split = self.split_df()
         self.blocks = self.build_blocks()
-        self.next_sheet = self.sheet + len(self.df_split)
+        self.next_sheet = self.sheet
 
     def build_df(self):
         dfs = [
@@ -702,8 +712,9 @@ class OPCountersSheet:
         prevpos = 0
         for sheetindex, dataframe in enumerate(self.df_split, start=1):
             blockdatalist = []
-            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
             blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            self.sheet += 1
             blockdatalist.append(
                 [
                     "OP_BASE",
@@ -719,7 +730,6 @@ class OPCountersSheet:
                     (0, 0),
                     {
                         "BORDER_INDEX_NAME": f"OP 11 - {str(dataframe['OP'].iloc[0])[-1]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})",
-                        "BORDER_INDEX_NAME": f"OPn 11 - {str(dataframe['OP'].iloc[0])[-1]} STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})",
                     },
                 ]
             )
@@ -808,6 +818,7 @@ class PowerRackSheet:
         blockdatalist = []
         self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
         blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+        self.sheet += 1
         blockdatalist.append(
             ["POWER_RACK_SHEET_BASE", (0, 0), {"LOC": f"RSS LOC-{loc}"}]
         )
@@ -841,6 +852,7 @@ class IORackSheet:
         blockdatalist = []
         self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
         blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+        self.sheet += 1
         blockdatalist.append(["IO_RACK_SHEET_BASE", (0, 0), {"LOC": f"RSS LOC-{loc}"}])
         blockdatalist.append(
             [
@@ -872,6 +884,7 @@ class PointsRackSheet:
         blockdatalist = []
         self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
         blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+        self.sheet += 1
         blockdatalist.append(
             [
                 "POINTS_RACK_SHEET_BASE",
@@ -929,6 +942,7 @@ class SignalsRackSheet:
         blockdatalist = []
         self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
         blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+        self.sheet += 1
         blockdatalist.append(
             [
                 "SIGNALS_RACK_SHEET_BASE",
@@ -1461,8 +1475,9 @@ class StripRackSheet:
         for sheetindex, dataframe in enumerate(self.df_split, start=1):
             blockdatalist = []
             # Borderblock values
-            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
             blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            self.sheet += 1
             loc = self.dataframe["D"]["LOC"].iloc[0]
             blockdatalist.append(
                 [
@@ -1477,6 +1492,8 @@ class StripRackSheet:
             formated_rows: str = ", ".join(rows[:-1])
             if len(rows) > 1:
                 formated_rows: str = f"{formated_rows} & {rows[-1]}"
+            else:
+                formated_rows = rows[0]
             blockdatalist.append(
                 [
                     "BORDER_INDEX_NAME",
@@ -1515,7 +1532,7 @@ class AxleCabinetSheet:
         # self.dfs = self.build_dfs()
         # self.df_split = self.split_df()
         # self.blocks = self.build_blocks()
-        self.next_sheet = self.sheet
+        self.next_sheet = self.sheet + 1
 
 
 ###############################################################################
@@ -1548,8 +1565,8 @@ class AxleFADCSheet:
         for sheetindex, dataframe in enumerate(self.dfs):
             blockdatalist = []
             self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
-            self.sheet += 1
             blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            self.sheet += 1
             side1 = dataframe[0]
             side1[["FM1", "FM2"]] = (
                 side1[["FM1", "FM2"]].fillna("").map(lambda x: f" ({x})" if x else "")
@@ -1836,9 +1853,9 @@ class StripAxleSheet:
         for sheetindex, dataframe in enumerate(self.df_split):
             blockdatalist = []
             # Borderblock values
-            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet + sheetindex - 1:03d}"
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
             blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
-            loc = self.dataframe["LOC"].iloc[0]
+            self.sheet += 1
             blockdatalist.append(
                 [
                     "STRIP_ANALYSIS_TABLE_HEAD",
@@ -1852,6 +1869,8 @@ class StripAxleSheet:
             formated_rows: str = ", ".join(rows[:-1])
             if len(rows) > 1:
                 formated_rows: str = f"{formated_rows} & {rows[-1]}"
+            else:
+                formated_rows = rows[0]
             blockdatalist.append(
                 [
                     "BORDER_INDEX_NAME",
@@ -1875,6 +1894,150 @@ class StripAxleSheet:
                         },
                     ]
                 )
+            blocks.append(blockdatalist)
+        return blocks
+
+
+###############################################################################
+# Row L analysis
+###############################################################################
+class AxleLSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.MAX = 14
+        self.MAX_PER_SHEET = 8
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet
+
+    def split_df(self):
+        df_split = [
+            group
+            for _, group in self.dataframe.groupby(
+                self.dataframe.index // self.MAX_PER_SHEET
+            )
+        ]
+        return df_split
+
+    def build_blocks(self):
+        # Iterate through list to isolate dataframe to a sheet
+        blocks = []
+        prevpos = 1
+        for sheetindex, dataframe in enumerate(self.df_split, start=1):
+            blockdatalist = []
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            self.sheet += 1
+            blockdatalist.append(
+                [
+                    "IDF_BASE",
+                    (0, 0),
+                    {
+                        "TABLE_HEAD": "AXLE COUNTER CABINET",
+                    },
+                ]
+            )
+            blockdatalist.append(
+                [
+                    "BORDER_INDEX_NAME",
+                    (0, 0),
+                    {
+                        "BORDER_INDEX_NAME": f"AZ CABINET - ROW L STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
+                    },
+                ]
+            )
+            for i, (_, row) in enumerate(dataframe.iterrows()):
+                blockdatalist.append(
+                    [
+                        "AXLE_L_STRIP_TABLE",
+                        (0, 0 - 25 * i),
+                        {
+                            "A1_1": "L",
+                            "A2_1": prevpos,
+                            "A3_1": f"{row['AZgr']}/{row['AZnr']} - SYS1",
+                            "A3_2": f"{row['AZgr']}/{row['AZnr']} - SYS2",
+                            "A3_3": f"{row['AZgr']}/{row['AZnr']} - VCC",
+                            "A3_4": f"{row['AZgr']}/{row['AZnr']} - GND",
+                            "A3_5": f"{row['AZgr']}/{row['AZnr']} - EARTH",
+                            **{f"A4_{e}": row["Sheet"] for e in range(1, 6)},
+                        },
+                    ]
+                )
+                prevpos += 1
+            blocks.append(blockdatalist)
+        return blocks
+
+
+###############################################################################
+# Row M analysis
+###############################################################################
+class AxleMSheet:
+    def __init__(self, dataframe, bordervalues, sheet):
+        self.MAX = 14
+        self.MAX_PER_SHEET = 10
+        self.dataframe = dataframe
+        self.bordervalues = bordervalues
+        self.sheet = sheet
+        self.df_split = self.split_df()
+        self.blocks = self.build_blocks()
+        self.next_sheet = self.sheet
+
+    def split_df(self):
+        df_split = [
+            group
+            for _, group in self.dataframe.groupby(
+                self.dataframe.index // self.MAX_PER_SHEET
+            )
+        ]
+        return df_split
+
+    def build_blocks(self):
+        # Iterate through list to isolate dataframe to a sheet
+        blocks = []
+        prevpos = 1600
+        for sheetindex, dataframe in enumerate(self.df_split, start=1):
+            blockdatalist = []
+            self.bordervalues["BORDER_SHEET"] = f"R{self.sheet:03d}"
+            blockdatalist.append(["PSP_BORDER_BLOCK", (0, 0), self.bordervalues.copy()])
+            self.sheet += 1
+            blockdatalist.append(
+                [
+                    "AXLE_STRIP_ANALYSIS_TABLE_HEAD",
+                    (0, 0),
+                    {
+                        "TABLE_HEAD": "AXLE COUNTER CABINET",
+                    },
+                ]
+            )
+            blockdatalist.append(
+                [
+                    "BORDER_INDEX_NAME",
+                    (0, 0),
+                    {
+                        "BORDER_INDEX_NAME": f"AZ CABINET - ROW M STRIP ANALYSIS ({sheetindex} OF {len(self.df_split)})"
+                    },
+                ]
+            )
+            for i, (_, row) in enumerate(dataframe.iterrows()):
+                blockdatalist.append(
+                    [
+                        "AXLE_STRIP_ANALYSIS_TABLE",
+                        (0, 0 - 20 * i),
+                        {
+                            **{f"A1_{e}": "M" for e in range(1, 5)},
+                            **{f"A2_{e}": prevpos + e for e in range(1, 5)},
+                            "A3_1": f"{row['AZgr']}/{row['AZnr']} - SYS1",
+                            "A3_2": f"{row['AZgr']}/{row['AZnr']} - SYS2",
+                            "A3_3": f"{row['AZgr']}/{row['AZnr']} - VCC",
+                            "A3_4": f"{row['AZgr']}/{row['AZnr']} - GND",
+                            **{f"A4_{e}": "TERMINALS" for e in range(1, 5)},
+                            **{f"A5_{e}": row["Sheet"] for e in range(1, 5)},
+                        },
+                    ]
+                )
+                prevpos += 4
             blocks.append(blockdatalist)
         return blocks
 
@@ -1917,7 +2080,7 @@ class DrawingRenderer:
 
 if __name__ == "__main__":
     s = time.perf_counter()
-    r_section = RSection(Path("../templates/autobook.xlsx"), 2)
+    r_section = RSection(Path("templates/autobook.xlsx"), 2)
     e = time.perf_counter()
     print(f"Rsection dataframes generated: {e - s:0.2f}s")
 
@@ -1934,9 +2097,11 @@ if __name__ == "__main__":
         r_section.strip,
         r_section.fadc,
         r_section.axlestrip,
+        r_section.lstrip,
+        r_section.mstrip,
     ]
     s = time.perf_counter()
-    renderer = DrawingRenderer(str("../templates/Roptemplate.dxf"), Path("../../out/"))
+    renderer = DrawingRenderer(str("templates/Roptemplate.dxf"), Path("../out/"))
     e = time.perf_counter()
     print(f"DrawingRenderer set: {e - s:0.2f}s")
 

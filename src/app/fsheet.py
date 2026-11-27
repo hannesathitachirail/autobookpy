@@ -199,10 +199,10 @@ def generatesheets(
 
 if __name__ == "__main__":
     start = time.perf_counter()
-    r_section = rsheet.RSection(Path("../autobook.xlsx"), 2)
+    r_section = rsheet.RSection(Path("templates/autobook.xlsx"), 2)
     generatesheets(
-        Path("../templates/Ftemplate.dxf"),
-        Path("../autobook.xlsx"),
+        Path("templates/Ftemplate.dxf"),
+        Path("templates/autobook.xlsx"),
         r_section.op_counter.op_numbers,
         Path("../out/"),
     )
